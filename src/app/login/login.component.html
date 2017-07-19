@@ -3,18 +3,58 @@
     <div class="container has-text-centered">
 
       <img src="./assets/images/viavarejo.svg" class="logotipo" />
-      <div class="boas-vindas">Boas-vindas ao Portal do Transportador!</div>
 
-      <div class="cards">
-        <div class="card-login viavarejo hero-body">
-          <img src="../assets/images/login-viavarejo.png" />
+      <div *ngIf="tipo === 'viavarejo' || tipo === 'transportadora'; else bemVindo">
+        <div class="boas-vindas"> <img src="./assets/images/login-{{tipo}}.svg" class="icon-{{tipo}}" alt="">{{title}}</div>
+        <div class="card-login-form box has-text-left">
+
+          <form id="formLogin" (ngSubmit)="postLogin()" #f="ngForm">
+            <div class="form">
+              <div class="field" *ngIf="tipo === 'viavarejo'">
+                <label class="label">NÚMERO DA EMPRESA</label>
+                <div class="control"><input class="input" type="text" [(ngModel)]="empresa" name="empresa" placeholder="Digite o número" required /></div>
+              </div>
+              <div class="field">
+                <label class="label">LOGIN</label>
+                <div class="control"><input class="input" type="text" [(ngModel)]="login" name="login" placeholder="Digite o login" required /></div>
+              </div>
+              <div class="field">
+                <label class="label">SENHA</label>
+                <div class="control"><input class="input" type="password" [(ngModel)]="senha" name="senha" placeholder="Digite a senha" required /></div>
+              </div>
+
+              <div><img src="./assets/images/reCaptcha.png" alt=""></div>
+
+              <div class="block">
+                <a class="button is-link btn-voltar" routerLink="/login">Voltar</a>
+                
+                <button class="button is-success btn-entrar" type="submit">
+                <span>ENTRAR</span>
+                <span class="icon is-small">
+                  <i class="fa fa-times"></i>
+                </span>
+              </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="info-gestor">Esqueceu algum dado?<br />Fale com seu gestor.</div>
+      </div>
+
+      <ng-template #bemVindo>
+        <div class="boas-vindas">Boas-vindas ao Portal do Transportador!</div>
+        <div class="card-login box viavarejo" routerLink="/login/viavarejo">
+          <div class="icon-login-viavarejo"></div>
           <div>Sou Via Varejo</div>
         </div>
-        <div class="card-login transportadora hero-body">
-          <img src="../assets/images/login-transportadora.png" />
+        <div class="card-login box transportadora" routerLink="/login/transportadora">
+          <div class="icon-login-transportadora"></div>
           <div>Sou Transportadora</div>
         </div>
-      </div>
+      </ng-template>
+
     </div>
   </div>
 </section>
