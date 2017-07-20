@@ -8,19 +8,19 @@
         <div class="boas-vindas"> <img src="./assets/images/login-{{tipo}}.svg" class="icon-{{tipo}}" alt="">{{title}}</div>
         <div class="card-login-form box has-text-left">
 
-          <form id="formLogin" (ngSubmit)="postLogin()" #f="ngForm">
+          <form id="formLogin" (ngSubmit)="postLogin(f)" #f="ngForm">
             <div class="form">
               <div class="field" *ngIf="tipo === 'viavarejo'">
                 <label class="label">NÚMERO DA EMPRESA</label>
-                <div class="control"><input class="input" type="text" [(ngModel)]="empresa" name="empresa" placeholder="Digite o número" required /></div>
+                <div class="control"><input class="input" type="text" [(ngModel)]="loginData.empresa" name="empresa" placeholder="Digite o número" required /></div>
               </div>
               <div class="field">
                 <label class="label">LOGIN</label>
-                <div class="control"><input class="input" type="text" [(ngModel)]="login" name="login" placeholder="Digite o login" required /></div>
+                <div class="control"><input class="input" type="text" [(ngModel)]="loginData.login" name="login" placeholder="Digite o login" required /></div>
               </div>
               <div class="field">
                 <label class="label">SENHA</label>
-                <div class="control"><input class="input" type="password" [(ngModel)]="senha" name="senha" placeholder="Digite a senha" required /></div>
+                <div class="control"><input class="input" type="password" [(ngModel)]="loginData.senha" name="senha" placeholder="Digite a senha" required /></div>
               </div>
 
               <div><img src="./assets/images/reCaptcha.png" alt=""></div>

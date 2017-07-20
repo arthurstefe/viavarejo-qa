@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoginService } from './login.service';
+import { LoginData } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +15,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   title: string;
 
   subscribe: any;
-
-  empresa: string;
-  login: string;
-  senha: string;
-
+  loginData: LoginData;
 
   constructor(private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
+    this.loginData = new LoginData();
   }
 
   ngOnInit() {
@@ -46,7 +44,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   postLogin(f: NgForm) {
-    let a = this.loginService.login(this.empresa, this.login, this.senha);
+    // console.log(f.value, this.loginData);
+    let a = this.loginService.login(this.loginData);
     console.log(a);
   }
 
