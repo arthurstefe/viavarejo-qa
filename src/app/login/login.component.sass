@@ -31,7 +31,6 @@ section
     padding-top: 18px
 
   .icon-login-transportadora
-    -webkit-mask: url('../../assets/images/login-transportadora.svg') no-repeat center
     background-color: $warm-grey
     height: 70px
     margin: 0 auto
@@ -39,7 +38,6 @@ section
     width: 89px
 
   .icon-login-viavarejo
-    -webkit-mask: url('../../assets/images/login-viavarejo.svg') no-repeat center
     background-color: $warm-grey
     height: 66px
     margin: 0 auto
@@ -72,7 +70,6 @@ section
   .card-login-form
     font-size: 14px
     margin: 35px 15px 0
-    max-height: 500px
     max-width: 440px
 
   .card-login
@@ -123,14 +120,13 @@ section
         &:focus
           border-top: solid 2px $kelly-green
 
-        &::-webkit-input-placeholder
+        &::placeholder
           color: $greyish
 
-        &::-moz-placeholder
-          color: $greyish
+.sidenav-container
+  background-color: transparent
 
-        &:-ms-input-placeholder
-          color: $greyish
-
-        &:-moz-placeholder
-          color: $greyish
+.sidenav
+  max-width: 500px
+  min-width: 400px
+  padding: 20px

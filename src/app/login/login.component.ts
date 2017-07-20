@@ -1,52 +1,32 @@
-import { FormsModule, NgForm } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MdDialog } from '@angular/material';
 
-import { LoginService } from './login.service';
-import { LoginData } from './login.model';
+import { TermoComponent } from './termo/termo.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
+  // TODO: Separar o CSS
+  encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  tipo: string;
-  title: string;
+export class LoginComponent implements OnInit {
 
-  subscribe: any;
-  loginData: LoginData;
-
-  constructor(private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
-    this.loginData = new LoginData();
+  constructor(public dialog: MdDialog) {
   }
 
   ngOnInit() {
-    this.subscribe = this.route.params.subscribe(params => {
-      this.title = '';
-      this.tipo = params.tipo;
-      switch (params.tipo) {
-        case 'transportadora':
-          this.title = 'Sou Transportadora';
-          break;
-        case 'viavarejo':
-          this.title = 'Sou Via Varejo';
-          break;
-        default:
-          this.router.navigate(['/login']);
-          break;
-      }
-    });
   }
 
-  ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
-  }
-
-  postLogin(f: NgForm) {
-    // console.log(f.value, this.loginData);
-    let a = this.loginService.login(this.loginData);
-    console.log(a);
-  }
+  // openDialog() {
+  //   this.dialog.open(TermoComponent, {
+  //     height: '100%',
+  //     width: '600px',
+  //     position: {
+  //       right: '0px',
+  //       top: '0px'
+  //     }
+  //   });
+  // }
 
 }

@@ -1,0 +1,57 @@
+<div class="boas-vindas">
+  Alterar senha {{title}}
+</div>
+
+<div class="card-login-form box has-text-left">
+  <form id="formLogin" (ngSubmit)="alterarSenha(f)" #f="ngForm">
+    <div class="form">
+
+      <div class="field">
+        <label class="label">LOGIN</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.login" name="login" placeholder="Digite o login" /></div>
+      </div>
+
+      <div class="field" *ngIf="tipo === 'primeiroacesso'">
+        <label class="label">SENHA PROVISÓRIA</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.senhaProvisoria" name="senhaProvisoria" placeholder="Digite a senha provisória" /></div>
+      </div>
+
+      <div class="field">
+        <label class="label">NOVA SENHA</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.novaSenha" name="novaSenha" placeholder="Digite a nova senha" /></div>
+      </div>
+
+      <div class="field">
+        <label class="label">CONFIRME A SENHA</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.confirmeSenha" name="confirmeSenha" placeholder="Confirme a senha" /></div>
+      </div>
+
+      <div class="field" *ngIf="tipo === 'primeiroacesso'">
+        <label class="label">PERGUNTA DE SEGURANÇA</label>
+        <div class="select">
+          <select [(ngModel)]="alterarSenhaForm.pergunta" name="pergunta">
+            <option>Selecione...</option>
+            <option>Pergunta 1</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" *ngIf="tipo === 'primeiroacesso'">
+        <label class="label">RESPOSTA DA PERGUNTA</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.resposta" name="resposta" placeholder="Digite a resposta" /></div>
+      </div>
+
+
+      <div class="block">
+        <a class="button is-link btn-voltar" routerLink="/login">Voltar</a>
+        <button class="button is-success btn-entrar" type="submit">
+          <span>CONFIRMAR</span>
+          <span class="icon is-small">
+            <i class="fa fa-times"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+</div>
