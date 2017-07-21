@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginService } from './../login.service';
 import { AlterarSenhaModel } from './alterarsenha.model';
@@ -15,22 +15,30 @@ export class AlterarsenhaComponent implements OnInit {
   title: string;
   tipo: string;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.alterarSenhaForm = new AlterarSenhaModel();
    }
 
   ngOnInit() {
-    this.tipo = this.router.url.split('/')[2];
+    this.tipo = this.activatedRoute.snapshot.data.tipo;
     switch (this.tipo) {
       case 'primeiroacesso':
         this.title = '- Primeiro acesso';
         break;
+      case 'alterarsenhaesqueceu':
+        this.alterarsenhaesqueceu();
+        break;
     }
   }
+
 
   alterarSenha() {
     const alterarSenhaResponse = this.loginService.alterarSenha(this.alterarSenhaForm);
     console.log(alterarSenhaResponse);
+  }
+
+  alterarsenhaesqueceu() {
+    this.alterarSenhaForm.pergunta = 'Pergunta secreta ?';
   }
 
 }

@@ -7,8 +7,6 @@ import { TermoComponent } from './termo/termo.component';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
-  // TODO: Separar o CSS
-  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
 

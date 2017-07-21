@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  constructor (private router: Router) {}
+  constructor (private router: Router, private loginService: LoginService) {
+  }
   ngOnInit() {
+    if (!this.loginService.isLoggedIn()) {
+      this.loginService.logout();
+    }
   }
 }

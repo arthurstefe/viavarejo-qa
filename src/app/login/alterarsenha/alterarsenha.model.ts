@@ -3,7 +3,7 @@ export class AlterarSenhaModel {
         public login?: string,
         public senhaProvisoria?: string,
         public novaSenha?: string,
-        public confimeSenha?: string,
+        public confirmeSenha?: string,
         public pergunta?: string,
         public resposta?: string
     ) { }

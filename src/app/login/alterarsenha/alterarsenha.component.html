@@ -3,7 +3,7 @@
 </div>
 
 <div class="card-login-form box has-text-left">
-  <form id="formLogin" (ngSubmit)="alterarSenha(f)" #f="ngForm">
+  <form id="formAlterarSenha" (ngSubmit)="alterarSenha()" #f="ngForm">
     <div class="form">
 
       <div class="field">
@@ -36,7 +36,12 @@
         </div>
       </div>
 
-      <div class="field" *ngIf="tipo === 'primeiroacesso'">
+      <div class="field" *ngIf="tipo === 'alterarsenhaesqueceu'">
+        <label class="label">PERGUNTA DE SEGURANÇA</label>
+        <div class="control"> {{alterarSenhaForm.pergunta}}</div>
+      </div>
+
+      <div class="field" *ngIf="tipo === 'primeiroacesso' || tipo === 'alterarsenhaesqueceu'">
         <label class="label">RESPOSTA DA PERGUNTA</label>
         <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.resposta" name="resposta" placeholder="Digite a resposta" /></div>
       </div>

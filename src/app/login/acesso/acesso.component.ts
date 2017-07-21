@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -15,12 +15,16 @@ export class AcessoComponent implements OnInit {
   title: string;
   tipo: string;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.loginData = new LoginModel();
   }
 
   ngOnInit() {
-    this.tipo = this.router.url.split('/')[2];
+    this.tipo = this.activatedRoute.snapshot.data.tipo;
     switch (this.tipo) {
       case 'transportadora':
         this.title = 'Sou Transportadora';
@@ -32,7 +36,7 @@ export class AcessoComponent implements OnInit {
   }
 
   postLogin(f: NgForm) {
-    const loginResponse = this.loginService.login(this.loginData);
-    console.log(loginResponse);
+    this.loginService.login(this.loginData);
+    // console.log(loginResponse);
   }
 }

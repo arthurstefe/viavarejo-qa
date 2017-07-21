@@ -1,7 +1,8 @@
 @import '../colors'
 
 .hero
-  background-color: transparent
+  background: url('../../assets/images/bg.png') no-repeat center center
+  background-size: cover
 
 section
   color: $warm-grey
@@ -16,117 +17,4 @@ section
     font-weight: bold
     padding-top: 92px
 
-  .icon-transportadora
-    height: 30px
-    margin-right: 14px
-    width: 39px
-
-  .icon-viavarejo
-    height: 25px
-    margin-right: 14px
-    width: 55px
-
-  .info-gestor
-    font-size: 16px
-    padding-top: 18px
-
-  .icon-login-transportadora
-    background-color: $warm-grey
-    height: 70px
-    margin: 0 auto
-    mask: url('../../assets/images/login-transportadora.svg') no-repeat center
-    width: 89px
-
-  .icon-login-viavarejo
-    background-color: $warm-grey
-    height: 66px
-    margin: 0 auto
-    mask: url('../../assets/images/login-viavarejo.svg') no-repeat center
-    width: 147px
-
-  .form
-    padding: 35px
-
-    .btn-entrar
-      background-color: $kelly-green
-      font-size: 20px
-      height: 56px
-      width: 234px
-
-    .btn-voltar
-      color: $warm-grey
-      font-size: 20px
-      height: 56px
-      margin-right: 9px
-      text-decoration: none
-
-  .box
-    background-color: $white
-    border: solid 1px $cor-cinza
-    border-radius: 5px
-    box-shadow: 2.1px 2.1px 8px 0 rgba(0, 0, 0, .15)
-    display: inline-block
-
-  .card-login-form
-    font-size: 14px
-    margin: 35px 15px 0
-    max-width: 440px
-
-  .card-login
-    cursor: pointer
-    font-size: 26px
-    height: 232px
-    margin: 35px 15px 0
-    padding: 4rem .5rem
-    width: 253px
-
-  .transportadora
-    border-left: solid 3px $cor-amarelo
-
-    &:hover
-      border: solid 1px $cor-amarelo
-      border-left: solid 3px $cor-amarelo
-      color: $cor-amarelo
-
-      .icon-login-transportadora
-        background-color: $cor-amarelo
-
-  .viavarejo
-    border-left: solid 3px $cor-verde
-
-    &:hover
-      border: solid 1px $cor-verde
-      border-left: solid 3px $cor-verde
-      color: $cor-verde
-
-      .icon-login-viavarejo
-        background-color: $cor-verde
-
-
-  .field
-    .label
-      color: $warm-grey
-      font-size: 14px
-      font-weight: bold
-      margin-bottom: 0
-
-    .control
-      input
-        background-color: $white
-        border: solid 1px $white-two
-        border-radius: 2px
-        border-top: solid 2px $greyish
-
-        &:focus
-          border-top: solid 2px $kelly-green
-
-        &::placeholder
-          color: $greyish
-
-.sidenav-container
-  background-color: transparent
-
-.sidenav
-  max-width: 500px
-  min-width: 400px
-  padding: 20px
+  
