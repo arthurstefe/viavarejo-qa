@@ -35,7 +35,11 @@ export class AcessoComponent implements OnInit {
     }
   }
 
-  postLogin(f: NgForm) {
+  handleCorrectCaptcha(event) {
+    this.loginData.captcha = event;
+  }
+
+  postLogin() {
     this.loginService.login(this.loginData);
     // console.log(loginResponse);
   }

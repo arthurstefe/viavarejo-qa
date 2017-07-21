@@ -3,7 +3,7 @@
 </div>
 
 <div class="card-login-form box has-text-left">
-  <form id="formLogin" (ngSubmit)="postLogin(f)" #f="ngForm">
+  <form id="formLogin" (ngSubmit)="postLogin()" #f="ngForm">
     <div class="form">
       <div class="field" *ngIf="tipo === 'viavarejo'">
         <label class="label">NÚMERO DA EMPRESA</label>
@@ -19,7 +19,7 @@
       </div>
 
       <div>
-        <re-captcha site_key="6LeKkCkUAAAAACPGupMVekGFf8Axr9tFDRIR9vBV"></re-captcha>
+        <re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="6LeKkCkUAAAAACPGupMVekGFf8Axr9tFDRIR9vBV"></re-captcha>
       </div>
 
       <div class="block">
