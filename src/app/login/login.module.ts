@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MdDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
+import { ReCaptchaModule } from 'angular2-recaptcha';
 import { LoginService } from './login.service';
 import { TermoComponent } from './termo/termo.component';
 import { SelecaoComponent } from './selecao/selecao.component';
@@ -14,6 +15,7 @@ import { AcessoComponent } from './acesso/acesso.component';
   imports: [
     CommonModule,
     MdDialogModule,
+    ReCaptchaModule,
     FormsModule,
     RouterModule
   ],
