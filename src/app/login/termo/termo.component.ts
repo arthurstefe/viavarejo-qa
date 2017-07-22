@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MdDialogRef} from '@angular/material';
-
 @Component({
   selector: 'app-termo',
   templateUrl: './termo.component.html',
@@ -10,9 +8,8 @@ import { MdDialogRef} from '@angular/material';
 export class TermoComponent implements OnInit {
   private _dimesionToggle = false;
 
-  constructor(public dialogRef: MdDialogRef<TermoComponent>) { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

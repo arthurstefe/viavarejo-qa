@@ -14,17 +14,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.openDialog();
   }
 
-  // openDialog() {
-  //   this.dialog.open(TermoComponent, {
-  //     height: '100%',
-  //     width: '600px',
-  //     position: {
-  //       right: '0px',
-  //       top: '0px'
-  //     }
-  //   });
-  // }
+  openDialog() {
+    this.dialog.open(TermoComponent, {
+      height: '100%',
+      width: '42.08%',
+      position: {
+        right: '0px',
+        top: '0px'
+      }
+    });
+  }
 
 }
