@@ -6,6 +6,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { LoginModel } from './login.model';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
+
 import * as globals from '../globals';
 
 interface LoginResponse {
@@ -25,32 +29,43 @@ export class LoginService {
     this.loggedIn = !!localStorage.getItem(this.STORAGE_TOKEN);
   }
 
-  login(model: LoginModel) {
-    return this.http.get<LoginResponse>(globals.BASE_URL + '/profile/1').subscribe(
-      resp => {
-        localStorage.setItem(this.STORAGE_TOKEN, resp.token);
-        localStorage.setItem(this.STORAGE_USER, resp.nome);
+  logins(model: LoginModel): Observable<LoginModel> {
+    return this.http.get(globals.BASE_URL + '/profile/1')
+      .map(res => {
+        localStorage.setItem(this.STORAGE_TOKEN, res['token']);
+        localStorage.setItem(this.STORAGE_USER, JSON.stringify(res));
         this.loggedIn = true;
         this.router.navigate(['/']);
-      },
-      err => {
-        // console.log('Erro', response);
-      }
-    );
+        return res;
+      })
+      .catch(err => {
+      throw new Error(err.message);
+    });
   }
 
-  logout() {
-    this.loggedIn = false;
-    localStorage.removeItem(this.STORAGE_TOKEN);
-    localStorage.removeItem(this.STORAGE_USER);
-    this.router.navigate(['login']);
-  }
+    login(model: LoginModel) {
+      this.http.get<LoginResponse>(globals.BASE_URL + '/profile/1').subscribe(
+        resp => {
+          return resp;
+        },
+        err => {
+          return err;
+        }
+      );
+    }
 
-  isLoggedIn() {
-    return this.loggedIn;
-  }
+    logout() {
+      this.loggedIn = false;
+      localStorage.removeItem(this.STORAGE_TOKEN);
+      localStorage.removeItem(this.STORAGE_USER);
+      this.router.navigate(['login']);
+    }
 
-  alterarSenha(model: AlterarSenhaModel) {
-    return model;
+    isLoggedIn() {
+      return this.loggedIn;
+    }
+
+    alterarSenha(model: AlterarSenhaModel) {
+      return model;
+    }
   }
-}

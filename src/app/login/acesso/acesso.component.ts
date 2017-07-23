@@ -1,7 +1,11 @@
+import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { MdDialog } from '@angular/material';
+
+import { TermoComponent } from './../termo/termo.component';
 import { LoginService } from './../login.service';
 import { LoginModel } from './../login.model';
 
@@ -14,11 +18,13 @@ export class AcessoComponent implements OnInit {
   loginData: LoginModel;
   title: string;
   tipo: string;
+  private user: Observable<LoginModel>;
 
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialog: MdDialog
   ) {
     this.loginData = new LoginModel();
   }
@@ -40,7 +46,23 @@ export class AcessoComponent implements OnInit {
   }
 
   postLogin() {
-    this.loginService.login(this.loginData);
-    // console.log(loginResponse);
+    this.loginService.logins(this.loginData).subscribe(
+      resp => {
+        if (this.tipo === 'transportadora') {this.openDialog(); }
+        console.log( resp);
+      },
+      error => {}
+    );
+  }
+
+  openDialog() {
+    this.dialog.open(TermoComponent, {
+      height: '100%',
+      width: '42.08%',
+      position: {
+        right: '0px',
+        top: '0px'
+      }
+    });
   }
 }
