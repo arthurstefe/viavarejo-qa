@@ -29,7 +29,7 @@ export class LoginService {
     this.loggedIn = !!localStorage.getItem(this.STORAGE_TOKEN);
   }
 
-  logins(model: LoginModel): Observable<LoginModel> {
+  login(model: LoginModel): Observable<LoginModel> {
     return this.http.get(globals.BASE_URL + '/profile/1')
       .map(res => {
         localStorage.setItem(this.STORAGE_TOKEN, res['token']);
@@ -39,33 +39,22 @@ export class LoginService {
         return res;
       })
       .catch(err => {
-      throw new Error(err.message);
-    });
+        throw new Error(err.message);
+      });
   }
 
-    login(model: LoginModel) {
-      this.http.get<LoginResponse>(globals.BASE_URL + '/profile/1').subscribe(
-        resp => {
-          return resp;
-        },
-        err => {
-          return err;
-        }
-      );
-    }
-
-    logout() {
-      this.loggedIn = false;
-      localStorage.removeItem(this.STORAGE_TOKEN);
-      localStorage.removeItem(this.STORAGE_USER);
-      this.router.navigate(['login']);
-    }
-
-    isLoggedIn() {
-      return this.loggedIn;
-    }
-
-    alterarSenha(model: AlterarSenhaModel) {
-      return model;
-    }
+  logout() {
+    this.loggedIn = false;
+    localStorage.removeItem(this.STORAGE_TOKEN);
+    localStorage.removeItem(this.STORAGE_USER);
+    this.router.navigate(['login']);
   }
+
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  alterarSenha(model: AlterarSenhaModel) {
+    return model;
+  }
+}

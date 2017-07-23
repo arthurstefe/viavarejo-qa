@@ -18,7 +18,6 @@ export class AcessoComponent implements OnInit {
   loginData: LoginModel;
   title: string;
   tipo: string;
-  private user: Observable<LoginModel>;
 
   constructor(
     private loginService: LoginService,
@@ -46,10 +45,10 @@ export class AcessoComponent implements OnInit {
   }
 
   postLogin() {
-    this.loginService.logins(this.loginData).subscribe(
+    this.loginService.login(this.loginData).subscribe(
       resp => {
         if (this.tipo === 'transportadora') {this.openDialog(); }
-        console.log( resp);
+        console.log(resp);
       },
       error => {}
     );
