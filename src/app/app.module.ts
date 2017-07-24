@@ -1,3 +1,4 @@
+import { AuthGuard } from './../services/auth-guard.service';
 import { ResponseInterceptor } from './response.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { appRoutingProviders, routing } from './app.routes';
 import { RequestInterceptor } from './request.interceptor';
+
+import { MdSnackBarModule } from '@angular/material';
 
 import { LoginModule } from './login/login.module';
 
@@ -26,10 +29,12 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     LoginModule,
+    MdSnackBarModule,
     routing
   ],
   providers: [
     appRoutingProviders,
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
   ],

@@ -1,10 +1,11 @@
-export class AlterarSenhaModel {
-    constructor(
-        public login?: string,
-        public senhaProvisoria?: string,
-        public novaSenha?: string,
-        public confirmeSenha?: string,
-        public pergunta?: string,
-        public resposta?: string
-    ) { }
+export interface AlterarSenhaModel {
+    id: number;
+    login: string;
+    senhaProvisoria: string;
+    senhaAtual: string;
+    novaSenha: string;
+    confirmeSenha: string;
+    pergunta: string;
+    resposta: string;
+    chave: string;
 }

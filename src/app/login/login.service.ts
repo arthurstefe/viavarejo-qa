@@ -1,3 +1,5 @@
+import { UsuarioModel } from './../../models/usuario.model';
+import { ResponseBaseModel } from './../../models/response-base.model';
 import { Router } from '@angular/router';
 import { AlterarSenhaModel } from './alterarsenha/alterarsenha.model';
 import { HttpClient } from '@angular/common/http';
@@ -7,21 +9,24 @@ import { Observable } from 'rxjs/Observable';
 import { LoginModel } from './login.model';
 
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
 
 import * as globals from '../globals';
 
 interface LoginResponse {
-  id: string;
-  nome: string;
-  senha: string;
-  token: string;
+  response: ResponseBaseModel;
+  autenticacao: {
+    sessionExpiracao: string;
+    sessionToken: string;
+    token: string;
+    usuario: UsuarioModel;
+  };
 }
 
 @Injectable()
 export class LoginService {
   private STORAGE_TOKEN = globals.STORAGE_TOKEN;
+  private STORAGE_SESSION_TOKEN = globals.STORAGE_SESSION_TOKEN;
+  private STORAGE_SESSION_EXPIRACAO = globals.STORAGE_SESSION_EXPIRACAO;
   private STORAGE_USER = globals.STORAGE_USER;
   private loggedIn = false;
 
@@ -29,23 +34,25 @@ export class LoginService {
     this.loggedIn = !!localStorage.getItem(this.STORAGE_TOKEN);
   }
 
-  login(model: LoginModel): Observable<LoginModel> {
-    return this.http.get(globals.BASE_URL + '/profile/1')
-      .map(res => {
-        localStorage.setItem(this.STORAGE_TOKEN, res['token']);
-        localStorage.setItem(this.STORAGE_USER, JSON.stringify(res));
+  login(model: LoginModel) {
+    return this.http.post<LoginResponse>(globals.BASE_URL + 'autenticacoes', model)
+      .map(
+      res => {
+        localStorage.setItem(this.STORAGE_TOKEN, res.autenticacao.token);
+        localStorage.setItem(this.STORAGE_SESSION_TOKEN, res.autenticacao.sessionToken);
+        localStorage.setItem(this.STORAGE_SESSION_EXPIRACAO, res.autenticacao.sessionExpiracao);
+        localStorage.setItem(this.STORAGE_USER, JSON.stringify(res.autenticacao.usuario));
         this.loggedIn = true;
         this.router.navigate(['/']);
-        return res;
-      })
-      .catch(err => {
-        throw new Error(err.message);
+        return res.autenticacao.usuario;
       });
   }
 
   logout() {
     this.loggedIn = false;
     localStorage.removeItem(this.STORAGE_TOKEN);
+    localStorage.removeItem(this.STORAGE_SESSION_TOKEN);
+    localStorage.removeItem(this.STORAGE_SESSION_EXPIRACAO);
     localStorage.removeItem(this.STORAGE_USER);
     this.router.navigate(['login']);
   }
@@ -54,7 +61,9 @@ export class LoginService {
     return this.loggedIn;
   }
 
-  alterarSenha(model: AlterarSenhaModel) {
-    return model;
+  getUserLogged() {
+    if (this.isLoggedIn()) {
+      return JSON.parse(localStorage.getItem(this.STORAGE_USER));
+    }
   }
 }

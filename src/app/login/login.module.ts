@@ -1,3 +1,4 @@
+import { UsuarioService } from '../../services/usuario.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,10 +24,11 @@ import { AcessoComponent } from './acesso/acesso.component';
     MdDialogModule,
     TermoComponent
   ],
-  entryComponents: [ TermoComponent ],
+  entryComponents: [TermoComponent],
   declarations: [TermoComponent, SelecaoComponent, AlterarsenhaComponent, AcessoComponent],
   providers: [
-    LoginService
+    LoginService,
+    UsuarioService
   ]
 })
 export class LoginModule { }

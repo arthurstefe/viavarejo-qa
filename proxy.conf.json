@@ -1,0 +1,9 @@
+{
+  "/api/*": {
+    "target": "http://90.0.3.7:8089/portaltransportador/api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {"^/api" : ""}
+  }
+}

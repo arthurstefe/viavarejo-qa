@@ -16,6 +16,11 @@
         <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.senhaProvisoria" name="senhaProvisoria" placeholder="Digite a senha provisória" /></div>
       </div>
 
+      <div class="field" *ngIf="tipo !== 'primeiroacesso'">
+        <label class="label">SENHA ATUAL</label>
+        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.senhaAtual" name="senhaAtual" placeholder="Digite a senha atual" /></div>
+      </div>
+
       <div class="field">
         <label class="label">NOVA SENHA</label>
         <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.novaSenha" name="novaSenha" placeholder="Digite a nova senha" /></div>

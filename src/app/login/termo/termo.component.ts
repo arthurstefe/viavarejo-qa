@@ -1,4 +1,6 @@
+import { LoginService } from './../login.service';
 import { Component, OnInit } from '@angular/core';
+import {MdDialog, MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-termo',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class TermoComponent implements OnInit {
   private _dimesionToggle = false;
 
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {}
 

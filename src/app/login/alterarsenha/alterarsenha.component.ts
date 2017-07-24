@@ -1,3 +1,5 @@
+import { UsuarioService } from '../../../services/usuario.service';
+import { UsuarioModel } from './../../../models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -11,13 +13,21 @@ import { AlterarSenhaModel } from './alterarsenha.model';
 })
 
 export class AlterarsenhaComponent implements OnInit {
-  alterarSenhaForm: AlterarSenhaModel;
+  usuario = <UsuarioModel>{};
+  alterarSenhaForm = <AlterarSenhaModel>{};
   title: string;
   tipo: string;
 
-  constructor(private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.alterarSenhaForm = new AlterarSenhaModel();
-   }
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private usuarioService: UsuarioService
+  ) {
+    this.usuario = this.loginService.getUserLogged();
+    this.alterarSenhaForm.login = this.usuario.login;
+    this.alterarSenhaForm.id = this.usuario.id;
+  }
 
   ngOnInit() {
     this.tipo = this.activatedRoute.snapshot.data.tipo;
@@ -31,10 +41,14 @@ export class AlterarsenhaComponent implements OnInit {
     }
   }
 
-
   alterarSenha() {
-    const alterarSenhaResponse = this.loginService.alterarSenha(this.alterarSenhaForm);
-    console.log(alterarSenhaResponse);
+    this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
+      resp => {
+        console.log(this.alterarSenhaForm, resp);
+      }, error => {
+
+      }
+    );
   }
 
   alterarsenhaesqueceu() {
