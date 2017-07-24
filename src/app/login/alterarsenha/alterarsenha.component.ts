@@ -24,9 +24,11 @@ export class AlterarsenhaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService
   ) {
-    this.usuario = this.loginService.getUserLogged();
-    this.alterarSenhaForm.login = this.usuario.login;
-    this.alterarSenhaForm.id = this.usuario.id;
+    if (this.loginService.isLoggedIn()) {
+      this.usuario = this.loginService.getUserLogged();
+      this.alterarSenhaForm.login = this.usuario.login;
+      this.alterarSenhaForm.id = this.usuario.id;
+    }
   }
 
   ngOnInit() {
