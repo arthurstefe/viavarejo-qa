@@ -46,7 +46,11 @@ export class AlterarsenhaComponent implements OnInit {
   alterarSenha() {
     this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
       resp => {
-        console.log(this.alterarSenhaForm, resp);
+        this.usuarioService.updatePassword(this.alterarSenhaForm).subscribe(respPass => {
+
+        }, error => {
+
+        });
       }, error => {
 
       }

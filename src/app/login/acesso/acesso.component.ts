@@ -58,8 +58,8 @@ export class AcessoComponent implements OnInit {
 
   postLogin(f: NgForm) {
     // if (f.form.valid && this.chave) {
-    this.openDialog();
-    if (1 !== 1) {
+    // this.openDialog();
+    if (true) {
       this.loginService.login(this.loginData).subscribe(
         resp => {
           this.usuarioModel = resp;

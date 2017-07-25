@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     }
     // Verifica se o usuário precisa alterar a senha devido ao primeiro acesso
     if (!this.usuario.alterarSenhaProximoLogon && this.usuario.id) {
-      // this.router.navigate(['login/primeiroacesso']);
+      this.router.navigate(['login/primeiroacesso']);
     }
   }
 
