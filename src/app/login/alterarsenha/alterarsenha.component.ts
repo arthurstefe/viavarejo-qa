@@ -2,6 +2,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { UsuarioModel } from './../../../models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import { LoginService } from './../login.service';
 import { AlterarSenhaModel } from './alterarsenha.model';
@@ -17,6 +18,7 @@ export class AlterarsenhaComponent implements OnInit {
   alterarSenhaForm = <AlterarSenhaModel>{};
   title: string;
   tipo: string;
+  formInvalid: boolean;
 
   constructor(
     private loginService: LoginService,
@@ -43,18 +45,24 @@ export class AlterarsenhaComponent implements OnInit {
     }
   }
 
-  alterarSenha() {
-    this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
-      resp => {
-        this.usuarioService.updatePassword(this.alterarSenhaForm).subscribe(respPass => {
+  alterarSenha(f: NgForm) {
+    if (f.invalid) {
+      this.formInvalid = true;
+    } else {
+      this.formInvalid = false;
+      this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
+        resp => {
+          this.usuarioService.updatePassword(this.alterarSenhaForm).subscribe(respPass => {
 
+          }, error => {
+
+          });
         }, error => {
 
-        });
-      }, error => {
 
-      }
-    );
+        }
+      );
+    }
   }
 
   alterarsenhaesqueceu() {
