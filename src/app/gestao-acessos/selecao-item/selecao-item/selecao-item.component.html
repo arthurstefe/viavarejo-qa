@@ -1,0 +1,14 @@
+<div class="selecao-item">
+  
+  <div class="columns is-mobile">
+    <div class="column"><md-slide-toggle (change)="onChange($event)" [checked]="checked == 1 ? true : false" >{{id}} {{nome}}</md-slide-toggle></div>
+    <div class="column is-3 has-text-right actions">
+      <a class="button is-small is-white">
+        <span class="icon is-small">
+          <i class="fa fa-pencil"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+
+</div>

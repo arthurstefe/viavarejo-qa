@@ -10,9 +10,15 @@ import { UsuarioModel } from './../../models/usuario.model';
 })
 export class HomeComponent implements OnInit {
   public usuario = <UsuarioModel>{};
+  alterarSenhaProximoLogon: boolean;
+  idUsuario: number;
 
   constructor(private loginService: LoginService, private router: Router) {
-    this.usuario = this.loginService.getUserLogged();
+    if (this.loginService.isLoggedIn()) {
+      this.usuario = this.loginService.getUserLogged();
+      this.alterarSenhaProximoLogon = this.usuario.alterarSenhaProximoLogon;
+      this.idUsuario = this.usuario.id;
+    }
   }
 
   ngOnInit() {
@@ -21,7 +27,7 @@ export class HomeComponent implements OnInit {
       this.loginService.logout();
     }
     // Verifica se o usuário precisa alterar a senha devido ao primeiro acesso
-    if (!this.usuario.alterarSenhaProximoLogon && this.usuario.id) {
+    if (this.alterarSenhaProximoLogon && this.idUsuario) {
       this.router.navigate(['login/primeiroacesso']);
     }
   }

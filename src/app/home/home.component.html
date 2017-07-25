@@ -1,17 +1,18 @@
-<section class="hero is-fullheight has-text-centered">
-  <div class="hero-head">
-    <div class="container">
-      <h1 class="title is-1">Bem vindo</h1>
+<nav class="navbar has-shadow">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+      <img src="../../assets/images/viavarejo.svg" height="50" />
+    </a>
+    <div class="navbar-burger burger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
-  <div class="hero-body">
-    <div class="container">
-      <img src="../../assets/images/viavarejo.svg" width="500" alt="">
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" (click)="logout()">Sair</a>
     </div>
   </div>
-  <div class="hero-foot has-text-right">
-    <div class="container">
-      <a class="button is-large is-primary" (click)="logout()">Sair</a>
-    </div>
-  </div>
-</section>
+</nav>
+<router-outlet></router-outlet>

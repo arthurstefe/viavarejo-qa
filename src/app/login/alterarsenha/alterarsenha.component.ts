@@ -15,10 +15,12 @@ import { AlterarSenhaModel } from './alterarsenha.model';
 
 export class AlterarsenhaComponent implements OnInit {
   usuario = <UsuarioModel>{};
-  alterarSenhaForm = <AlterarSenhaModel>{};
+  public alterarSenhaForm = <AlterarSenhaModel>{};
   title: string;
   tipo: string;
   formInvalid: boolean;
+  perguntaSecreta: string;
+  alterarSenhaProximoLogon: boolean;
 
   constructor(
     private loginService: LoginService,
@@ -30,7 +32,10 @@ export class AlterarsenhaComponent implements OnInit {
       this.usuario = this.loginService.getUserLogged();
       this.alterarSenhaForm.login = this.usuario.login;
       this.alterarSenhaForm.id = this.usuario.id;
+      this.perguntaSecreta = this.usuario.perguntaSecreta;
+      this.alterarSenhaProximoLogon = this.usuario.alterarSenhaProximoLogon;
     }
+    this.alterarSenhaForm.pergunta = this.perguntaSecreta || 'Pergunta secreta?';
   }
 
   ngOnInit() {
@@ -38,9 +43,10 @@ export class AlterarsenhaComponent implements OnInit {
     switch (this.tipo) {
       case 'primeiroacesso':
         this.title = '- Primeiro acesso';
-        break;
-      case 'alterarsenhaesqueceu':
-        this.alterarsenhaesqueceu();
+        // Verifica se o usuário pode acessar a tela de primeiro login
+        if (!this.alterarSenhaProximoLogon) {
+          this.router.navigate(['/']);
+        }
         break;
     }
   }
@@ -52,21 +58,19 @@ export class AlterarsenhaComponent implements OnInit {
       this.formInvalid = false;
       this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
         resp => {
+          // Atualiza os dados do usuário no localStorage
+          this.usuario.perguntaSecreta = this.alterarSenhaForm.pergunta;
+          this.usuario.respostaSecreta = this.alterarSenhaForm.resposta;
+          this.usuario.alterarSenhaProximoLogon = false;
+          this.usuarioService.updateLocalUser(this.usuario);
+
+          // Atualiza a senha do usuário
           this.usuarioService.updatePassword(this.alterarSenhaForm).subscribe(respPass => {
-
           }, error => {
-
           });
         }, error => {
-
-
         }
       );
     }
   }
-
-  alterarsenhaesqueceu() {
-    this.alterarSenhaForm.pergunta = 'Pergunta secreta ?';
-  }
-
 }

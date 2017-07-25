@@ -1,0 +1,6 @@
+<div *ngFor="let item of acoes">
+  <app-selecao-item [id]="item.id" [nome]="item.nome" [checked]="item.status" (toggleItem)="itemSelecionado(item.id, $event)"> </app-selecao-item>
+</div>
+
+<input type="text" required [(ngModel)]="addList" (keyup.enter)="add()" />
+

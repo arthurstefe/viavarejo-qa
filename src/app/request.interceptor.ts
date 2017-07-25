@@ -18,7 +18,6 @@ export class RequestInterceptor implements HttpInterceptor {
           Authorization: 'Bearer ' + token
         }
       });
-      console.log(req.headers.get('Authorization'));
     }
     return next.handle(req);
   }

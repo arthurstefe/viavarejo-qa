@@ -9,27 +9,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appRoutingProviders, routing } from './app.routes';
 import { RequestInterceptor } from './request.interceptor';
 
-import { MdSnackBarModule } from '@angular/material';
+import { MdSnackBarModule, MdSidenavModule } from '@angular/material';
 
 import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
+import { GestaoAcessosModule } from './gestao-acessos/gestao-acessos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    GestaoAcessosComponent,
   ],
   imports: [
+    LoginModule,
+    GestaoAcessosModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    LoginModule,
     MdSnackBarModule,
+    MdSidenavModule,
     routing
   ],
   providers: [

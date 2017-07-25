@@ -5,6 +5,8 @@ import { AcessoComponent } from './login/acesso/acesso.component';
 import { SelecaoComponent } from './login/selecao/selecao.component';
 import { LoginComponent } from './login/login.component';
 import { AlterarsenhaComponent } from './login/alterarsenha/alterarsenha.component';
+import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
+import { AcessosComponent } from './gestao-acessos/acessos/acessos.component';
 
 import { AuthGuard } from './../services/auth-guard.service';
 
@@ -18,11 +20,18 @@ export const routes: Routes = [
       { path: 'viavarejo', component: AcessoComponent, data: { tipo: 'viavarejo' } },
       { path: 'transportadora', component: AcessoComponent, data: { tipo: 'transportadora' } },
       { path: 'primeiroacesso', component: AlterarsenhaComponent, data: { tipo: 'primeiroacesso' } },
-      { path: 'alterarsenha', component: AlterarsenhaComponent, data: { tipo: 'alterarsenha' }},
+      { path: 'alterarsenha', component: AlterarsenhaComponent, data: { tipo: 'alterarsenha' } },
       { path: 'alterarsenhae', component: AlterarsenhaComponent, data: { tipo: 'alterarsenhaesqueceu' } }
     ]
   },
-  { path: '', component: HomeComponent },
+  {
+    path: '', component: HomeComponent, children: [
+      { path: 'gestaoacessos', component: GestaoAcessosComponent, children: [
+        { path: 'permissoes', component: AcessosComponent}
+      ]}
+    ]
+  },
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

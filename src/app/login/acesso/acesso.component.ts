@@ -62,34 +62,31 @@ export class AcessoComponent implements OnInit {
       this.formInvalid = true;
     } else {
       this.formInvalid = false;
-      this.openDialog();
-      if (1 !== 1) {
-        this.loginService.login(this.loginData).subscribe(
-          resp => {
-            this.usuarioModel = resp;
-            if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
-              this.termoDialog = this.openDialog();
-              this.termoDialog.afterClosed().subscribe(
-                result => {
-                  if (result === 'aceito') {
-                    this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
-                    this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
-                  } else {
-                    this.loginService.logout();
-                  }
+      this.loginService.login(this.loginData).subscribe(
+        resp => {
+          this.usuarioModel = resp;
+          if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
+            this.termoDialog = this.openDialog();
+            this.termoDialog.afterClosed().subscribe(
+              result => {
+                if (result === 'aceito') {
+                  this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
+                  this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
+                } else {
+                  this.loginService.logout();
                 }
-              );
-            }
-          },
-          error => {
-            // console.log(error);
-            this.router.navigate(['/login/' + this.tipo]);
-            this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
-              duration: 2000,
-            });
+              }
+            );
           }
-        );
-      }
+        },
+        error => {
+          // console.log(error);
+          this.router.navigate(['/login/' + this.tipo]);
+          this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
+            duration: 2000,
+          });
+        }
+      );
     }
   }
 
