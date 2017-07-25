@@ -7,15 +7,63 @@
     <div class="form">
       <div class="field" *ngIf="tipo === 'viavarejo'">
         <label class="label">NÚMERO DA EMPRESA</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="loginData.empresa" name="empresa" placeholder="Digite o número" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="loginData.empresa"
+            name="empresa"
+            placeholder="Digite o número"
+            required
+            #loginEmpresa="ngModel"
+            [ngClass]="{
+              'input-error': !loginEmpresa.valid && loginEmpresa.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!loginEmpresa.valid && loginEmpresa.touched || formInvalid">
+             O campo <b>NÚMERO DA EMPRESA</b> é obrigatório
+          </div>
+        </div>
       </div>
       <div class="field">
         <label class="label">LOGIN</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="loginData.login" name="login" placeholder="Digite o login" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="loginData.login"
+            name="login"
+            placeholder="Digite o login"
+            required
+            #login="ngModel"
+            [ngClass]="{
+              'input-error': !login.valid && login.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!login.valid && login.touched || formInvalid">
+             O campo <b>LOGIN</b> é obrigatório
+          </div>
+        </div>
       </div>
       <div class="field">
         <label class="label">SENHA</label>
-        <div class="control"><input class="input" type="password" [(ngModel)]="loginData.senha" name="senha" placeholder="Digite a senha" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="password"
+            [(ngModel)]="loginData.senha"
+            name="senha"
+            placeholder="Digite a senha"
+            required
+            #senha="ngModel"
+            [ngClass]="{
+              'input-error': !senha.valid && senha.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!senha.valid && senha.touched || formInvalid">
+             O campo <b>SENHA</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div>

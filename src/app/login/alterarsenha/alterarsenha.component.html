@@ -3,41 +3,132 @@
 </div>
 
 <div class="card-login-form box has-text-left">
-  <form id="formAlterarSenha" (ngSubmit)="alterarSenha()" #f="ngForm">
+  <form id="formAlterarSenha" (ngSubmit)="alterarSenha(f)" #f="ngForm">
     <div class="form">
 
       <div class="field">
         <label class="label">LOGIN</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.login" name="login" placeholder="Digite o login" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.login"
+            name="login"
+            placeholder="Digite o login"
+            required
+            #alterarSenhaLogin="ngModel"
+            [ngClass]="{
+              'input-error': !alterarSenhaLogin.valid && alterarSenhaLogin.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!alterarSenhaLogin.valid && alterarSenhaLogin.touched || formInvalid">
+             O campo <b>LOGIN</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="field" *ngIf="tipo === 'primeiroacesso'">
         <label class="label">SENHA PROVISÓRIA</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.senhaProvisoria" name="senhaProvisoria" placeholder="Digite a senha provisória" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.senhaProvisoria"
+            name="senhaProvisoria"
+            placeholder="Digite a senha provisória"
+            required
+            #senhaProvisoria="ngModel"
+            [ngClass]="{
+              'input-error': !senhaProvisoria.valid && senhaProvisoria.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!senhaProvisoria.valid && senhaProvisoria.touched || formInvalid">
+             O campo <b>SENHA PROVISÓRIA</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="field" *ngIf="tipo !== 'primeiroacesso'">
         <label class="label">SENHA ATUAL</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.senhaAtual" name="senhaAtual" placeholder="Digite a senha atual" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.senhaAtual"
+            name="senhaAtual"
+            placeholder="Digite a senha atual"
+            required
+            #senhaAtual="ngModel"
+            [ngClass]="{
+              'input-error': !senhaAtual.valid && senhaAtual.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!senhaAtual.valid && senhaAtual.touched || formInvalid">
+             O campo <b>SENHA ATUAL</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="field">
         <label class="label">NOVA SENHA</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.novaSenha" name="novaSenha" placeholder="Digite a nova senha" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.novaSenha"
+            name="novaSenha"
+            placeholder="Digite a nova senha"
+            required
+            #novaSenha="ngModel"
+            [ngClass]="{
+              'input-error': !novaSenha.valid && novaSenha.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!novaSenha.valid && novaSenha.touched || formInvalid">
+             O campo <b>NOVA SENHA</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="field">
         <label class="label">CONFIRME A SENHA</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.confirmeSenha" name="confirmeSenha" placeholder="Confirme a senha" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.confirmeSenha"
+            name="confirmeSenha"
+            placeholder="Confirme a senha"
+            required
+            #confirmeSenha="ngModel"
+            [ngClass]="{
+              'input-error': !confirmeSenha.valid && confirmeSenha.touched || formInvalid
+            }" />
+
+           <div class="error-message" *ngIf="!confirmeSenha.valid && confirmeSenha.touched || formInvalid">
+             O campo <b>CONFIRME A SENHA</b> é obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="field" *ngIf="tipo === 'primeiroacesso'">
         <label class="label">PERGUNTA DE SEGURANÇA</label>
         <div class="select">
-          <select [(ngModel)]="alterarSenhaForm.pergunta" name="pergunta">
+          <select
+            [(ngModel)]="alterarSenhaForm.pergunta"
+            name="pergunta"
+            required
+            #perguntaSeguranca="ngModel"
+            [ngClass]="{
+              'input-error': !perguntaSeguranca.valid && perguntaSeguranca.touched || formInvalid
+            }">
             <option>Selecione...</option>
             <option>Pergunta 1</option>
           </select>
+        </div>
+
+        <div class="error-message" *ngIf="!perguntaSeguranca.valid && perguntaSeguranca.touched || formInvalid">
+          O campo <b>PERGUNTA DE SEGURANÇA</b> é obrigatório
         </div>
       </div>
 
@@ -48,7 +139,23 @@
 
       <div class="field" *ngIf="tipo === 'primeiroacesso' || tipo === 'alterarsenhaesqueceu'">
         <label class="label">RESPOSTA DA PERGUNTA</label>
-        <div class="control"><input class="input" type="text" [(ngModel)]="alterarSenhaForm.resposta" name="resposta" placeholder="Digite a resposta" /></div>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="alterarSenhaForm.resposta"
+            name="resposta"
+            placeholder="Digite a resposta"
+            required
+            #respostaPergunta="ngModel"
+            [ngClass]="{
+              'input-error': !respostaPergunta.valid && respostaPergunta.touched || formInvalid
+            }" />
+
+            <div class="error-message" *ngIf="!respostaPergunta.valid && respostaPergunta.touched || formInvalid">
+              O campo <b>RESPOSTA DA PERGUNTA</b> é obrigatório
+            </div>
+        </div>
       </div>
 
 
