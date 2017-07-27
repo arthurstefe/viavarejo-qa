@@ -1,37 +1,38 @@
 <div *ngFor="let item of lista; let i = index">
 
   <div class="nivel">
-    <app-selecao-item [item]="item" (addItem)="addItem(i, item.id)" (accordionEvent)="accordion($event, item.id)" (toggleItem)="itemSelecionado(item.id, $event)"
+    <!-- nivel 0 -->
+    <app-selecao-item [item]="item" (addItem)="addItem(item.id, [i])" (accordionEvent)="accordion($event, item.id)" (toggleItem)="itemSelecionado(item.id, $event)"
       (saveAction)="salvarItem(item)" [subnivel]="item.subnivel ? item.subnivel.length : 0" [accordionStatus]="accordionOpen[item.id]"
-      [config]="{add: true}">
+      [config]="{add: config.niveis > 0}" (cancelAction)="cancelarItem(0, $event)">
     </app-selecao-item>
   </div>
 
   <div [ngClass]="accordionOpen[item.id] ? 'accordion-open' : 'accordion-close' ">
-    <div *ngFor="let item1 of item.subnivel; let i1 = index " class="subnivel1">
-      <app-selecao-item [item]="item1" (addItem)="addItem()" (accordionEvent)="accordion($event, item1.id)" (toggleItem)="itemSelecionado(item1.id, $event)"
-        (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem(i, $event)" [subnivel]="item1.subnivel ? item1.subnivel.length : 0"
-        [accordionStatus]="" [config]="{add: false}">
-      </app-selecao-item>
+    <!-- nivel 1 -->
+    <div *ngFor="let item1 of item.subnivel; let i1 = index" class="fundo1">
+      <div class="subnivel1">
+        <app-selecao-item [item]="item1" (addItem)="addItem(item1.id, [i, i1])" (accordionEvent)="accordion($event, item1.id)" (toggleItem)="itemSelecionado(item1.id, $event)"
+          (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem(i, $event)" [subnivel]="item1.subnivel ? item1.subnivel.length : 0"
+          [accordionStatus]="" [config]="{add: config.niveis > 1}">
+        </app-selecao-item>
+      </div>
+
+      <div [ngClass]="accordionOpen[item1.id] ? 'accordion-open' : 'accordion-close' ">
+        <!-- nivel 2 -->
+        <div *ngFor="let item2 of item1.subnivel; let i2 = index" class="fundo2">
+          <div class="subnivel2">
+            <app-selecao-item [item]="item2" (accordionEvent)="accordion($event, item2.id)" (toggleItem)="itemSelecionado(item2.id, $event)"
+              (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem([i, i1], $event)" [accordionStatus]="" [config]="{add: false}">
+            </app-selecao-item>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
-
-
-
-
-  <!-- <div [ngClass]="accordionOpen[i] ? 'accordion-open' : 'accordion-close' ">
-    <div *ngFor="let item1 of item.subnivel; let i1 = index " class="subnivel1">
-      <app-selecao-item [item]="item1" (toggleItem)="itemSelecionado(item1.id, $event)" (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem(i, $event)"
-        [subnivel]="item1.subnivel ? item1.subnivel.length : 0" [config]="{add: false}"></app-selecao-item>
-    </div>
-  </div> -->
-
-
-
 </div>
-
-
-
 <div class="adicionar-item" (click)="addItem()">
   <span class="icon is-small">
     <i class="fa fa-plus-circle"></i>

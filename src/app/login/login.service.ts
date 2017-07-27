@@ -30,8 +30,14 @@ export class LoginService {
   private STORAGE_USER = globals.STORAGE_USER;
   private loggedIn = false;
 
+  private usuarioFake = <UsuarioModel>{};
+
   constructor(private http: HttpClient, private router: Router) {
     this.loggedIn = !!localStorage.getItem(this.STORAGE_TOKEN);
+
+    this.usuarioFake.dataAceiteTermoResponsabilidade = '';
+    this.usuarioFake.id = 123;
+    this.usuarioFake.alterarSenhaProximoLogon = false;
   }
 
   login(model: LoginModel) {
@@ -46,6 +52,16 @@ export class LoginService {
         this.router.navigate(['/']);
         return res.autenticacao.usuario;
       });
+  }
+
+  fakeLogin() {
+    localStorage.setItem(this.STORAGE_TOKEN, 'token123');
+    localStorage.setItem(this.STORAGE_SESSION_TOKEN, 'token123');
+    localStorage.setItem(this.STORAGE_SESSION_EXPIRACAO, '0000000000');
+    localStorage.setItem(this.STORAGE_USER, JSON.stringify(this.usuarioFake));
+    this.loggedIn = true;
+    this.router.navigate(['/']);
+    return this.usuarioFake;
   }
 
   logout() {

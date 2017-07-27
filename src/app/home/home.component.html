@@ -3,7 +3,7 @@
     <a class="navbar-item">
       <img src="../../assets/images/viavarejo.svg" height="50" />
     </a>
-    <div class="navbar-burger burger">
+    <div class="navbar-burger burger" (click)="logout()">
       <span></span>
       <span></span>
       <span></span>
@@ -15,4 +15,12 @@
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+
+<div class="container-home">
+  <div class="page-name">Gestão de acessos</div>
+  <div class="page-breadcrumb">Painel administrativo > Gestão de acessos</div>
+
+  <div class="container-router">
+    <router-outlet></router-outlet>
+  </div>
+</div>

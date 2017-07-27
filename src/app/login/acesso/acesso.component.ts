@@ -61,32 +61,47 @@ export class AcessoComponent implements OnInit {
     if (f.invalid) {
       this.formInvalid = true;
     } else {
-      this.formInvalid = false;
-      this.loginService.login(this.loginData).subscribe(
-        resp => {
-          this.usuarioModel = resp;
-          if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
-            this.termoDialog = this.openDialog();
-            this.termoDialog.afterClosed().subscribe(
-              result => {
-                if (result === 'aceito') {
-                  this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
-                  this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
-                } else {
-                  this.loginService.logout();
-                }
-              }
-            );
+      // ------------------ Só para testar
+      this.usuarioModel = this.loginService.fakeLogin();
+      this.termoDialog = this.openDialog();
+      this.termoDialog.afterClosed().subscribe(
+        result => {
+          if (result === 'aceito') {
+            this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
+            // this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
+          } else {
+            this.loginService.logout();
           }
-        },
-        error => {
-          // console.log(error);
-          this.router.navigate(['/login/' + this.tipo]);
-          this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
-            duration: 2000,
-          });
         }
       );
+      // ------------------
+      // this.formInvalid = false;
+      // this.loginService.login(this.loginData).subscribe(
+      //   resp => {
+      //     this.usuarioModel = resp;
+      //     if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
+      //       this.termoDialog = this.openDialog();
+      //       this.termoDialog.afterClosed().subscribe(
+      //         result => {
+      //           if (result === 'aceito') {
+      //             this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
+      //             this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
+      //           } else {
+      //             this.loginService.logout();
+      //           }
+      //         }
+      //       );
+      //     }
+      //   },
+      //   error => {
+      //     // console.log(error);
+      //     this.router.navigate(['/login/' + this.tipo]);
+      //     this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
+      //       duration: 2000,
+      //     });
+      //   }
+      // );
+
     }
   }
 

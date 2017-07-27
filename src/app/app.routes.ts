@@ -1,3 +1,7 @@
+import { AtributosFuncionalidadesComponent } from './gestao-acessos/atributos-funcionalidades/atributos-funcionalidades.component';
+import { FuncionalidadesComponent } from './gestao-acessos/funcionalidades/funcionalidades.component';
+import { PerfisAcessoComponent } from './gestao-acessos/perfis-acesso/perfis-acesso.component';
+import { PermissoesAcessoComponent } from './gestao-acessos/permissoes-acesso/permissoes-acesso.component';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,9 +30,15 @@ export const routes: Routes = [
   },
   {
     path: '', component: HomeComponent, children: [
-      { path: 'gestaoacessos', component: GestaoAcessosComponent, children: [
-        { path: 'permissoes', component: AcessosComponent}
-      ]}
+      {
+        path: 'gestaoacessos', component: GestaoAcessosComponent,
+        children: [
+          { path: 'permissoes', component: PermissoesAcessoComponent },
+          { path: 'perfis', component: PerfisAcessoComponent },
+          { path: 'funcionalidades', component: FuncionalidadesComponent },
+          { path: 'atributos', component: AtributosFuncionalidadesComponent }
+        ]
+      }
     ]
   },
 

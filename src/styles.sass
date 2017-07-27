@@ -3,6 +3,14 @@
 @import '../node_modules/font-awesome/scss/font-awesome'
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
 
+@font-face
+		font-family: Calibri
+		src: url('./assets/fonts/Calibri.eot')
+		src: url('./assets/fonts/Calibri.eot?#iefix') format('embedded-opentype')
+    src: url('./assets/fonts/Calibri.woff') format('woff')
+		src: url('./assets/fonts/Calibri.ttf') format('truetype')
+		src: url('./assets/fonts/Calibri.svg#Calibri') format('svg')
+
 //xlg
 //@media (min-width: 1800px) {}
 
@@ -97,13 +105,14 @@
 //md
 @media (max-height: 802px)
   .hero
-  nav
-    display: table
-    width: 96%
-    margin: 0 auto
-    a
-      display: table-cell
-      text-align: center
+    nav
+      display: table
+      width: 96%
+      margin: 0 auto
+
+      a
+        display: table-cell
+        text-align: center
 
 //mdsm
 //@media (max-height: 860px)  {}
@@ -131,3 +140,10 @@
 
 .mat-slide-toggle .mat-ripple-element
   background-color: rgba(0, 165, 50, .1)
+
+.mat-ink-bar
+  display: none
+
+.mat-slide-toggle-content
+  font-family: Calibri
+  color: $black

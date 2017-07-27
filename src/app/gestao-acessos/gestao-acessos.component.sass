@@ -1,0 +1,32 @@
+@import '../colors'
+
+.mat-tab-nav-bar
+  border: 0
+
+  a
+    color: $warm-grey
+    font-family: Calibri
+    font-size: 16px
+    opacity: 1
+
+    &[ng-reflect-active='true']
+      background: $turquoise-blue
+      color: $white
+
+    &:first-of-type
+      border-bottom-left-radius: 5px
+      border-left: solid 1px $greyish
+      border-top-left-radius: 5px
+
+    &:last-of-type
+      border-bottom-right-radius: 5px
+      border-top-right-radius: 5px
+
+.mat-tab-link
+  background-color: $white
+  border: solid 1px $greyish
+  border-left: 0
+
+.container-router
+  margin-top: 1.5rem
+  width: 708px

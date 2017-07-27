@@ -4,15 +4,28 @@
   background-color: $white
   border: solid 1px $white-two
   box-shadow: 2.1px 2.1px 5px 0 rgba(0, 0, 0, .15)
-  line-height: 35px
+  line-height: 30px
+
+  &:hover
+    background-color: $ice-blue
 
 .subnivel1
-  margin-left: 20px
-  zoom: .99
+  border-left: solid 1px $white-two
+  border-right: solid 1px $white-two
+  padding-left: 20px
+  zoom: .95
+
+  &:hover
+    background-color: $ice-blue
 
 .subnivel2
-  margin-left: 40px
-  zoom: .98
+  border-left: solid 1px $white-two
+  border-right: solid 1px $white-two
+  padding-left: 50px
+  zoom: .9
+
+  &:hover
+    background-color: $ice-blue
 
 .accordion-open
   display: block
@@ -30,3 +43,10 @@
   font-weight: bold
   padding: 4px 15px
 
+.fundo1
+  &:nth-of-type(even)
+    background: $white-three
+
+.fundo2
+  &:nth-of-type(even)
+    background: $white-four

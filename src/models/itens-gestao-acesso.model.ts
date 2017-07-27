@@ -1,13 +1,14 @@
 export class ItensGestaoAcessoModel {
-    id: string;
-    nome: string;
-    nivel: string;
-    descricao: string;
-    status: string;
-    dataInclusao: any;
-    dataUltimaAlteracao: any;
-    subnivel: ItensGestaoAcessoModel[];
-
-    editar: boolean;
-    novo: boolean;
+  constructor(
+    public id?: any,
+    public nome?: any,
+    public nivel?: any,
+    public descricao?: any,
+    public status?: any,
+    public dataInclusao?: any,
+    public dataUltimaAlteracao?: any,
+    public subnivel?: ItensGestaoAcessoModel[],
+    public editar?: boolean,
+    public novo?: boolean,
+  ) { }
 }
