@@ -16,7 +16,9 @@ export class FuncionalidadesComponent implements OnInit {
   constructor() {
 
     this.config = {
-      niveis: 2
+      niveis: 2,
+      adicionar: true,
+      textoAdicionar: 'ADICIONAR FUNCIONALIDADE'
     };
 
     this.listFuncionalidades = [{

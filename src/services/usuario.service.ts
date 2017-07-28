@@ -41,7 +41,7 @@ export class UsuarioService {
 
   updatePassword(alterarSenha: AlterarSenhaModel) {
     alterarSenha.chave = alterarSenha.chave || '';
-    return this.http.post<ResponseBaseModel>(globals.BASE_URL + 'usuarios/senhas/redefinicoes/' + alterarSenha.chave, {
+    return this.http.post<ResponseBaseModel>(globals.BASE_URL + 'usuarios/senhas/redefinicoes/', {
       login: alterarSenha.login,
       senhaAtual: alterarSenha.senhaProvisoria || alterarSenha.senhaAtual,
       senhaNova: alterarSenha.novaSenha

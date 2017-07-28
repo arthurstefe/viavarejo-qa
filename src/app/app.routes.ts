@@ -33,7 +33,7 @@ export const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
       {
-        path: 'gestaoacessos', component: GestaoAcessosComponent,
+        path: 'gestaoacessos', component: GestaoAcessosComponent, data: { pageName: 'Gestão de acessos' } ,
         children: [
           { path: 'permissoes', component: PermissoesAcessoComponent },
           { path: 'perfis', component: PerfisAcessoComponent },

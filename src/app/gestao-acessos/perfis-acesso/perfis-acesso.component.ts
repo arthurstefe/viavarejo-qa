@@ -13,7 +13,9 @@ export class PerfisAcessoComponent implements OnInit {
 
   constructor() {
     this.config = {
-      niveis: 0
+      niveis: 0,
+      adicionar: true,
+      textoAdicionar: 'ADICIONAR PERFIL'
     };
 
     this.listPerfilAcesso = [{
