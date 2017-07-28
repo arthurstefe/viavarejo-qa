@@ -56,6 +56,14 @@
 .ico-trash:before
   content: "\e908"
 
+body .button
+  border-radius: 2px
+  font-family: $font-family
+
+.g-recaptcha div div
+  width: 100%!important
+  height: auto!important
+
 //xlg
 //@media (min-width: 1800px) }
 
@@ -64,6 +72,12 @@
   .card-login-form
     max-width: 35%
     margin: 0 auto
+
+  .g-recaptcha div div
+    transform: scale(1.04)
+    -webkit-transform: scale(1.04)
+    transform-origin: 0 0
+    -webkit-transform-origin: 0 0
 
 //ltbigger
 //@media (max-width: 1280px) }
@@ -127,6 +141,7 @@
   .logotipo
     width: 45%!important
     height: auto!important
+    margin-bottom: 5px!important
 
   .g-recaptcha div div
     transform: scale(0.93)
@@ -134,6 +149,8 @@
     transform-origin: 0 0
     -webkit-transform-origin: 0 0
 
+  .btn-wrapper
+    margin-top: 5px!important
 
 //mobile-small
 //@media (min-width: 480px) and (max-width: 767px)  }
@@ -190,7 +207,7 @@
   display: none
 
 .mat-slide-toggle-content
-  font-family: Calibri
+  font-family: $font-family
   color: $black
 
 .boas-vindas
@@ -199,4 +216,13 @@
   text-align: center
   color: $warm-grey
 
+.card-login-form
+  .btn-wrapper
+    margin-top: 30px
 
+body
+  .hero-body
+    padding: 1rem 1.5rem
+
+html
+  overflow-y: inherit!important
