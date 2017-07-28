@@ -128,6 +128,7 @@ export class AcessosComponent implements OnInit {
     novoItem.nivel = idPai || 0;
     novoItem.editar = true;
     novoItem.novo = true;
+    novoItem.subnivel = [];
     if (i === undefined && idPai === undefined) {
       novoItem.nivel = 0;
       this.lista.push(novoItem);

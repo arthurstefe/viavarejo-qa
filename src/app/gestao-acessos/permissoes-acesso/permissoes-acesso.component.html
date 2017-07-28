@@ -1,3 +1,16 @@
-<p>
-  permissoes-acesso works!
-</p>
+<div class="field">
+  <label class="label">PERFIL</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>Selecione um perfil</option>
+        <option>Administrador TI</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<p></p>
+
+PERMISSÕES DE ACESSO
+<app-acessos [lista]="listPermissoes" [config]="config"></app-acessos>

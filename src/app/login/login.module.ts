@@ -11,6 +11,7 @@ import { TermoComponent } from './termo/termo.component';
 import { SelecaoComponent } from './selecao/selecao.component';
 import { AlterarsenhaComponent } from './alterarsenha/alterarsenha.component';
 import { AcessoComponent } from './acesso/acesso.component';
+import { SucessoComponent } from './sucesso/sucesso.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { AcessoComponent } from './acesso/acesso.component';
     TermoComponent
   ],
   entryComponents: [TermoComponent],
-  declarations: [TermoComponent, SelecaoComponent, AlterarsenhaComponent, AcessoComponent],
+  declarations: [TermoComponent, SelecaoComponent, AlterarsenhaComponent, AcessoComponent, SucessoComponent],
   providers: [
     LoginService,
     UsuarioService

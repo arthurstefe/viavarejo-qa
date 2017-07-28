@@ -33,8 +33,8 @@
     </div>
   </div>
 </div>
-<div class="adicionar-item" (click)="addItem()">
+<div class="adicionar-item" (click)="addItem()" *ngIf="config.adicionar === false ? false : true">
   <span class="icon is-small">
     <i class="fa fa-plus-circle"></i>
-  </span> ADICIONAR FUNCIONALIDADE
+  </span> {{config.textoAdicionar}}
 </div>

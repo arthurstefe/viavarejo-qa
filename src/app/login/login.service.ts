@@ -34,10 +34,6 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.loggedIn = !!localStorage.getItem(this.STORAGE_TOKEN);
-
-    this.usuarioFake.dataAceiteTermoResponsabilidade = '';
-    this.usuarioFake.id = 123;
-    this.usuarioFake.alterarSenhaProximoLogon = false;
   }
 
   login(model: LoginModel) {
@@ -55,6 +51,11 @@ export class LoginService {
   }
 
   fakeLogin() {
+    this.usuarioFake.dataAceiteTermoResponsabilidade = '';
+    this.usuarioFake.id = 123;
+    this.usuarioFake.alterarSenhaProximoLogon = false;
+    this.usuarioFake.nome = 'João Silva';
+
     localStorage.setItem(this.STORAGE_TOKEN, 'token123');
     localStorage.setItem(this.STORAGE_SESSION_TOKEN, 'token123');
     localStorage.setItem(this.STORAGE_SESSION_EXPIRACAO, '0000000000');

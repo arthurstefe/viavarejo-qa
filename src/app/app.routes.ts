@@ -1,10 +1,11 @@
+import { Routes, RouterModule } from '@angular/router';
+
+import { SucessoComponent } from './login/sucesso/sucesso.component';
 import { AtributosFuncionalidadesComponent } from './gestao-acessos/atributos-funcionalidades/atributos-funcionalidades.component';
 import { FuncionalidadesComponent } from './gestao-acessos/funcionalidades/funcionalidades.component';
 import { PerfisAcessoComponent } from './gestao-acessos/perfis-acesso/perfis-acesso.component';
 import { PermissoesAcessoComponent } from './gestao-acessos/permissoes-acesso/permissoes-acesso.component';
 import { HomeComponent } from './home/home.component';
-import { Routes, RouterModule } from '@angular/router';
-
 import { AcessoComponent } from './login/acesso/acesso.component';
 import { SelecaoComponent } from './login/selecao/selecao.component';
 import { LoginComponent } from './login/login.component';
@@ -23,7 +24,8 @@ export const routes: Routes = [
       { path: 'bemvindo', component: SelecaoComponent },
       { path: 'viavarejo', component: AcessoComponent, data: { tipo: 'viavarejo' } },
       { path: 'transportadora', component: AcessoComponent, data: { tipo: 'transportadora' } },
-      { path: 'primeiroacesso', component: AlterarsenhaComponent, data: { tipo: 'primeiroacesso' } },
+      { path: 'primeiroacesso/:chave', component: AlterarsenhaComponent, data: { tipo: 'primeiroacesso' } },
+      { path: 'sucesso', component: SucessoComponent },
       { path: 'alterarsenha', component: AlterarsenhaComponent, data: { tipo: 'alterarsenha' } },
       { path: 'alterarsenhae', component: AlterarsenhaComponent, data: { tipo: 'alterarsenhaesqueceu' } }
     ]
@@ -31,7 +33,7 @@ export const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
       {
-        path: 'gestaoacessos', component: GestaoAcessosComponent,
+        path: 'gestaoacessos', component: GestaoAcessosComponent, data: { pageName: 'Gestão de acessos' } ,
         children: [
           { path: 'permissoes', component: PermissoesAcessoComponent },
           { path: 'perfis', component: PerfisAcessoComponent },

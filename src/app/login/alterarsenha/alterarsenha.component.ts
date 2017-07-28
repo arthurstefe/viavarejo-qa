@@ -21,6 +21,7 @@ export class AlterarsenhaComponent implements OnInit {
   formInvalid: boolean;
   perguntaSecreta: string;
   alterarSenhaProximoLogon: boolean;
+  private chavePrimeiroAcesso: string;
 
   constructor(
     private loginService: LoginService,
@@ -36,6 +37,11 @@ export class AlterarsenhaComponent implements OnInit {
       this.alterarSenhaProximoLogon = this.usuario.alterarSenhaProximoLogon;
     }
     this.alterarSenhaForm.pergunta = this.perguntaSecreta || 'Pergunta secreta?';
+    activatedRoute.params.subscribe(params => {
+      if (params.chave) {
+        this.chavePrimeiroAcesso = params.chave;
+      }
+    });
   }
 
   ngOnInit() {
@@ -43,10 +49,6 @@ export class AlterarsenhaComponent implements OnInit {
     switch (this.tipo) {
       case 'primeiroacesso':
         this.title = '- Primeiro acesso';
-        // Verifica se o usuário pode acessar a tela de primeiro login
-        if (!this.alterarSenhaProximoLogon) {
-          this.router.navigate(['/']);
-        }
         break;
     }
   }
@@ -56,6 +58,15 @@ export class AlterarsenhaComponent implements OnInit {
       this.formInvalid = true;
     } else {
       this.formInvalid = false;
+      switch (this.tipo) {
+        case 'primeiroacesso':
+          this.alterarSenhaForm.chave = this.chavePrimeiroAcesso;
+          this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(resp => {
+            this.router.navigate(['/login']);
+          });
+          break;
+      }
+
       this.usuarioService.updateFirstAccess(this.alterarSenhaForm).subscribe(
         resp => {
           // Atualiza os dados do usuário no localStorage

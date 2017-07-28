@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../login/login.service';
 import { UsuarioModel } from './../../models/usuario.model';
@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
   alterarSenhaProximoLogon: boolean;
   idUsuario: number;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  pageName: string;
+
+  constructor(private loginService: LoginService, private router: Router, private activatedRoute: ActivatedRoute) {
     if (this.loginService.isLoggedIn()) {
       this.usuario = this.loginService.getUserLogged();
       this.alterarSenhaProximoLogon = this.usuario.alterarSenhaProximoLogon;
@@ -26,10 +28,13 @@ export class HomeComponent implements OnInit {
     if (!this.loginService.isLoggedIn()) {
       this.loginService.logout();
     }
-    // Verifica se o usuário precisa alterar a senha devido ao primeiro acesso
-    if (this.alterarSenhaProximoLogon && this.idUsuario) {
-      this.router.navigate(['login/primeiroacesso']);
+
+    if (this.activatedRoute.children.length > 0) {
+      this.pageName = this.activatedRoute.children[0].snapshot.data.pageName;
     }
+
+
+    this.pageName = this.pageName || 'Olá, ' + this.usuario.nome + '!';
   }
 
   logout() {
