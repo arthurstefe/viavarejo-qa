@@ -4,6 +4,7 @@ module.exports = {
     'dist/**.js',
     'dist/**.css',
     'dist/**.png',
+    'dist/**.svg',
     'dist/assets/images/*',
     'dist/assets/icons/*',
     'dist/assets/fonts/*'
