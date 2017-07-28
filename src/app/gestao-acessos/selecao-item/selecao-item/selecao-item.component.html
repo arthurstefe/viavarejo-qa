@@ -3,7 +3,9 @@
   <div class="columns is-mobile">
     <div class="column">
       <md-slide-toggle (change)="onChange($event)" [checked]="item.status == 1 ? true : false">
-        <span *ngIf="!item.editar">{{item.nome}}</span>
+        <span *ngIf="!item.editar">
+          <span *ngFor="let num of numero; let numI = index">{{num}}.</span>
+        {{item.nome}}</span>
       </md-slide-toggle>
       <input *ngIf="item.editar" type="text" required [(ngModel)]="novoNome" (keyup.enter)="saveItem()" />
     </div>

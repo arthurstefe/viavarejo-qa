@@ -11,5 +11,9 @@ module.exports = {
   ],
   root: 'dist',
   stripPrefix: 'dist/',
+  "runtimeCaching": [{
+    "urlPattern": "/(.*)",
+    "handler": "networkFirst"
+  }],
   navigateFallback: '/index.html'
 };

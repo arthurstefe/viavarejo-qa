@@ -4,7 +4,7 @@
     <!-- nivel 0 -->
     <app-selecao-item [item]="item" (addItem)="addItem(item.id, [i])" (accordionEvent)="accordion($event, item.id)" (toggleItem)="itemSelecionado(item.id, $event)"
       (saveAction)="salvarItem(item)" [subnivel]="item.subnivel ? item.subnivel.length : 0" [accordionStatus]="accordionOpen[item.id]"
-      [config]="{add: config.niveis > 0}" (cancelAction)="cancelarItem(0, $event)">
+      [config]="{add: config.niveis > 0}" (cancelAction)="cancelarItem(0, $event)" [numero]="[i + 1]">
     </app-selecao-item>
   </div>
 
@@ -14,7 +14,7 @@
       <div class="subnivel1">
         <app-selecao-item [item]="item1" (addItem)="addItem(item1.id, [i, i1])" (accordionEvent)="accordion($event, item1.id)" (toggleItem)="itemSelecionado(item1.id, $event)"
           (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem(i, $event)" [subnivel]="item1.subnivel ? item1.subnivel.length : 0"
-          [accordionStatus]="" [config]="{add: config.niveis > 1}">
+          [accordionStatus]="" [config]="{add: config.niveis > 1}" [numero]="[i + 1, i1 + 1]">
         </app-selecao-item>
       </div>
 
@@ -23,7 +23,8 @@
         <div *ngFor="let item2 of item1.subnivel; let i2 = index" class="fundo2">
           <div class="subnivel2">
             <app-selecao-item [item]="item2" (accordionEvent)="accordion($event, item2.id)" (toggleItem)="itemSelecionado(item2.id, $event)"
-              (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem([i, i1], $event)" [accordionStatus]="" [config]="{add: false}">
+              (saveAction)="salvarItem($event)" (cancelAction)="cancelarItem([i, i1], $event)" [accordionStatus]="" [config]="{add: false}"
+              [numero]="[i + 1, i1 + 1, i2 + 1]">
             </app-selecao-item>
           </div>
         </div>

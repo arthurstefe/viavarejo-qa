@@ -10,10 +10,10 @@ export class SelecaoItemComponent implements OnInit {
 
   @Input() item: ItensGestaoAcessoModel;
   @Input() config: any;
+  @Input() accordionStatus: boolean;
+  @Input() numero: number[];
 
   @Output() toggleItem = new EventEmitter<boolean>();
-
-  @Input() accordionStatus: boolean;
   @Output() accordionEvent = new EventEmitter<boolean>();
   @Output() addItem = new EventEmitter();
   @Output() saveAction = new EventEmitter();
