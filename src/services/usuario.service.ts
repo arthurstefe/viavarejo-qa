@@ -27,12 +27,17 @@ export class UsuarioService {
   }
 
   updateFirstAccess(alterarSenha: AlterarSenhaModel) {
-    return this.http.patch<ResponseBaseModel>(globals.BASE_URL + 'usuarios/' + alterarSenha.id, [
-      { op: 'replace', path: '/perguntaSecreta', value: alterarSenha.pergunta },
-      { op: 'replace', path: '/respostaSecreta', value: alterarSenha.resposta },
-      { op: 'replace', path: '/alterarSenhaProximoLogon', value: false }
-    ]);
+    return this.http.post<ResponseBaseModel>(globals.BASE_URL + 'usuarios/senhas/redefinicoes/' + alterarSenha.chave,
+      JSON.stringify(alterarSenha)
+    );
   }
+  // updateFirstAccess(alterarSenha: AlterarSenhaModel) {
+  //   return this.http.patch<ResponseBaseModel>(globals.BASE_URL + 'usuarios/' + alterarSenha.id, [
+  //     { op: 'replace', path: '/perguntaSecreta', value: alterarSenha.pergunta },
+  //     { op: 'replace', path: '/respostaSecreta', value: alterarSenha.resposta },
+  //     { op: 'replace', path: '/alterarSenhaProximoLogon', value: false }
+  //   ]);
+  // }
 
   updatePassword(alterarSenha: AlterarSenhaModel) {
     alterarSenha.chave = alterarSenha.chave || '';
