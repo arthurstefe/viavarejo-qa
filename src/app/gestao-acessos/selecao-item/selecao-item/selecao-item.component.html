@@ -13,7 +13,7 @@
         <span *ngIf="!item.editar; else actionsSave">
           <a (click)="addItemClick()" *ngIf="config.add === false ? false : true">
             <span class="icon">
-              <i class="fa fa-plus-circle"></i>
+              <i class="ico ico-plus-circle"></i>
             </span>
           </a>
           <a (click)="editItem()" *ngIf="false">
@@ -25,21 +25,21 @@
         <ng-template #actionsSave>
           <a (click)="saveItem()">
             <span class="icon">
-              <i class="fa fa-check"></i>
+              <i class="ico ico-checked"></i>
             </span>
           </a>
           <a (click)="cancelItem()">
             <span class="icon">
-              <i class="fa fa-times"></i>
+              <i class="ico ico-trash"></i>
             </span>
           </a>
         </ng-template>
       </span>
       <span *ngIf="subnivel > 0">
        
-        <a class="button is-small is-white" (click)="accordionClick()">
+        <a class="is-small is-white" (click)="accordionClick()">
           <span class="icon is-small">
-            <i class="fa " [ngClass]="accordionStatus ? 'fa-chevron-up' : 'fa-chevron-down' "></i>
+            <i class="ico " [ngClass]="accordionStatus ? 'ico-chevron-up' : 'ico-chevron-down' "></i>
           </span>
       </a>
       </span>
