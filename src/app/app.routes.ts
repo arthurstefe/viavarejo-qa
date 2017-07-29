@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { AlterarsenhaComponent } from './login/alterarsenha/alterarsenha.component';
 import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
 import { AcessosComponent } from './gestao-acessos/acessos/acessos.component';
+import { ListagemComponent } from './listagem/listagem.component';
+import { UsuariosComponent } from './listagem/usuarios/usuarios.component';
 
 import { AuthGuard } from './../services/auth-guard.service';
 
@@ -41,6 +43,12 @@ export const routes: Routes = [
           { path: 'atributos', component: AtributosFuncionalidadesComponent }
         ]
       }
+    ]
+  },
+  {
+    path: 'listagem', component: ListagemComponent, data: { pageName: 'Listagem' } ,
+    children: [
+      { path: 'usuarios', component: UsuariosComponent }
     ]
   },
 

@@ -18,6 +18,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
 import { GestaoAcessosModule } from './gestao-acessos/gestao-acessos.module';
+import { ListagemComponent } from './listagem/listagem.component';
+import { UsuariosComponent } from './listagem/usuarios/usuarios.component';
+import { FiltroComponent } from './listagem/filtro/filtro.component';
+import { GridComponent } from './listagem/grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { GestaoAcessosModule } from './gestao-acessos/gestao-acessos.module';
     LoginComponent,
     HomeComponent,
     GestaoAcessosComponent,
+    ListagemComponent,
+    UsuariosComponent,
+    FiltroComponent,
+    GridComponent,
   ],
   imports: [
     LoginModule,
