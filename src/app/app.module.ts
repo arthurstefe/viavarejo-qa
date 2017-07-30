@@ -11,6 +11,13 @@ import { RequestInterceptor } from './request.interceptor';
 
 import { MdSnackBarModule, MdSidenavModule } from '@angular/material';
 
+import {
+  NgTableComponent,
+  NgTableFilteringDirective,
+  NgTablePagingDirective,
+  NgTableSortingDirective
+} from 'ng2-table/ng2-table.js';
+
 import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
