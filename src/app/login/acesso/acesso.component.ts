@@ -25,6 +25,7 @@ export class AcessoComponent implements OnInit {
   chave: 'a';
   termoDialog: any;
   formInvalid: boolean;
+  private testMode: boolean;
 
   constructor(
     private loginService: LoginService,
@@ -35,6 +36,7 @@ export class AcessoComponent implements OnInit {
     private snackBar: MdSnackBar
   ) {
     this.loginData = new LoginModel();
+    this.testMode = true;
   }
 
   ngOnInit() {
@@ -51,57 +53,64 @@ export class AcessoComponent implements OnInit {
 
   handleCorrectCaptcha(event) {
     this.chave = event;
-    // this.loginData.fatoresAutenticacao = {
-    //   tipo: 'captcha',
-    //   chave: event
-    // };
+    this.loginData.fatoresAutenticacao = {
+      tipo: 'captcha',
+      chave: event
+    };
   }
 
   postLogin(f: NgForm) {
     if (f.invalid) {
       this.formInvalid = true;
     } else {
-      // ------------------ Só para testar
-      this.usuarioModel = this.loginService.fakeLogin();
-      this.termoDialog = this.openDialog();
-      this.termoDialog.afterClosed().subscribe(
-        result => {
-          if (result === 'aceito') {
-            this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
-            // this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
-          } else {
-            this.loginService.logout();
-          }
-        }
-      );
-      // ------------------
-      // this.formInvalid = false;
-      // this.loginService.login(this.loginData).subscribe(
-      //   resp => {
-      //     this.usuarioModel = resp;
-      //     if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
-      //       this.termoDialog = this.openDialog();
-      //       this.termoDialog.afterClosed().subscribe(
-      //         result => {
-      //           if (result === 'aceito') {
-      //             this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
-      //             this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
-      //           } else {
-      //             this.loginService.logout();
-      //           }
-      //         }
-      //       );
-      //     }
-      //   },
-      //   error => {
-      //     // console.log(error);
-      //     this.router.navigate(['/login/' + this.tipo]);
-      //     this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
-      //       duration: 2000,
-      //     });
-      //   }
-      // );
+      this.formInvalid = false;
 
+      if (!this.chave) {
+        this.snackBar.open('O Captcha é obrigatório', 'Fechar', {
+          duration: 2000,
+        });
+        return;
+      }
+
+      if (this.testMode) {
+        // ------------------ Só para testar
+        this.usuarioModel = this.loginService.fakeLogin();
+        this.termoDialog = this.openDialog();
+        this.termoDialog.afterClosed().subscribe(
+          result => {
+            if (result === 'aceito') {
+              this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
+            } else {
+              this.loginService.logout();
+            }
+          }
+        );
+      } else {
+        this.loginService.login(this.loginData).subscribe(
+          resp => {
+            this.usuarioModel = resp;
+            if (this.tipo === 'transportadora' && !this.usuarioModel.dataAceiteTermoResponsabilidade) {
+              this.termoDialog = this.openDialog();
+              this.termoDialog.afterClosed().subscribe(
+                result => {
+                  if (result === 'aceito') {
+                    this.usuarioModel.dataAceiteTermoResponsabilidade = new Date().toISOString();
+                    this.usuarioService.aceitarTermo(this.usuarioModel).subscribe();
+                  } else {
+                    this.loginService.logout();
+                  }
+                }
+              );
+            }
+          },
+          error => {
+            this.router.navigate(['/login/' + this.tipo]);
+            this.snackBar.open('Erro ao fazer o login: ' + error.statusText, 'Fechar', {
+              duration: 2000,
+            });
+          }
+        );
+      }
     }
   }
 

@@ -107,7 +107,7 @@ export class AcessosComponent implements OnInit {
   fakeList = new Array(3);
 
   constructor() {
-    this.lista = this.funcionalidades;
+    // this.lista = this.funcionalidades;
   }
 
   ngOnInit() {
