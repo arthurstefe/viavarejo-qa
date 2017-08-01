@@ -10,6 +10,9 @@
   font-family: ico
   src: url('./assets/fonts/icones.eot'), url('./assets/fonts/icones.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/icones.ttf') format('truetype'), url('./assets/fonts/icones.woff') format('woff'), url('./assets/fonts/icones.svg') format('svg')
 
+@font-face
+  font-family: ico-menu
+  src:  url('./assets/fonts/ico-menu.eot?p7umhl'), url('./assets/fonts/ico-menu.eot?p7umhl#iefix') format('embedded-opentype'), url('./assets/fonts/ico-menu.ttf?p7umhl') format('truetype'), url('./assets/fonts/ico-menu.woff?p7umhl') format('woff'), url('./assets/fonts/ico-menu.svg?p7umhl#ico-menu') format('svg')
 
 [class^='ico-'],
 [class*=' ico-']
@@ -22,6 +25,34 @@
   line-height: 1
   speak: none
   text-transform: none
+
+[class^='ico-menu'],
+[class*=' ico-menu']
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-family: ico-menu
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+  line-height: 1
+  speak: none
+  text-transform: none
+
+.ico-menu-building
+  &::before
+    content: "\e900"
+
+.ico-menu-lock-open
+  &::before
+    content: "\e901"
+
+.ico-menu-truck
+  &::before
+    content: "\e902"
+
+.ico-menu-users
+  &::before
+    content: "\e903"
 
 .ico-arrow-right
   &::before
@@ -244,3 +275,6 @@ body
 
 html
   overflow-y: inherit !important
+
+.card-login.box
+  display: inline-grid

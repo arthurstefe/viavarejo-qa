@@ -1,7 +1,7 @@
 <nav class="navbar has-shadow">
   <div class="navbar-brand">
-    <a class="navbar-item">
-      <img src="../../assets/images/viavarejo.svg" height="50" />
+    <a class="navbar-item" id="logo-poc">
+      <img src="../../assets/images/logo-vertical.png" width="160" height="35" />
     </a>
     <div class="navbar-burger burger" (click)="logout()">
       <span></span>
@@ -23,7 +23,165 @@
   </div>
   <!-- <div class="page-breadcrumb">Painel administrativo > Gestão de acessos</div> -->
 
+  <nav class="main-menu">
+    <ul class="nav-content">
+      <li class="nav-item nav-header">
+        <span class="name">
+          João Silva
+        </span>
+        <span class="name-small">
+          Administrador GA
+        </span>
+        <i class="ico-chevron-left-circle"></i>
+      </li>
+      <li class="nav-item">
+        <i class="ico-menu-lock-open ico-menu"></i>
+        <span class="nav-txt">
+          Gestão de Acessos
+        </span>
+      </li>
+      <li class="nav-item">
+        <i class="ico-menu-users ico-menu"></i>
+        <span class="nav-txt">
+          Usuários
+        </span>
+      </li>
+      <li class="nav-item">
+        <i class="ico-menu-truck ico-menu"></i>
+        <span class="nav-txt">
+          Transportadoras
+        </span>
+      </li>
+      <li class="nav-item">
+        <i class="ico-menu-building ico-menu"></i>
+        <span class="nav-txt">
+          Unidades
+        </span>
+      </li>
+    </ul>
+  </nav>
+
   <div class="container-router">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<footer>
+  <p class="text-footer">
+    Via Varejo S.A - Rua João Pessoa, 83 - Centro - São Caetano do Sul - SP
+    Copyright 2017 - Todos os direitos reservados.
+  </p>
+</footer>
+
+<style type="text/css">
+  #logo-poc {
+    padding: 0.5rem 32px 0.5rem 31px;
+  }
+
+  .navbar {
+    min-height: 70px!important;
+  }
+
+  .main-menu {
+    position: fixed;
+    width: 223px;
+    height: 100%;
+    left:0;
+    top: 70px;
+    background-color: #2b3536;
+    box-shadow: 2.1px 2.1px 8px 0 rgba(0, 0, 0, 0.15);
+    display: table;
+  }
+
+  .nav-item {
+    width: 100%;
+    max-height: 50px;
+    float: left;
+    cursor: pointer;
+    justify-content: left;
+    border-left: 2px solid #1f2626;
+  }
+
+  .nav-item:hover {
+    background-color: #1f2626;
+    border-left: 2px solid #efc031;
+  }
+
+  .nav-header {
+    height: 60px;
+    max-height: inherit;
+    position: relative;
+    background-color: #475859;
+    border-left: none!important;
+  }
+
+  .nav-header:hover {
+    background-color: #475859;
+  }
+
+  .nav-header .name {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Calibri;
+    color: #fff;
+    position: absolute;
+    left: 13px;
+    top: 14px;
+  }
+
+  .nav-header .name-small {
+    font-family: Calibri;
+    font-size: 11px;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    left: 13px;
+    top: 30px;
+  }
+
+  .nav-item .ico-menu {
+    font-size: 23px;
+    color: #cccccc;
+    padding-right: 12px;
+    min-width: 48px;
+  }
+
+  .nav-txt {
+    font-family: Calibri;
+    font-size: 16px;
+    line-height: 3.13;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .nav-header i {
+    color: #fff;
+    position: absolute;
+    right: 13px;
+    top: 20px;
+    font-size: 19px;
+  }
+
+  footer {
+    width: 100%;
+    height: 57px;
+    clear: both;
+    position: fixed;
+    left:0;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    background-color: #14191a;
+  }
+  .text-footer {
+    width: 339px;
+    height: 26px;
+    padding-top: 12px;
+    margin: 0 auto;
+    font-family: Calibri;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    color: #ffffff;
+  }
+</style>
