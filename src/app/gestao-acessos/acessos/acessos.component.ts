@@ -43,7 +43,6 @@ export class AcessosComponent implements OnInit {
     'status': '1',
     'dataInclusao': '',
     'dataUltimaAlteracao': '',
-    'filho': 1
   }, {
     'id': '5',
     'nome': 'Cadastro de usuários',
@@ -52,16 +51,14 @@ export class AcessosComponent implements OnInit {
     'status': '1',
     'dataInclusao': '',
     'dataUltimaAlteracao': '',
-    'filho': 1
   }, {
     'id': '54',
-    'nome': 'Gestão de acessos',
-    'nivel': '1',
+    'nome': 'Listar usuário',
+    'nivel': '5',
     'descricao': '',
     'status': '1',
     'dataInclusao': '',
     'dataUltimaAlteracao': '',
-    'filho': 5
   }
 
   ];
@@ -170,7 +167,40 @@ export class AcessosComponent implements OnInit {
   }
 
   ordenarLista(lista) {
-    return lista;
+    const novaLista = [];
+
+    lista = lista.sort((a, b): number => {
+      if (a.nivel < b.nivel) {
+        return -1;
+      }
+      if (a.nivel > b.nivel) {
+        return 1;
+      }
+      return 0;
+    });
+
+    lista.forEach((e, i) => {
+      e.subnivel = [];
+      if (parseInt(e.nivel, 0) === 0) {
+        novaLista.push(e);
+      } else {
+        novaLista.some((e2, i2) => {
+          if (e2.id === e.nivel) {
+            novaLista[i2].subnivel.push(e);
+            return true;
+          } else {
+            novaLista[i2].subnivel.some((e3, i3) => {
+              if (e3.id === e.nivel) {
+                novaLista[i2].subnivel[i3].subnivel.push(e);
+                return true;
+              }
+            });
+          }
+        });
+      }
+    });
+
+    return novaLista;
   }
 
   itemSelecionado(id, e) {
