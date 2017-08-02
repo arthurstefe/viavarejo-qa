@@ -1,8 +1,9 @@
 <nav class="navbar has-shadow">
   <div class="navbar-brand">
-    <a class="navbar-item" id="logo-poc">
+    <a class="navbar-item" id="logo-poc" [routerLink]="['/']" >
       <img src="../../assets/images/logo-vertical.png" width="160" height="35" />
     </a>
+
     <div class="navbar-burger burger" (click)="logout()">
       <span></span>
       <span></span>
@@ -34,9 +35,9 @@
         </span>
         <i class="ico-chevron-left-circle"></i>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [routerLink]="['/gestaoacessos']">
         <i class="ico-menu-lock-open ico-menu"></i>
-        <span class="nav-txt">
+        <span class="nav-txt" >
           Gestão de Acessos
         </span>
       </li>
