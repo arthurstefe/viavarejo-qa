@@ -113,8 +113,9 @@
 
       <div class="field" *ngIf="tipo === 'primeiroacesso'">
         <label class="label">PERGUNTA DE SEGURANÇA</label>
-        <div class="select">
+        <div class="control">
           <select
+            class="input"
             [(ngModel)]="alterarSenhaForm.pergunta"
             name="pergunta"
             required

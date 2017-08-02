@@ -103,6 +103,8 @@
     content: '\e908'
 
 body
+  font-family: Calibri
+  
   .button
     border-radius: 2px
     font-family: $font-family
@@ -112,6 +114,10 @@ body
     div
       height: auto !important
       width: 100% !important
+
+.mat-dialog-container
+    padding: 80px !important
+    position: relative
 
 //xlg
 //@media (min-width: 1800px) }
@@ -132,13 +138,16 @@ body
 //@media (max-width: 1280px) }
 
 //md
-//@media (min-width: 992px)  and (max-width: 1199px)  }
+// @media (min-width: 992px) and (max-width: 1199px)
 
 //sm
-//@media (min-width: 768px) and (max-width: 991px)  }
+@media (min-width: 768px) and (max-width: 991px)
+  body
+    .hero
+      background-size: initial !important
 
 //smxs
-//@media (max-width: 991px)  }
+// @media (max-width: 991px)
 
 //xs
 @media (max-width: 767px)
@@ -182,7 +191,11 @@ body
     .form
       padding: 0!important
       .btn-entrar
-        max-width: 60%
+        max-width: 50%
+        background-image: none
+        .icon
+          display: none
+
 
   .hero.is-fullheight .hero-body > .container
     width: 100%
@@ -193,13 +206,21 @@ body
     margin-bottom: 5px!important
 
   .g-recaptcha div div
-    transform: scale(0.93)
-    -webkit-transform: scale(0.93)
+    transform: scale(0.91)
+    -webkit-transform: scale(0.91)
     transform-origin: 0 0
     -webkit-transform-origin: 0 0
+    width: 0 !important
 
   .btn-wrapper
     margin-top: 5px!important
+
+  .cdk-overlay-pane
+    width: 100% !important
+
+    .mat-dialog-container
+      padding: 10px !important
+      max-width: 100% !important
 
 //mobile-small
 //@media (min-width: 480px) and (max-width: 767px)  }

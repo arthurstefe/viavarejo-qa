@@ -1,3 +1,80 @@
+@import '../../colors'
+
+.box
+  display: inline-grid
+  box-shadow: 2.1px 2.1px 8px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.1)
+
+.icon-transportadora
+  height: 30px
+  margin-right: 14px
+  width: 39px
+
+.icon-viavarejo
+  height: 25px
+  margin-right: 14px
+  width: 55px
+
+.info-gestor
+  font-size: 16px
+  padding-top: 18px
+
+.card-login-form
+  font-size: 14px
+  margin: 35px 15px 0
+  max-width: 440px
+
+.btn-entrar
+  background: url('../../../assets/images/forma-1-copiar-2.svg') no-repeat 95% center $kelly-green
+  font-size: 20px
+  height: 56px
+  width: 234px
+  font-weight: bold
+  text-align: center
+
+.btn-voltar
+  color: $warm-grey
+  font-size: 20px
+  height: 56px
+  margin-right: 9px
+  text-decoration: none
+
+.field
+  margin-bottom: 20px
+
+  .label
+    color: $warm-grey
+    font-size: 14px
+    font-weight: bold
+    margin-bottom: 1px
+
+  .control
+    input
+      background-color: $white
+      border: solid 1px $white-two
+      border-radius: 2px
+      border-top: solid 2px $greyish
+      font-family: $font-family
+
+      &:focus
+        border-top: solid 2px $kelly-green
+
+      &::placeholder
+        color: $greyish
+
+      &.input-error
+        border-color: red
+
+  .error-message
+    font-size: 12px
+    color: red
+    margin: 5px 0 0
+
+.field:not(:last-child)
+  margin-bottom: 1.188rem;
+
+.g-recaptcha
+  margin: 10px 0 0
+
 input
     &.input-error
         border-color: red;

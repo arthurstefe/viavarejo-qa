@@ -8,17 +8,15 @@ body .box
   display: inline-grid
 
 .icon-login-transportadora
-  background-color: $warm-grey
   height: 70px
   margin: 0 auto
-  mask: url('../../../assets/images/login-transportadora.svg') no-repeat center
+  background: url('../../../assets/images/login-transportadora.svg') no-repeat center #fff
   width: 89px
 
 .icon-login-viavarejo
-  background-color: $warm-grey
   height: 66px
   margin: 0 auto
-  mask: url('../../../assets/images/login-viavarejo.svg') no-repeat center
+  background: url('../../../assets/images/login-viavarejo.svg') no-repeat center #fff
   width: 147px
 
 .card-login-title
@@ -33,25 +31,38 @@ body .box
   width: 253px
   outline: none!important
   vertical-align: top
+  color: #808080
+  border-width: 1px 1px 1px 3px
+  border-style: solid
 
 .transportadora
-  border-left: solid 2px $cor-amarelo
+  border-color: transparent transparent transparent $cor-amarelo
 
   &:hover
-    border: solid 1px $cor-amarelo
-    border-left: solid 3px $cor-amarelo
+    border-color: $cor-amarelo
     color: $cor-amarelo
 
-    .icon-login-transportadora
-      background-color: $cor-amarelo
-
 .viavarejo
-  border-left: solid 2px $cor-verde
+  border-color: transparent transparent transparent $cor-verde
 
   &:hover
-    border: solid 1px $cor-verde
-    border-left: solid 3px $cor-verde
+    border-color: $cor-verde
     color: $cor-verde
 
-    .icon-login-viavarejo
-      background-color: $cor-verde
+@media (max-width: 767px)
+  .boas-vindas
+    font-size: 24px
+
+  .card-login
+    height: 130px
+    padding: 1rem .5rem
+
+  .icon-login-viavarejo
+    height: 55px
+    width: 90px
+    background-size: 100%
+
+  .icon-login-transportadora
+    height: 55px
+    width: 70px
+    background-size: 100%
