@@ -11,7 +11,62 @@ export class AcessosComponent implements OnInit {
   @Input() lista: ItensGestaoAcessoModel[];
   @Input() config: any;
 
-  funcionalidades = [
+  listaPadrao = [{
+    'id': '1',
+    'nome': 'Administrador GA',
+    'nivel': '0',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+  }, {
+    'id': '2',
+    'nome': 'Administrar TI',
+    'nivel': '0',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+  }, {
+    'id': '3',
+    'nome': 'Consultar EDI',
+    'nivel': '0',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+  }, {
+    'id': '4',
+    'nome': 'Gestão de acessos',
+    'nivel': '1',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+    'filho': 1
+  }, {
+    'id': '5',
+    'nome': 'Cadastro de usuários',
+    'nivel': '1',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+    'filho': 1
+  }, {
+    'id': '54',
+    'nome': 'Gestão de acessos',
+    'nivel': '1',
+    'descricao': '',
+    'status': '1',
+    'dataInclusao': '',
+    'dataUltimaAlteracao': '',
+    'filho': 5
+  }
+
+  ];
+
+  funcionaslidades = [
     {
       'id': '1',
       'nome': 'Administrador GA',
@@ -111,7 +166,11 @@ export class AcessosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ordenarLista(this.listaPadrao);
+  }
 
+  ordenarLista(lista) {
+    return lista;
   }
 
   itemSelecionado(id, e) {

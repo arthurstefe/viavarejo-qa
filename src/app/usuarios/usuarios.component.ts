@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-usuarios',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  @Input() nameButton: string;
+  nameButton: any = 'Add usuário';
 
   constructor() { }
 

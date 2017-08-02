@@ -11,13 +11,6 @@ import { RequestInterceptor } from './request.interceptor';
 
 import { MdSnackBarModule, MdSidenavModule } from '@angular/material';
 
-import {
-  NgTableComponent,
-  NgTableFilteringDirective,
-  NgTablePagingDirective,
-  NgTableSortingDirective
-} from 'ng2-table/ng2-table.js';
-
 import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
@@ -25,10 +18,12 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
 import { GestaoAcessosModule } from './gestao-acessos/gestao-acessos.module';
-import { ListagemComponent } from './listagem/listagem.component';
-import { UsuariosComponent } from './listagem/usuarios/usuarios.component';
-import { FiltroComponent } from './listagem/filtro/filtro.component';
-import { GridComponent } from './listagem/grid/grid.component';
+import { FiltroComponent } from './filtro/filtro.component';
+import { GridComponent } from './grid/grid.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AdicionarNovoComponent } from './adicionar-novo/adicionar-novo.component';
+
+import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 @NgModule({
   declarations: [
@@ -36,10 +31,10 @@ import { GridComponent } from './listagem/grid/grid.component';
     LoginComponent,
     HomeComponent,
     GestaoAcessosComponent,
-    ListagemComponent,
-    UsuariosComponent,
     FiltroComponent,
     GridComponent,
+    UsuariosComponent,
+    AdicionarNovoComponent,
   ],
   imports: [
     LoginModule,
@@ -50,7 +45,8 @@ import { GridComponent } from './listagem/grid/grid.component';
     BrowserAnimationsModule,
     MdSnackBarModule,
     MdSidenavModule,
-    routing
+    routing,
+    Ng2TableModule,
   ],
   providers: [
     appRoutingProviders,
