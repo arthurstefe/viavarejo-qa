@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="field">
+      <div class="field relative">
         <label class="label">SENHA</label>
         <div class="control">
           <input
@@ -56,6 +56,7 @@
             placeholder="Digite a senha"
             required
             #senha="ngModel"
+            #_input
             [ngClass]="{
               'input-error': !senha.valid && senha.touched || formInvalid
             }" />
@@ -63,6 +64,8 @@
            <div class="error-message" *ngIf="!senha.valid && senha.touched || formInvalid">
              O campo <b>SENHA</b> é obrigatório
           </div>
+
+          <span class="toggle-pass" (click)="togglePass(_input, eye)" #eye></span>
         </div>
       </div>
 

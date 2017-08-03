@@ -27,17 +27,18 @@
         </div>
       </div>
 
-      <div class="field" *ngIf="tipo === 'primeiroacesso'">
+      <div class="field relative" *ngIf="tipo === 'primeiroacesso'">
         <label class="label">SENHA PROVISÓRIA</label>
         <div class="control">
           <input
             class="input"
-            type="text"
+            type="password"
             [(ngModel)]="alterarSenhaForm.senhaProvisoria"
             name="senhaProvisoria"
             placeholder="Digite a senha provisória"
             required
             #senhaProvisoria="ngModel"
+            #provisoria
             [ngClass]="{
               'input-error': !senhaProvisoria.valid && senhaProvisoria.touched || formInvalid
             }" />
@@ -45,20 +46,23 @@
            <div class="error-message" *ngIf="!senhaProvisoria.valid && senhaProvisoria.touched || formInvalid">
              O campo <b>SENHA PROVISÓRIA</b> é obrigatório
           </div>
+
+          <span class="toggle-pass" (click)="togglePass(provisoria, eye1)" #eye1></span>
         </div>
       </div>
 
-      <div class="field" *ngIf="tipo !== 'primeiroacesso'">
+      <div class="field relative" *ngIf="tipo !== 'primeiroacesso'">
         <label class="label">SENHA ATUAL</label>
         <div class="control">
           <input
             class="input"
-            type="text"
+            type="password"
             [(ngModel)]="alterarSenhaForm.senhaAtual"
             name="senhaAtual"
             placeholder="Digite a senha atual"
             required
             #senhaAtual="ngModel"
+            #atual
             [ngClass]="{
               'input-error': !senhaAtual.valid && senhaAtual.touched || formInvalid
             }" />
@@ -66,20 +70,23 @@
            <div class="error-message" *ngIf="!senhaAtual.valid && senhaAtual.touched || formInvalid">
              O campo <b>SENHA ATUAL</b> é obrigatório
           </div>
+
+          <span class="toggle-pass" (click)="togglePass(atual, eye2)" #eye2></span>
         </div>
       </div>
 
-      <div class="field">
+      <div class="field relative">
         <label class="label">NOVA SENHA</label>
         <div class="control">
           <input
             class="input"
-            type="text"
+            type="password"
             [(ngModel)]="alterarSenhaForm.novaSenha"
             name="novaSenha"
             placeholder="Digite a nova senha"
             required
             #novaSenha="ngModel"
+            #_novaSenha
             [ngClass]="{
               'input-error': !novaSenha.valid && novaSenha.touched || formInvalid
             }" />
@@ -87,20 +94,23 @@
            <div class="error-message" *ngIf="!novaSenha.valid && novaSenha.touched || formInvalid">
              O campo <b>NOVA SENHA</b> é obrigatório
           </div>
+
+          <span class="toggle-pass" (click)="togglePass(_novaSenha, eye3)" #eye3></span>
         </div>
       </div>
 
-      <div class="field">
+      <div class="field relative">
         <label class="label">CONFIRME A SENHA</label>
         <div class="control">
           <input
             class="input"
-            type="text"
+            type="password"
             [(ngModel)]="alterarSenhaForm.confirmeSenha"
             name="confirmeSenha"
             placeholder="Confirme a senha"
             required
             #confirmeSenha="ngModel"
+            #_confirmar
             [ngClass]="{
               'input-error': !confirmeSenha.valid && confirmeSenha.touched || formInvalid
             }" />
@@ -108,6 +118,8 @@
            <div class="error-message" *ngIf="!confirmeSenha.valid && confirmeSenha.touched || formInvalid">
              O campo <b>CONFIRME A SENHA</b> é obrigatório
           </div>
+
+          <span class="toggle-pass" (click)="togglePass(_confirmar, eye4)" #eye4></span>
         </div>
       </div>
 

@@ -124,4 +124,16 @@ export class AcessoComponent implements OnInit {
       }
     });
   }
+
+  togglePass(input: any, element: any) {
+    const attr = input.getAttribute('type');
+
+    if (attr === 'password') {
+      element.classList.add('show');
+      input.setAttribute('type', 'text');
+    } else {
+      element.classList.remove('show');
+      input.setAttribute('type', 'password');
+    }
+  }
 }
