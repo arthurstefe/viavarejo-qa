@@ -3,6 +3,7 @@
 .box
   display: inline-grid
   box-shadow: 2.1px 2.1px 8px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.1)
+  padding: 40px
 
 .icon-transportadora
   height: 30px
@@ -24,19 +25,33 @@
   max-width: 440px
 
 .btn-entrar
-  background: url('../../../assets/images/forma-1-copiar-2.svg') no-repeat 95% center $kelly-green
+  background-color: $kelly-green
   font-size: 20px
   height: 56px
   width: 234px
   font-weight: bold
   text-align: center
+  display: inline-block
+    
+  &:hover
+    background-color: #007322 !important
+
+  .icon
+    background: url('../../../assets/images/forma-1-copiar-2.svg') no-repeat center
+    width: 17px
+    height: 12px
+    float: right
+    display: inline-block
+    margin: 4px 10px 0 0
 
 .btn-voltar
-  color: $warm-grey
+  color: #02afbf
   font-size: 20px
   height: 56px
   margin-right: 9px
-  text-decoration: none
+
+  &:hover
+    color: #017580
 
 .field
   margin-bottom: 20px
@@ -56,13 +71,16 @@
       font-family: $font-family
 
       &:focus
-        border-top: solid 2px $kelly-green
+        border-top: solid 2px #02afbf
 
       &::placeholder
         color: $greyish
 
       &.input-error
         border-color: red
+
+      &.sucesso
+        border-top: 2px solid $kelly-green
 
   .error-message
     font-size: 12px
@@ -74,3 +92,10 @@
 
 .g-recaptcha
   margin: 10px 0 0
+
+@media (max-width: 767px)
+  .btn-entrar
+    float: right
+      
+    .icon
+      display: none

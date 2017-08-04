@@ -18,7 +18,8 @@
             required
             #alterarSenhaLogin="ngModel"
             [ngClass]="{
-              'input-error': !alterarSenhaLogin.valid && alterarSenhaLogin.touched || formInvalid
+              'input-error': !alterarSenhaLogin.valid && alterarSenhaLogin.touched || formInvalid,
+              'sucesso': alterarSenhaLogin.valid && alterarSenhaLogin.touched
             }" />
 
            <div class="error-message" *ngIf="!alterarSenhaLogin.valid && alterarSenhaLogin.touched || formInvalid">
@@ -40,7 +41,8 @@
             #senhaProvisoria="ngModel"
             #provisoria
             [ngClass]="{
-              'input-error': !senhaProvisoria.valid && senhaProvisoria.touched || formInvalid
+              'input-error': !senhaProvisoria.valid && senhaProvisoria.touched || formInvalid,
+              'sucesso': senhaProvisoria.valid && senhaProvisoria.touched
             }" />
 
            <div class="error-message" *ngIf="!senhaProvisoria.valid && senhaProvisoria.touched || formInvalid">
@@ -64,7 +66,8 @@
             #senhaAtual="ngModel"
             #atual
             [ngClass]="{
-              'input-error': !senhaAtual.valid && senhaAtual.touched || formInvalid
+              'input-error': !senhaAtual.valid && senhaAtual.touched || formInvalid,
+              'sucesso': senhaAtual.valid && senhaAtual.touched
             }" />
 
            <div class="error-message" *ngIf="!senhaAtual.valid && senhaAtual.touched || formInvalid">
@@ -88,7 +91,8 @@
             #novaSenha="ngModel"
             #_novaSenha
             [ngClass]="{
-              'input-error': !novaSenha.valid && novaSenha.touched || formInvalid
+              'input-error': !novaSenha.valid && novaSenha.touched || formInvalid,
+              'sucesso': novaSenha.valid && novaSenha.touched
             }" />
 
            <div class="error-message" *ngIf="!novaSenha.valid && novaSenha.touched || formInvalid">
@@ -112,7 +116,8 @@
             #confirmeSenha="ngModel"
             #_confirmar
             [ngClass]="{
-              'input-error': !confirmeSenha.valid && confirmeSenha.touched || formInvalid
+              'input-error': !confirmeSenha.valid && confirmeSenha.touched || formInvalid,
+              'sucesso': confirmeSenha.valid && confirmeSenha.touched
             }" />
 
            <div class="error-message" *ngIf="!confirmeSenha.valid && confirmeSenha.touched || formInvalid">
@@ -133,7 +138,8 @@
             required
             #perguntaSeguranca="ngModel"
             [ngClass]="{
-              'input-error': !perguntaSeguranca.valid && perguntaSeguranca.touched || formInvalid
+              'input-error': !perguntaSeguranca.valid && perguntaSeguranca.touched || formInvalid,
+              'sucesso': perguntaSeguranca.valid && perguntaSeguranca.touched
             }">
             <option>Selecione...</option>
             <option>Pergunta 1</option>
@@ -162,7 +168,8 @@
             required
             #respostaPergunta="ngModel"
             [ngClass]="{
-              'input-error': !respostaPergunta.valid && respostaPergunta.touched || formInvalid
+              'input-error': !respostaPergunta.valid && respostaPergunta.touched || formInvalid,
+              'sucesso': respostaPergunta.valid && respostaPergunta.touched
             }" />
 
             <div class="error-message" *ngIf="!respostaPergunta.valid && respostaPergunta.touched || formInvalid">
@@ -175,10 +182,7 @@
       <div class="block btn-wrapper">
         <a class="button is-link btn-voltar" routerLink="/login">Voltar</a>
         <button class="button is-success btn-entrar" type="submit">
-          <span>CONFIRMAR</span>
-          <span class="icon is-small">
-            <i class="fa fa-arrow-right"></i>
-          </span>
+          CONFIRMAR <i class="icon"></i>
         </button>
       </div>
     </div>

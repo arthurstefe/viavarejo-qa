@@ -17,7 +17,8 @@
             required
             #loginEmpresa="ngModel"
             [ngClass]="{
-              'input-error': !loginEmpresa.valid && loginEmpresa.touched || formInvalid
+              'input-error': !loginEmpresa.valid && loginEmpresa.touched || formInvalid,
+              'sucesso': loginEmpresa.valid && loginEmpresa.touched
             }" />
 
            <div class="error-message" *ngIf="!loginEmpresa.valid && loginEmpresa.touched || formInvalid">
@@ -37,7 +38,8 @@
             required
             #login="ngModel"
             [ngClass]="{
-              'input-error': !login.valid && login.touched || formInvalid
+              'input-error': !login.valid && login.touched || formInvalid,
+              'sucesso': login.valid && login.touched
             }" />
 
            <div class="error-message" *ngIf="!login.valid && login.touched || formInvalid">
@@ -58,7 +60,8 @@
             #senha="ngModel"
             #_input
             [ngClass]="{
-              'input-error': !senha.valid && senha.touched || formInvalid
+              'input-error': !senha.valid && senha.touched || formInvalid,
+              'sucesso': senha.valid && senha.touched
             }" />
 
            <div class="error-message" *ngIf="!senha.valid && senha.touched || formInvalid">
@@ -75,7 +78,7 @@
 
       <div class="block btn-wrapper">
         <a class="button is-link btn-voltar" routerLink="/login">Voltar</a>
-        <button class="button is-success btn-entrar" type="submit">ENTRAR</button>
+        <button class="button is-success btn-entrar" type="submit">ENTRAR <i class="icon"></i></button>
       </div>
     </div>
   </form>
