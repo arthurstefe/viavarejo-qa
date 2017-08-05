@@ -13,4 +13,4 @@
 <p></p>
 
 PERMISSÕES DE ACESSO
-<app-acessos [lista]="listPermissoes" [config]="config"></app-acessos>
+<app-acessos [lista]="listPermissoes" [config]="config" (salvarItemService)="salvarItem($event)" (editarItemService)="editarItem($event)"></app-acessos>

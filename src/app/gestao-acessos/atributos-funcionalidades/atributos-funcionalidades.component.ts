@@ -34,12 +34,18 @@ export class AtributosFuncionalidadesComponent implements OnInit {
   }
 
   salvarItem(item: ItensGestaoAcessoModel) {
-    console.log(item);
     this.gestaoAcessosService.incluirAtributosFuncionalidade(item).subscribe(
       resp => {
         this.carregarLista();
       });
   }
 
+  editarItem(item: ItensGestaoAcessoModel) {
+    console.log(item);
+    this.gestaoAcessosService.atualizarAtributosFuncionalidade(item).subscribe(
+      resp => {
+        this.carregarLista();
+      });
+  }
 
 }

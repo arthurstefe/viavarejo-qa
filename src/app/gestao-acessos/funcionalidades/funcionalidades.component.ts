@@ -28,7 +28,6 @@ export class FuncionalidadesComponent implements OnInit {
   }
 
   salvarItem(item: ItensGestaoAcessoModel) {
-    console.log(item);
     this.gestaoAcessosService.incluirFuncionalidades(item).subscribe(
       resp => {
         this.carregarLista();
@@ -43,8 +42,11 @@ export class FuncionalidadesComponent implements OnInit {
     );
   }
 
-  genID() {
-    const id = Date.now();
-    return Math.floor(Math.random() * id) + id;
+  editarItem(item: ItensGestaoAcessoModel) {
+    console.log(item);
+    this.gestaoAcessosService.atualizarFuncionalidades(item).subscribe(
+      resp => {
+        this.carregarLista();
+      });
   }
 }

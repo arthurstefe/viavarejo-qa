@@ -12,149 +12,7 @@ export class AcessosComponent implements OnInit {
   @Input() config: any;
 
   @Output() salvarItemService = new EventEmitter<ItensGestaoAcessoModel>();
-
-  listaPadrao = [{
-    'id': '1',
-    'nome': 'Administrador GA',
-    'nivel': '0',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }, {
-    'id': '2',
-    'nome': 'Administrar TI',
-    'nivel': '0',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }, {
-    'id': '3',
-    'nome': 'Consultar EDI',
-    'nivel': '0',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }, {
-    'id': '4',
-    'nome': 'Gestão de acessos',
-    'nivel': '1',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }, {
-    'id': '5',
-    'nome': 'Cadastro de usuários',
-    'nivel': '1',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }, {
-    'id': '54',
-    'nome': 'Listar usuário',
-    'nivel': '5',
-    'descricao': '',
-    'status': '1',
-    'dataInclusao': '',
-    'dataUltimaAlteracao': '',
-  }
-
-  ];
-
-  funcionaslidades = [
-    {
-      'id': '1',
-      'nome': 'Administrador GA',
-      'nivel': '0',
-      'descricao': '',
-      'status': '1',
-      'dataInclusao': '',
-      'dataUltimaAlteracao': '',
-      'subnivel': [
-        {
-          'id': '4',
-          'nome': 'Gestão de acessos',
-          'nivel': '1',
-          'descricao': '',
-          'status': '1',
-          'dataInclusao': '',
-          'dataUltimaAlteracao': '',
-          'subnivel': []
-        },
-        {
-          'id': '5',
-          'nome': 'Cadastro de usuários',
-          'nivel': '1',
-          'descricao': '',
-          'status': '1',
-          'dataInclusao': '',
-          'dataUltimaAlteracao': '',
-          'subnivel': [{
-            'id': '54',
-            'nome': 'Gestão de acessos',
-            'nivel': '1',
-            'descricao': '',
-            'status': '1',
-            'dataInclusao': '',
-            'dataUltimaAlteracao': '',
-            'subnivel': [{
-              'id': '545',
-              'nome': 'Gestão de acessos',
-              'nivel': '1',
-              'descricao': '',
-              'status': '1',
-              'dataInclusao': '',
-              'dataUltimaAlteracao': '',
-              'subnivel': []
-            }]
-          }]
-        }
-      ]
-    },
-    {
-      'id': '2',
-      'nome': 'Administrar TI',
-      'nivel': '0',
-      'descricao': '',
-      'status': '1',
-      'dataInclusao': '',
-      'dataUltimaAlteracao': '',
-      'subnivel': []
-    },
-    {
-      'id': '10',
-      'nome': 'Consultar EDI',
-      'nivel': '0',
-      'descricao': '',
-      'status': '1',
-      'dataInclusao': '',
-      'dataUltimaAlteracao': '',
-      'subnivel': [{
-        'id': '7',
-        'nome': 'Gestão',
-        'nivel': '10',
-        'descricao': '',
-        'status': '1',
-        'dataInclusao': '',
-        'dataUltimaAlteracao': '',
-        'subnivel': []
-      }]
-    },
-    {
-      'id': '6',
-      'nome': 'Cadastro de transportadoras',
-      'nivel': '0',
-      'descricao': '',
-      'status': '1',
-      'dataInclusao': '',
-      'dataUltimaAlteracao': '',
-      'subnivel': [],
-    }
-  ];
+  @Output() editarItemService = new EventEmitter<any>();
 
   addList: string;
   accordionOpen = [];
@@ -208,7 +66,10 @@ export class AcessosComponent implements OnInit {
   }
 
   itemSelecionado(id, e) {
-    console.log(id, e);
+    const obj = <ItensGestaoAcessoModel>[];
+    obj.id = id;
+    obj.status = e ? 1 : 0;
+    this.editarItemService.emit(obj);
   }
 
   accordion(e, id) {

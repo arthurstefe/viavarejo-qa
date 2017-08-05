@@ -17,13 +17,18 @@ export class GestaoAcessosService {
   incluirFuncionalidades(item: ItensGestaoAcessoModel) {
     return this.http.post<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'funcionalidades', JSON.stringify(item));
   }
-
+  atualizarFuncionalidades(item: ItensGestaoAcessoModel) {
+    return this.http.patch<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'funcionalidades/' + item.id, JSON.stringify(item));
+  }
 
   getAtributosFuncionalidade() {
     return this.http.get<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'acoes');
   }
   incluirAtributosFuncionalidade(item: ItensGestaoAcessoModel) {
     return this.http.post<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'acoes', JSON.stringify(item));
+  }
+  atualizarAtributosFuncionalidade(item: ItensGestaoAcessoModel) {
+    return this.http.patch<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'acoes/' + item.id, JSON.stringify(item));
   }
 
   getPerfis() {
@@ -32,6 +37,9 @@ export class GestaoAcessosService {
   incluirPerfis(item: ItensGestaoAcessoModel) {
     return this.http.post<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'perfis', JSON.stringify(item));
   }
+  atualizarPerfis(item: ItensGestaoAcessoModel) {
+    return this.http.patch<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'perfis/' + item.id, JSON.stringify(item));
+  }
 
   getPermissoes() {
     return this.http.get<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'permissoes');
@@ -39,5 +47,9 @@ export class GestaoAcessosService {
   incluirPermissoes(item: ItensGestaoAcessoModel) {
     return this.http.post<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'permissoes', JSON.stringify(item));
   }
+  atualizarPermissoes(item: ItensGestaoAcessoModel) {
+    return this.http.patch<ItensGestaoAcessoModel[]>(globals.BASE_URL + 'permissoes/' + item.id, JSON.stringify(item));
+  }
+
 
 }
