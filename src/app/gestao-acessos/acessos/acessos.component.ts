@@ -1,6 +1,6 @@
 import { ItensGestaoAcessoModel } from './../../../models/itens-gestao-acesso.model';
 import { element } from 'protractor';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-acessos',
@@ -10,6 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AcessosComponent implements OnInit {
   @Input() lista: ItensGestaoAcessoModel[];
   @Input() config: any;
+
+  @Output() salvarItemService = new EventEmitter<ItensGestaoAcessoModel>();
 
   listaPadrao = [{
     'id': '1',
@@ -163,10 +165,13 @@ export class AcessosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ordenarLista(this.listaPadrao);
+    this.lista = this.ordenarLista(this.lista);
   }
 
   ordenarLista(lista) {
+    if (lista === undefined) {
+      return [];
+    }
     const novaLista = [];
 
     lista = lista.sort((a, b): number => {
@@ -199,7 +204,6 @@ export class AcessosComponent implements OnInit {
         });
       }
     });
-
     return novaLista;
   }
 
@@ -226,6 +230,7 @@ export class AcessosComponent implements OnInit {
       if (i[1] >= 0) {
         this.lista[i[0]].subnivel[i[1]].subnivel.push(novoItem);
       } else {
+        this.lista[i[0]].subnivel = this.lista[i[0]].subnivel || [];
         this.lista[i[0]].subnivel.push(novoItem);
       }
     }
@@ -244,7 +249,7 @@ export class AcessosComponent implements OnInit {
   }
 
   salvarItem(item: ItensGestaoAcessoModel) {
-    console.log(item);
+    this.salvarItemService.emit(item);
   }
 
   genID() {

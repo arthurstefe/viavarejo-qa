@@ -1,0 +1,112 @@
+{
+  "funcionalidades": [
+    {
+      "id": 1,
+      "nome": "Administrar Gestão de acessos",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 2,
+      "nome": "Administrar TI",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 3,
+      "nome": "Gestão de acessos",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 4,
+      "nome": "Gestão de acessos",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    }
+  ],
+  "acoes": [
+    {
+      "id": 1,
+      "nome": "Incluir dados",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 2,
+      "nome": "Excluir ddos",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 3
+    }
+  ],
+  "perfis": [
+    {
+      "id": 1,
+      "nome": "Administrador GA",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 2,
+      "nome": "Transportador",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    }
+  ],
+  "permissoes": [
+    {
+      "id": 1,
+      "nome": "Permissao1",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    },
+    {
+      "id": 2,
+      "nome": "Permissao2",
+      "nivel": 0,
+      "descricao": "",
+      "status": "",
+      "dataInclusao": "",
+      "dataUltimaAlteracao": ""
+    }
+  ]
+}

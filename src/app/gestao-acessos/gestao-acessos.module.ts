@@ -1,3 +1,4 @@
+import { GestaoAcessosService } from './gestao-acessos.service';
 import { SelecaoItemModule } from './selecao-item/selecao-item/selecao-item.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,15 @@ import { AtributosFuncionalidadesComponent } from './atributos-funcionalidades/a
   exports: [
     MdTabsModule
   ],
-  declarations: [AcessosComponent, SelecaoItemComponent, PerfisAcessoComponent, PermissoesAcessoComponent, FuncionalidadesComponent, AtributosFuncionalidadesComponent]
+    providers: [
+    GestaoAcessosService
+  ],
+  declarations: [
+    AcessosComponent,
+    SelecaoItemComponent,
+    PerfisAcessoComponent,
+    PermissoesAcessoComponent,
+    FuncionalidadesComponent,
+    AtributosFuncionalidadesComponent]
 })
 export class GestaoAcessosModule { }
