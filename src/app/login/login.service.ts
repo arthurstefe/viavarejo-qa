@@ -78,7 +78,7 @@ export class LoginService {
     return this.loggedIn;
   }
 
-  getUserLogged() {
+   getUserLogged() {
     if (this.isLoggedIn()) {
       return JSON.parse(localStorage.getItem(this.STORAGE_USER));
     }

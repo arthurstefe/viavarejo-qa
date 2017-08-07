@@ -39,6 +39,13 @@ export class UsuarioService {
   //   ]);
   // }
 
+  getPerguntaSecreta(alterarSenha: AlterarSenhaModel) {
+    return this.http.post(globals.BASE_URL + 'usuarios/perguntasSecretas/' + alterarSenha.chave,
+      JSON.stringify(alterarSenha)
+    );
+  }
+
+
   updatePassword(alterarSenha: AlterarSenhaModel) {
     alterarSenha.chave = alterarSenha.chave || '';
     return this.http.post<ResponseBaseModel>(globals.BASE_URL + 'usuarios/senhas/redefinicoes/', {

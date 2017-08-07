@@ -36,7 +36,7 @@ export class AlterarsenhaComponent implements OnInit {
       this.perguntaSecreta = this.usuario.perguntaSecreta;
       this.alterarSenhaProximoLogon = this.usuario.alterarSenhaProximoLogon;
     }
-    this.alterarSenhaForm.pergunta = this.perguntaSecreta || 'Pergunta secreta?';
+    // this.alterarSenhaForm.pergunta = this.perguntaSecreta || 'Pergunta secreta?';
     activatedRoute.params.subscribe(params => {
       if (params.chave) {
         this.chavePrimeiroAcesso = params.chave;
@@ -51,6 +51,15 @@ export class AlterarsenhaComponent implements OnInit {
         this.title = '- Primeiro acesso';
         break;
     }
+    if (this.chavePrimeiroAcesso !== '' && this.tipo === 'alterarsenhaesqueceu') {
+      this.getSenhaSecreta();
+    }
+  }
+
+  getSenhaSecreta() {
+    this.usuarioService.getPerguntaSecreta(this.alterarSenhaForm).subscribe(resp => {
+      this.perguntaSecreta = resp['perguntaSecreta'];
+    });
   }
 
   alterarSenha(f: NgForm) {

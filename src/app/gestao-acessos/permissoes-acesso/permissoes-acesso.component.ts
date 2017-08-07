@@ -11,6 +11,7 @@ export class PermissoesAcessoComponent implements OnInit {
 
   listPermissoes: ItensGestaoAcessoModel[];
   config: any;
+  listPerfis: ItensGestaoAcessoModel[];
 
   constructor(private gestaoAcessosService: GestaoAcessosService) {
     this.config = {
@@ -22,6 +23,15 @@ export class PermissoesAcessoComponent implements OnInit {
 
   ngOnInit() {
     this.carregarLista();
+    this.carregarComboPerfis();
+  }
+
+  carregarComboPerfis() {
+    this.gestaoAcessosService.getPerfis().subscribe(
+      resp => {
+        this.listPerfis = resp;
+      }
+    );
   }
 
   carregarLista() {

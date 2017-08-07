@@ -4,7 +4,7 @@
     <div class="select">
       <select>
         <option>Selecione um perfil</option>
-        <option>Administrador TI</option>
+        <option *ngFor="let item of listPerfis" >{{item.nome}}</option>
       </select>
     </div>
   </div>
