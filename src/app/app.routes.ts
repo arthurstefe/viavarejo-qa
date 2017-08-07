@@ -42,6 +42,10 @@ export const routes: Routes = [
           { path: 'atributos', component: AtributosFuncionalidadesComponent }
         ]
       }
+      ,
+      {
+        path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }
+      }
     ]
   },
   {

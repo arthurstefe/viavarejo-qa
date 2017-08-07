@@ -1,0 +1,33 @@
+<div class="action-bar">
+  <div class="filter">
+    <input *ngIf="config.filtering" placeholder="Pesquisar usuário, CPF, empresa, etc..."
+    [ngTableFiltering]="config.filtering"
+    class="input-field"
+    (tableChanged)="onChangeTable(config)"/>
+    <button class="button-filter" type="button">
+      <i class="ico-filter"></i>
+      Filtrar
+    </button>
+  </div>
+  <app-adicionar-novo [name]="nameButton"></app-adicionar-novo>
+</div>
+<ng-table [config]="config"
+          (tableChanged)="onChangeTable(config)"
+          (cellClicked)="onCellClick($event)"
+          [rows]="rows" [columns]="columns">
+</ng-table>
+<pagination *ngIf="config.paging"
+            [boundaryLinks]="true"
+            class="pagination-sm"
+            [(ngModel)]="page"
+            [totalItems]="length"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="numPages = $event"
+            previousText="&lsaquo;"
+            nextText="&rsaquo;"
+            firstText="&laquo;"
+            lastText="&raquo;">
+</pagination>

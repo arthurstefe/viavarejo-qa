@@ -24,6 +24,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdicionarNovoComponent } from './adicionar-novo/adicionar-novo.component';
 
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { TableComponent } from './table/table.component';
+
+import { PaginationModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { Ng2TableModule } from 'ng2-table/ng2-table';
     GridComponent,
     UsuariosComponent,
     AdicionarNovoComponent,
+    TableComponent,
   ],
   imports: [
     LoginModule,
@@ -47,6 +51,7 @@ import { Ng2TableModule } from 'ng2-table/ng2-table';
     MdSidenavModule,
     routing,
     Ng2TableModule,
+    PaginationModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,
