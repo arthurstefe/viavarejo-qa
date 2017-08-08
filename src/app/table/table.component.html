@@ -1,33 +1,76 @@
 <div class="action-bar">
   <div class="filter">
-    <input *ngIf="config.filtering" placeholder="Pesquisar usuário, CPF, empresa, etc..."
-    [ngTableFiltering]="config.filtering"
-    class="input-field"
-    (tableChanged)="onChangeTable(config)"/>
+    <input [(ngModel)]="filterQuery" placeholder="Pesquisar usuário, CPF, empresa, etc..." class="input-field"/>
     <button class="button-filter" type="button">
       <i class="ico-filter"></i>
       Filtrar
     </button>
   </div>
-  <app-adicionar-novo [name]="nameButton"></app-adicionar-novo>
+  <app-adicionar-novo [name]="nameButton" [routerLink]="['/usuarios/criar']"></app-adicionar-novo>
 </div>
-<ng-table [config]="config"
-          (tableChanged)="onChangeTable(config)"
-          (cellClicked)="onCellClick($event)"
-          [rows]="rows" [columns]="columns">
-</ng-table>
-<pagination *ngIf="config.paging"
-            [boundaryLinks]="true"
-            class="pagination-sm"
-            [(ngModel)]="page"
-            [totalItems]="length"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
-            [rotate]="false"
-            (pageChanged)="onChangeTable(config, $event)"
-            (numPages)="numPages = $event"
-            previousText="&lsaquo;"
-            nextText="&rsaquo;"
-            firstText="&laquo;"
-            lastText="&raquo;">
-</pagination>
+<table class="table is-striped is-narrow is-fullwidth" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+       [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+    <thead>
+      <tr>
+          <th>
+              <mfDefaultSorter by="name">NOME</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="email">EMAIL</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="cpf">CPF</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter [by]="empresa">EMPRESA</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="filial">FILIAL</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="cargo">CARGO</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="perfil">PERFIL</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="situacao">SITUAÇÃO</mfDefaultSorter>
+          </th>
+          <th>
+          </th>
+          <th>
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.cpf}}</td>
+        <td>{{item.empresa}}</td>
+        <td>{{item.filial}}</td>
+        <td>{{item.cargo}}</td>
+        <td>{{item.perfil}}</td>
+        <td>{{item.situacao}}</td>
+        <td><i [routerLink]="['/usuarios/editar']">Editar</i></td>
+        <td><i [routerLink]="['/usuarios/editar']">Detalhes</i></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="7">
+            <mfBootstrapPaginator></mfBootstrapPaginator>
+        </td>
+        <td colspan="3">
+            <div class="lines-per-page">
+                <label class="label-control">Exibir linhas por página: </label>
+                <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="15">15</option>
+                </select>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>

@@ -23,10 +23,15 @@ import { GridComponent } from './grid/grid.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdicionarNovoComponent } from './adicionar-novo/adicionar-novo.component';
 
-import { Ng2TableModule } from 'ng2-table/ng2-table';
-import { TableComponent } from './table/table.component';
-
+import { CommonModule }      from '@angular/common';
+import { TableComponent }   from './table/table.component';
+import { DataTableModule } from "angular2-datatable";
+import { DataFilterPipe }   from './table/data-filter.pipe';
 import { PaginationModule } from 'ngx-bootstrap';
+import { EditarComponent } from './usuarios/editar/editar.component';
+import { CriarComponent } from './usuarios/criar/criar.component';
+import { MdSlideToggleModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +43,11 @@ import { PaginationModule } from 'ngx-bootstrap';
     GridComponent,
     UsuariosComponent,
     AdicionarNovoComponent,
+    EditarComponent,
+    DataFilterPipe,
     TableComponent,
+    CriarComponent
+
   ],
   imports: [
     LoginModule,
@@ -50,7 +59,9 @@ import { PaginationModule } from 'ngx-bootstrap';
     MdSnackBarModule,
     MdSidenavModule,
     routing,
-    Ng2TableModule,
+    DataTableModule,
+    CommonModule,
+    MdSlideToggleModule,
     PaginationModule.forRoot(),
   ],
   providers: [

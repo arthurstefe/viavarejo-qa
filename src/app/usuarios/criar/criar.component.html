@@ -1,0 +1,205 @@
+  <div class="fields-box">
+    <h2>Novo usuário</h2>
+    <br>
+    <h3>Dados da conta</h3>
+    <hr>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label lg">NOME</label>
+        <input
+        class="input"
+        type="text"
+        name="name"
+        placeholder="Digite o nome"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">PERFIL</label>
+        <select class="select md">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+      <div class="field-column">
+        <br>
+        <md-slide-toggle>
+          <label class="label">USUÁRIO VIA VAREJO</label>
+        </md-slide-toggle>
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field-column">
+        <div class="field relative">
+          <label class="label">SENHA</label>
+          <div class="control">
+            <input
+            class="input sm"
+            type="password"
+            name="senha"
+            placeholder="Nova a senha"
+            #_input
+            />
+          </div>
+          <span class="toggle-pass" (click)="togglePass(_input, eye)" #eye></span>
+        </div>
+      </div>
+      <div class="field-column button-side">
+        <button type="button" name="button" class="button-outline sm">Gerar nova senha</button>
+      </div>
+    </div>
+  </div>
+  <div class="fields-box">
+    <h3>Dados da empresa</h3>
+    <hr>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">EMPRESA</label>
+        <select class="select lg">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+      <div class="field-column">
+        <label class="label">FILIAL</label>
+        <select class="select lg">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+      <div class="field-column">
+        <label class="label">CARGO</label>
+        <select class="select lg">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field-column">
+        <div class="field-column">
+          <label class="label lg">CNPJ</label>
+          <input
+          class="input"
+          type="text"
+          name="name"
+          placeholder="Digite o nome"
+          required
+          />
+        </div>
+      </div>
+      <div class="field-column">
+        <label class="label">GRUPO</label>
+        <select class="select lg">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="fields-row fields-box">
+    <div class="fields-box col-50">
+      <h3>Documentos</h3>
+      <hr>
+      <div class="fields-row">
+        <div class="field-column">
+          <label class="label sm">CPF</label>
+          <input
+          class="input sm"
+          type="text"
+          name="name"
+          placeholder="Digite o cpf"
+          required
+          />
+        </div>
+        <div class="field-column">
+          <label class="label">DATA DE NASCIMENTO</label>
+          <input
+          class="input sm"
+          type="text"
+          name="name"
+          placeholder="dd/mm/aaaa"
+          required
+          />
+        </div>
+      </div>
+      <div class="fields-row">
+        <div class="field-column">
+          <label class="label sm">RG</label>
+          <input
+          class="input sm"
+          type="text"
+          name="name"
+          required
+          />
+        </div>
+        <div class="field-column">
+          <label class="label sm">ÓRGÃO EXPEDITOR</label>
+          <input
+          class="input e-sm"
+          type="text"
+          name="name"
+          required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="fields-box col-50">
+      <h3>Dados de contato</h3>
+      <hr>
+      <div class="fields-row">
+        <div class="field-column">
+          <label class="label sm">E-MAIL</label>
+          <input
+          class="input LG"
+          type="text"
+          name="name"
+          placeholder=""
+          required
+          />
+        </div>
+        <div class="field-column">
+          <label class="label">CELULAR</label>
+          <input
+          class="input md"
+          type="text"
+          name="name"
+          placeholder=""
+          required
+          />
+        </div>
+      </div>
+      <div class="fields-row">
+        <div class="field-column">
+          <label class="label sm">TELEFONE FIXO</label>
+          <input
+          class="input md"
+          type="text"
+          name="name"
+          required
+          />
+        </div>
+        <div class="field-column">
+          <label class="label sm">RAMAL</label>
+          <input
+          class="input e-sm"
+          type="text"
+          name="name"
+          required
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fields-box end-line"></div>
+  <div class="fields-box">
+    <div class="fields-row actions">
+      <button type="button" name="button" class="button-cancel">Cancelar</button>
+      <button type="button" name="button" class="button-save">Cadastrar</button>
+    </div>
+  </div>
