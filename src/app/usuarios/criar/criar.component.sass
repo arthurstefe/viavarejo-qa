@@ -1,0 +1,148 @@
+@import '../../colors'
+
+.fields-box
+  width: 915px
+  margin: 0 auto
+  padding-bottom: 50px
+
+  h2
+    font-size: 24px
+    text-align: left
+    color: #171717
+  h3
+    font-size: 20px
+    text-align: left
+    color: #017580
+  hr
+    background-color: #017580
+    height: 1px
+    margin-top: 0
+    margin-bottom: 20px
+
+.fields-row
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: flex-start
+  align-items: flex-end
+  align-content: center
+  margin-bottom: 15px
+
+  .field-column
+    margin-right: 20px
+
+    .label
+      margin-bottom: 0
+      color: #017580
+      font-size: 14px
+
+    input
+      background-color: $white
+      border: solid 1px $white-two
+      border-radius: 2px
+      border-top: solid 2px $greyish
+      font-family: $font-family
+
+      &:focus
+        border-top: solid 2px #02afbf
+
+      &::placeholder
+        color: $greyish
+
+      &.input-error
+        border-color: red
+
+      &.sucesso
+        border-top: 2px solid $kelly-green
+
+    .select
+      height: 36px
+      border-radius: 2px
+      background-color: #ffffff
+      border: solid 1px #e0e0e0
+      border-top: solid 2px #a9a9a9
+
+
+    .select select
+       background: transparent
+       width: 268px
+       padding: 5px
+       font-size: 16px
+       line-height: 1
+       border: 0
+       border-radius: 0
+       height: 34px
+       -webkit-appearance: none
+
+
+.toggle-pass
+    right: 10px
+    top: 29px
+
+.button-outline
+  width: 140px
+  height: 36px
+  border-radius: 2px
+  background-color: #ffffff
+  border: solid 1px #808080
+  color: #808080
+
+.button-side
+  margin-left: 0 !important
+
+.sm
+  width: 145px
+
+.md
+  width: 195px
+
+.lg
+  width: 285px
+
+.e-sm
+  width: 80px
+
+.end-line
+  background-color: #a9a9a9
+  border: none
+  display: block
+  height: 1px !important
+  margin-top: 0
+  margin-bottom: 20px
+  padding-bottom: 0
+
+.col-50
+  width: calc(50% - 20px)
+  margin-right: 20px
+
+.actions
+  justify-content: flex-end !important
+
+.button-save
+  width: 148px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #00a532;
+  color: #fff
+  margin-left: 10px
+  border: none
+  cursor: pointer
+
+.button-cancel
+  width: 148px;
+  height: 40px;
+  border-radius: 0;
+  border: none
+  background-color: #fff;
+  color: #808080
+  cursor: pointer
+
+@media (max-width: 1024px)
+  .sm, .md, .lg
+    width: 100%
+
+  .fields-box
+    width: 100%
+
+  .field-column
+    width: 100%

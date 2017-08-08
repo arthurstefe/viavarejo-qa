@@ -13,6 +13,8 @@ import { AlterarsenhaComponent } from './login/alterarsenha/alterarsenha.compone
 import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
 import { AcessosComponent } from './gestao-acessos/acessos/acessos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EditarComponent } from './usuarios/editar/editar.component';
+import { CriarComponent } from './usuarios/criar/criar.component';
 
 import { AuthGuard } from './../services/auth-guard.service';
 
@@ -41,10 +43,15 @@ export const routes: Routes = [
           { path: 'funcionalidades', component: FuncionalidadesComponent },
           { path: 'atributos', component: AtributosFuncionalidadesComponent }
         ]
-      }
-      ,
+      },
       {
         path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }
+      },
+      {
+        path: 'usuarios/editar', component: EditarComponent, data: { pageName: 'Usuários' }
+      },
+      {
+        path: 'usuarios/criar', component: CriarComponent, data: { pageName: 'Usuários' }
       }
     ]
   },

@@ -22,14 +22,15 @@
   <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="favicon.png">
   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"> -->
   <style media="screen">
+    a{
+      color: #017580 !important;
+    }
+
 
     .table{
         color: #363636 !important;
         margin-bottom: 1.5rem !important;
-        width: 100% !important;
-        border-radius: 2px !important;
-        background-color: #ffffff !important;
-        border: solid 1px #e0e0e0 !important;
+        font-size: 14px;
     }
 
     thead {
@@ -89,7 +90,30 @@
         color: #017580 !important;
     }
 
+    li.page-item.active {
+        text-decoration: underline;
+        color: #017580 !important;
+    }
 
+    .navbar, .navbar-menu, .navbar-start, .navbar-end {
+        -webkit-box-align: stretch;
+        align-items: stretch;
+        display: -webkit-box;
+        display: flex;
+        flex-direction: row;
+    }
+    li.page-item:first-of-type a {
+        border-left: solid 1px #e0e0e0;
+        border-radius: 2px 0 0 2px;
+    }
+    li.page-item:last-of-type a{
+        border-right: solid 1px #e0e0e0;
+        border-radius: 0 2px 2px 0;
+    }
+
+    .pagination{
+      margin-top: 10px !important;
+    }  
   </style>
 
 </head>
