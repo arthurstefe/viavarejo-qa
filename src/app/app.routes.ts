@@ -15,6 +15,7 @@ import { AcessosComponent } from './gestao-acessos/acessos/acessos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EditarComponent } from './usuarios/editar/editar.component';
 import { CriarComponent } from './usuarios/criar/criar.component';
+import { DetalhesComponent } from './usuarios/detalhes/detalhes.component';
 
 import { AuthGuard } from './../services/auth-guard.service';
 
@@ -44,21 +45,12 @@ export const routes: Routes = [
           { path: 'atributos', component: AtributosFuncionalidadesComponent }
         ]
       },
-      {
-        path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }
-      },
-      {
-        path: 'usuarios/editar', component: EditarComponent, data: { pageName: 'Usuários' }
-      },
-      {
-        path: 'usuarios/criar', component: CriarComponent, data: { pageName: 'Usuários' }
-      }
+      { path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }},
+      { path: 'usuarios/criar', component: CriarComponent, data: { pageName: 'Usuários' }},
+      { path: 'usuarios/editar', component: EditarComponent, data: { pageName: 'Usuários' }},
+      { path: 'usuarios/detalhes', component: DetalhesComponent, data: { pageName: 'Usuários' }}
     ]
   },
-  {
-    path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }
-  },
-
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
