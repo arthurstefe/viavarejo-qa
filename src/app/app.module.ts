@@ -31,6 +31,7 @@ import { PaginationModule } from 'ngx-bootstrap';
 import { EditarComponent } from './usuarios/editar/editar.component';
 import { CriarComponent } from './usuarios/criar/criar.component';
 import { MdSlideToggleModule } from '@angular/material';
+import { DetalhesComponent } from './usuarios/detalhes/detalhes.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MdSlideToggleModule } from '@angular/material';
     EditarComponent,
     DataFilterPipe,
     TableComponent,
-    CriarComponent
+    CriarComponent,
+    DetalhesComponent
 
   ],
   imports: [
