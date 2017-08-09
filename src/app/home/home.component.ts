@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public usuario = <UsuarioModel>{};
   alterarSenhaProximoLogon: boolean;
   idUsuario: number;
+  menuCollapsed: boolean = false;
 
   pageName: string;
 
@@ -39,6 +40,10 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
+  }
+
+  toggleMenu(){
+    this.menuCollapsed = !this.menuCollapsed;
   }
 
 }
