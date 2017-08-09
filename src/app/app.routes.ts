@@ -12,10 +12,22 @@ import { LoginComponent } from './login/login.component';
 import { AlterarsenhaComponent } from './login/alterarsenha/alterarsenha.component';
 import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.component';
 import { AcessosComponent } from './gestao-acessos/acessos/acessos.component';
+
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { EditarComponent } from './usuarios/editar/editar.component';
-import { CriarComponent } from './usuarios/criar/criar.component';
-import { DetalhesComponent } from './usuarios/detalhes/detalhes.component';
+import { UsuariosEditarComponent } from './usuarios/editar/usuarios-editar.component';
+import { UsuariosCriarComponent } from './usuarios/criar/usuarios-criar.component';
+import { UsuariosDetalhesComponent } from './usuarios/detalhes/usuarios-detalhes.component';
+
+import { TransportadorasComponent } from './transportadoras/transportadoras.component';
+import { TransportadorasEditarComponent } from './transportadoras/editar/transportadoras-editar.component';
+import { TransportadorasCriarComponent } from './transportadoras/criar/transportadoras-criar.component';
+import { TransportadorasDetalhesComponent } from './transportadoras/detalhes/transportadoras-detalhes.component';
+
+import { UnidadesComponent } from './unidades/unidades.component';
+import { UnidadesEditarComponent } from './unidades/editar/unidades-editar.component';
+import { UnidadesCriarComponent } from './unidades/criar/unidades-criar.component';
+import { UnidadesDetalhesComponent } from './unidades/detalhes/unidades-detalhes.component';
+
 
 import { AuthGuard } from './../services/auth-guard.service';
 
@@ -46,9 +58,19 @@ export const routes: Routes = [
         ]
       },
       { path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Usuários' }},
-      { path: 'usuarios/criar', component: CriarComponent, data: { pageName: 'Usuários' }},
-      { path: 'usuarios/editar', component: EditarComponent, data: { pageName: 'Usuários' }},
-      { path: 'usuarios/detalhes', component: DetalhesComponent, data: { pageName: 'Usuários' }}
+      { path: 'usuarios/criar', component: UsuariosCriarComponent, data: { pageName: 'Usuários' }},
+      { path: 'usuarios/editar', component: UsuariosEditarComponent, data: { pageName: 'Usuários' }},
+      { path: 'usuarios/detalhes', component: UsuariosDetalhesComponent, data: { pageName: 'Usuários' }},
+
+      { path: 'transportadoras', component: TransportadorasComponent, data: { pageName: 'Transportadoras' }},
+      { path: 'transportadoras/criar', component: TransportadorasCriarComponent, data: { pageName: 'Transportadoras' }},
+      { path: 'transportadoras/editar', component: TransportadorasEditarComponent, data: { pageName: 'Transportadoras' }},
+      { path: 'transportadoras/detalhes', component: TransportadorasDetalhesComponent, data: { pageName: 'Transportadoras' }},
+
+      { path: 'unidades', component: UnidadesComponent, data: { pageName: 'Unidades' }},
+      { path: 'unidades/criar', component: UnidadesCriarComponent, data: { pageName: 'Unidades' }},
+      { path: 'unidades/editar', component: UnidadesEditarComponent, data: { pageName: 'Unidades' }},
+      { path: 'unidades/detalhes', component: UnidadesDetalhesComponent, data: { pageName: 'Unidades' }}
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }

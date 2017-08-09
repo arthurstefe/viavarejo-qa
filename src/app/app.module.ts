@@ -20,7 +20,6 @@ import { GestaoAcessosComponent } from './gestao-acessos/gestao-acessos.componen
 import { GestaoAcessosModule } from './gestao-acessos/gestao-acessos.module';
 import { FiltroComponent } from './filtro/filtro.component';
 import { GridComponent } from './grid/grid.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdicionarNovoComponent } from './adicionar-novo/adicionar-novo.component';
 
 import { CommonModule }      from '@angular/common';
@@ -28,11 +27,21 @@ import { TableComponent }   from './table/table.component';
 import { DataTableModule } from "angular2-datatable";
 import { DataFilterPipe }   from './table/data-filter.pipe';
 import { PaginationModule } from 'ngx-bootstrap';
-import { EditarComponent } from './usuarios/editar/editar.component';
-import { CriarComponent } from './usuarios/criar/criar.component';
 import { MdSlideToggleModule } from '@angular/material';
-import { DetalhesComponent } from './usuarios/detalhes/detalhes.component';
 
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuariosCriarComponent } from './usuarios/criar/usuarios-criar.component';
+import { UsuariosEditarComponent } from './usuarios/editar/usuarios-editar.component';
+import { UsuariosDetalhesComponent } from './usuarios/detalhes/usuarios-detalhes.component';
+
+import { TransportadorasComponent } from './transportadoras/transportadoras.component';
+import { TransportadorasEditarComponent } from './transportadoras/editar/transportadoras-editar.component';
+import { TransportadorasCriarComponent } from './transportadoras/criar/transportadoras-criar.component';
+import { TransportadorasDetalhesComponent } from './transportadoras/detalhes/transportadoras-detalhes.component';
+import { UnidadesComponent } from './unidades/unidades.component';
+import { UnidadesEditarComponent } from './unidades/editar/unidades-editar.component';
+import { UnidadesCriarComponent } from './unidades/criar/unidades-criar.component';
+import { UnidadesDetalhesComponent } from './unidades/detalhes/unidades-detalhes.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +53,19 @@ import { DetalhesComponent } from './usuarios/detalhes/detalhes.component';
     GridComponent,
     UsuariosComponent,
     AdicionarNovoComponent,
-    EditarComponent,
+    UsuariosEditarComponent,
     DataFilterPipe,
     TableComponent,
-    CriarComponent,
-    DetalhesComponent
+    UsuariosCriarComponent,
+    UsuariosDetalhesComponent,
+    TransportadorasComponent,
+    TransportadorasEditarComponent,
+    TransportadorasCriarComponent,
+    TransportadorasDetalhesComponent,
+    UnidadesComponent,
+    UnidadesEditarComponent,
+    UnidadesCriarComponent,
+    UnidadesDetalhesComponent
 
   ],
   imports: [

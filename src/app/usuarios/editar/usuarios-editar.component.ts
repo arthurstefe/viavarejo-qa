@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-editar',
-  templateUrl: './editar.component.html',
-  styleUrls: ['./editar.component.sass']
+  selector: 'app-usuarios-editar',
+  templateUrl: './usuarios-editar.component.html',
+  styleUrls: ['./usuarios-editar.component.sass']
 })
-export class EditarComponent implements OnInit {
+export class UsuariosEditarComponent implements OnInit {
 
   constructor() { }
 
