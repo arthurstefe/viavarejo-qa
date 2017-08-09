@@ -1,14 +1,16 @@
-<nav class="navbar has-shadow">
+<nav class="navbar has-shadow" [ngClass]="{'collapsed' : menuCollapsed}">
+  <div class="navbar-burger burger" (click)="toggleMenu($event)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <!--div class="navbar-close-menu">
+    <span>X</span>
+  </div-->
   <div class="navbar-brand">
     <a class="navbar-item" id="logo-poc" [routerLink]="['/']" >
       <img src="../../assets/images/logo-vertical.png" width="160" height="35" />
     </a>
-
-    <div class="navbar-burger burger" (click)="logout()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
