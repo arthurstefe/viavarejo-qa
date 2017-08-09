@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -9,93 +9,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TableComponent implements OnInit {
 
+    @Input() tableData;
+    @Input() tableColumns;
+    @Input() link;
     public filterQuery = "";
     public rowsOnPage = 10;
     public sortBy = "email";
     public sortOrder = "asc";
     public nameButton = "Criar novo";
-
-  public TableData = [{
-      name: 'Arthur',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Alexandre',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Thiago',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Pedro',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Arthur',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Alexandre',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Thiago',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }, {
-      name: 'Pedro',
-      email: 'teste@teste.com',
-      cpf: '123.456.789-10',
-      empresa: 'HBSIS',
-      filial: 'CD Jundiaí',
-      cargo: 'Analista',
-      perfil: 'Administrador TI',
-      situacao: 'Ativo'
-    }
-  ];
-
-  private data:Array<any> = this.TableData;
+    private data:Array<any> = [];
+    menuCollapsed: boolean = false;
 
   public constructor() {
   }
 
   public ngOnInit():void {
+    this.data = this.tableData;
   }
 
   public toInt(num: string) {
@@ -104,6 +33,10 @@ export class TableComponent implements OnInit {
 
  public sortByWordLength = (a: any) => {
      return a.city.length;
+ }
+
+ toggleFilter(){
+   this.menuCollapsed = !this.menuCollapsed;
  }
 
 }

@@ -147,6 +147,16 @@
   color: #808080
   cursor: pointer
 
+@media (max-width: 550px)
+  .actions
+    display: flex
+    flex-direction: column
+
+    .field-column
+      button
+        width: 100%
+        margin: 5px 0 
+
 @media (max-width: 1024px)
   .sm, .md, .lg, .e-sm, .e-lg
     width: 100%
@@ -156,3 +166,7 @@
 
   .field-column
     width: 100%
+
+  .actions
+    .field-column
+      width: 100%

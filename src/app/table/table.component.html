@@ -1,40 +1,40 @@
+<div class="filter-box" [ngClass]="{'collapsed' : menuCollapsed}">
+  <div class="filter-title">
+    <div class="filter-text">
+      <i class="ico-filter"></i>
+      Filtrar Usuários
+    </div>
+    <div class="grey">
+      <i (click)="toggleFilter($event)">x</i>
+    </div>
+  </div>
+  <div class="filter-body">
+    <label>PERFIL</label> <br>
+    <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1">Teste 1<br>
+    <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2">Teste 2
+  </div>
+  <div class="filter-footer">
+    <button type="button" name="button" class="button-save">Aplicar filtros</button>
+    <button type="button" name="button" class="button-cancel">Limpar</button>
+  </div>
+</div>
+
 <div class="action-bar">
   <div class="filter">
     <input [(ngModel)]="filterQuery" placeholder="Pesquisar usuário, CPF, empresa, etc..." class="input-field"/>
-    <button class="button-filter" type="button">
+    <button class="button-filter" (click)="toggleFilter($event)">
       <i class="ico-filter"></i>
       Filtrar
     </button>
   </div>
-  <app-adicionar-novo [name]="nameButton" [routerLink]="['/usuarios/criar']"></app-adicionar-novo>
+  <app-adicionar-novo [name]="nameButton" [routerLink]="[link]"></app-adicionar-novo>
 </div>
 <table class="table is-striped is-narrow is-fullwidth" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
        [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
     <thead>
       <tr>
-          <th>
-              <mfDefaultSorter by="name">NOME</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="email">EMAIL</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="cpf">CPF</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter [by]="empresa">EMPRESA</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="filial">FILIAL</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="cargo">CARGO</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="perfil">PERFIL</mfDefaultSorter>
-          </th>
-          <th>
-              <mfDefaultSorter by="situacao">SITUAÇÃO</mfDefaultSorter>
+          <th *ngFor="let item of tableColumns">
+              <mfDefaultSorter by="{{item.fieldName}}">{{item.label}}</mfDefaultSorter>
           </th>
           <th>
           </th>

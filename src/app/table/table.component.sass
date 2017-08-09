@@ -61,50 +61,105 @@
 
 
 .table
-  color: #363636 !important;
-  margin-bottom: 1.5rem !important;
+  color: #363636 !important
+  margin-bottom: 1.5rem !important
 
 .table.is-striped tbody tr
-  height: 40px;
+  height: 40px
 
 .table.is-striped tbody tr:not(.is-selected):nth-child(even)
-    background-color: #f2f2f2;
+    background-color: #f2f2f2
 
 .table.is-striped tbody tr:hover
-    background-color: #edfeff;
+    background-color: #edfeff
 
 .table.is-narrow td, .table.is-narrow th
-    padding: 5px 0 5px 5px;
+    padding: 5px 0 5px 5px
 
 .table td, .table th
-    vertical-align: middle;
+    vertical-align: middle
 thead
-    border: solid 1px #e0e0e0;
-    border-bottom: solid #017580;
+    border: solid 1px #e0e0e0
+    border-bottom: solid #017580
 
 tbody
-    border: solid 1px #e0e0e0;
-    border-radius: 2px;
+    border: solid 1px #e0e0e0
+    border-radius: 2px
 
 tfoot
     border: none !important;
 
 select.form-control.input-sm
-    width: 46px;
-    height: 17.3px;
-    border-radius: 2px;
-    background-color: #ffffff;
-    border: solid 1px #e0e0e0;
-    font-size: 11px;
+    width: 46px
+    height: 17.3px
+    border-radius: 2px
+    background-color: #ffffff
+    border: solid 1px #e0e0e0
+    font-size: 11px
 
 tfoot tr td:hover
-    background: #fff;
-    background-color: #fff;
+    background: #fff
+    background-color: #fff
 
 .table tfoot td, .table tfoot th
-    border-width: 0;
-    color: #fff;
+    border-width: 0
+    color: #fff
 
 i
   cursor: pointer
-  
+
+.collapsed
+  right: 0 !important
+
+.filter-box
+  transition: right .3s
+  width: 223px
+  position: fixed
+  height: calc(100% - 127px)
+  top: 70px
+  right: -223px
+  background-color: #ffffff
+  box-shadow: -2.1px 2.1px 8px 0 rgba(0, 0, 0, 0.15)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+
+.filter-title
+  font-size: 18px
+  color: #00a532
+  border-bottom: solid 1px #00a532
+  padding: 10px
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  padding-top: 15px
+
+.filter-body
+  padding: 15px
+  flex-grow: 1
+
+.grey
+  color: #a9a9a9
+
+.filter-footer
+  padding: 15px 
+
+.button-save
+  width: 192.5px
+  height: 40px
+  border-radius: 2px
+  background-color: #00a532
+  color: #fff
+  border: none
+  cursor: pointer
+
+.button-cancel
+  width: 192.5px
+  height: 40px
+  border-radius: 0
+  border: none
+  background-color: #fff
+  color: #808080
+  cursor: pointer
