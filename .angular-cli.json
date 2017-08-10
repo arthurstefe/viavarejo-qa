@@ -22,11 +22,13 @@
       "prefix": "app",
       "styles": [
         "styles.sass",
-        "../node_modules/bulma/bulma.sass"
+        "../node_modules/bulma/bulma.sass",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",
-        "../node_modules/jquery/dist/jquery.min.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

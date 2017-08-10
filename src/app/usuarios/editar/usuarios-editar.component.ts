@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-usuarios-editar',
@@ -7,10 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosEditarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+
+  }
+
+  showModal: boolean = false;
+
+  openModal(){
+    this.showModal = true;
+  }
+
+  closeModal(){
+    this.showModal = false;
+  }
+
+  save(){
+    this.showSuccess("Usuário atualizado com sucesso!");
+  }
+
+  delete(){
+    this.closeModal();
+    this.showSuccess("Usuário excluído com sucesso!");
+  }
+
+  showSuccess(msg) {
+    this.toastr.success(msg, null, {toastLife: 2000});
+  }
 
   ngOnInit() {
   }
+
 
   togglePass(input: any, element: any) {
     const attr = input.getAttribute('type');
@@ -23,5 +52,6 @@ export class UsuariosEditarComponent implements OnInit {
       input.setAttribute('type', 'password');
     }
   }
+
 
 }

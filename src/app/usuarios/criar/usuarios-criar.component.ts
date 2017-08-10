@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-usuarios-criar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosCriarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+      this.toastr.setRootViewContainerRef(vcr);
+   }
 
   ngOnInit() {
+  }
+
+  save(){
+    this.showSuccess("Usuário cadastrado com sucesso!");
+  }
+
+  showSuccess(msg) {
+    this.toastr.success(msg, null, {toastLife: 2000});
   }
 
   togglePass(input: any, element: any) {

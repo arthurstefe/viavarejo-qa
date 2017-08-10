@@ -1,3 +1,19 @@
+<div class="modal" [ngClass]="{'is-active' : showModal}">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"></p>
+      <button class="delete" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      Você tem certeza que deseja excluir esta unidade?
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button modal-btn-cancel" (click)="closeModal()">Cancelar</a>
+      <a class="button modal-btn-confirm" (click)="delete()">Excluir</a>
+    </footer>
+  </div>
+</div>
 <div class="fields-box">
   <h2>Editar dados da unidade</h2>
   <br>
@@ -188,11 +204,11 @@
 <div class="fields-box">
   <div class="fields-row actions">
     <div class="field-column">
-      <button type="button" name="button" class="button-outline">Excluir unidade</button>
+      <button type="button" name="button" class="button-outline" (click)="openModal()">Excluir unidade</button>
     </div>
     <div class="field-column actions">
       <button type="button" name="button" class="button-cancel">Cancelar</button>
-      <button type="button" name="button" class="button-save">Salvar</button>
+      <button type="button" name="button" class="button-save" (click)="save()">Salvar</button>
     </div>
   </div>
 </div>
