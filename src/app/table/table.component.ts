@@ -12,6 +12,9 @@ export class TableComponent implements OnInit {
   @Input() tableData;
   @Input() tableColumns;
   @Input() link;
+  @Input() className;
+
+
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "email";
@@ -19,12 +22,16 @@ export class TableComponent implements OnInit {
   public nameButton = "Criar novo";
   private data:Array<any> = [];
   menuCollapsed: boolean = false;
+  public linkEditar: string = "";
+  public linkDetalhes: string = "";
 
   public constructor() {
   }
 
   public ngOnInit():void {
     this.data = this.tableData;
+    this.linkEditar = "/" + this.className + "/editar";
+    this.linkDetalhes = "/" + this.className + "/detalhes";
   }
 
   public toInt(num: string) {
@@ -53,7 +60,10 @@ export class TableComponent implements OnInit {
         item.setAttribute("class", 'item_' + index + ' active-row');
       }
     }
+  }
 
+  getField(item, field){
+    return item[field];
   }
 
 }

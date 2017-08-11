@@ -28,12 +28,12 @@ export class UsuariosComponent implements OnInit {
   public tableData: Array<any> = [{
       name: 'Arthur',
       email: 'teste@teste.com',
-      cpf: '123.456.789-10',
+      cpf: '000.456.789-10',
       empresa: 'HBSIS',
       filial: 'CD Jundiaí',
       cargo: 'Analista',
       perfil: 'Administrador TI',
-      situacao: 'Ativo'
+      situacao: 'Inativo'
     }, {
       name: 'Alexandre',
       email: 'teste@teste.com',

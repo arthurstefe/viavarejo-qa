@@ -31,58 +31,49 @@
        [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
     <thead>
       <tr>
-          <th *ngFor="let item of tableColumns">
-              <mfDefaultSorter by="{{item.fieldName}}">{{item.label}}</mfDefaultSorter>
-          </th>
-          <th>
-          </th>
-          <th>
-          </th>
+        <th *ngFor="let item of tableColumns">
+            <mfDefaultSorter by="{{item.fieldName}}">{{item.label}}</mfDefaultSorter>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
       </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i">
-        <td>
-          <span class="label-viavarejo">NOME: </span>
-          {{item.name}}
-          <span class="icon table-icon" (click)="openRow(i)">
-            <i class="fa fa-arrow-down"></i>
-          </span>
-          <span class="icon table-icon" [routerLink]="['/usuarios/detalhes']">
-            <i class="fa fa-file-o" aria-hidden="true"></i>
-          </span>
-          <span class="icon table-icon" [routerLink]="['/usuarios/editar']">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </span>
-        </td>
-        <!-- <div id="item_{{i}}"class="hide-lines"> -->
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">E-MAIL: </span>{{item.email}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">CPF: </span>{{item.cpf}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">EMPRESA: </span>{{item.empresa}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">FILIAL: </span>{{item.filial}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">CARGO: </span>{{item.cargo}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">PERFIL: </span>{{item.perfil}}</td>
-          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">SITUAÇÃO: </span>{{item.situacao}}</td>
-          <td class="tables-buttons"><i [routerLink]="['/usuarios/editar']">Editar</i></td>
-          <td class="tables-buttons"><i [routerLink]="['/usuarios/detalhes']">Detalhes</i></td>
-        <!-- </div> -->
+      <td *ngFor="let col of tableColumns; let j = index" [attr.data-index]="j" class="item_{{i}} desactive-row">
+        <span class="label-viavarejo">{{col.label}}: </span>
+          {{item[col.fieldName]}}
+        <span *ngIf="j == 0" class="icon table-icon" (click)="openRow(i)">
+          <i class="fa fa-arrow-down"></i>
+        </span>
+        <span *ngIf="j == 0" class="icon table-icon" [routerLink]="['linkDetalhes']">
+          <i class="fa fa-file-o" aria-hidden="true"></i>
+        </span>
+        <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkEditar]">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+      </td>
+      <td class="tables-buttons"><i class="fa fa-pencil" aria-hidden="true" [routerLink]="[linkEditar]"></i></td>
+      <td class="tables-buttons"><i class="fa fa-file-o" aria-hidden="true" [routerLink]="[linkDetalhes]"></i></td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="7">
-            <mfBootstrapPaginator></mfBootstrapPaginator>
-        </td>
-        <td colspan="3">
-            <div class="lines-per-page">
-                <label class="label-control">Exibir linhas por página: </label>
-                <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="15">15</option>
-                </select>
-            </div>
-        </td>
+      <td colspan="7">
+          <mfBootstrapPaginator></mfBootstrapPaginator>
+      </td>
+      <td colspan="3">
+          <div class="lines-per-page">
+              <label class="label-control">Exibir linhas por página: </label>
+              <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                  <option [ngValue]="5">5</option>
+                  <option [ngValue]="10">10</option>
+                  <option [ngValue]="15">15</option>
+              </select>
+          </div>
+      </td>
     </tr>
     </tfoot>
 </table>
