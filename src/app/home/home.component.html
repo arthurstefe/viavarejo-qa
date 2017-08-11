@@ -57,16 +57,10 @@
           <li>
             <span>Atributos das funcionalidades</span>
           </li>
-          <li>
+          <li [routerLinkActive]="'active'" [routerLink]="['/cadastro-parametros']">
             <span>Cadastro de parâmetros</span>
           </li>
         </ul>
-      </li>
-      <li class="nav-item" [routerLinkActive]="'active'" [routerLink]="['/cadastro-parametros']">
-        <i class="ico-menu-lock-open ico-menu"></i>
-        <span class="nav-txt" >
-          Cadastro&nbsp;de&nbsp;Parâmetros
-        </span>
       </li>
       <li class="nav-item"  [routerLinkActive]="'active'" [routerLink]="['/usuarios']">
         <div class="nav-item-handler">
