@@ -1,0 +1,38 @@
+@import '../../colors'
+
+
+.bloqueios-container
+  width: 500px
+  margin-top: 15px
+
+input
+  background-color: $white
+  border: solid 1px $white-two
+  border-radius: 2px
+  border-top: solid 2px $greyish
+  font-family: $font-family
+  margin: 30px 0 15px 0
+  width: 50%
+
+  &:focus
+    border-top: solid 2px #02afbf
+
+  &::placeholder
+    color: $greyish
+
+  &.input-error
+    border-color: red
+
+  &.sucesso
+    border-top: 2px solid $kelly-green
+
+
+@media (max-width: 550px)
+
+  .bloqueios-container
+    width: calc(100% - 30px)
+    margin-left: 15px
+    margin-right: 15px
+    
+  input
+    width: 100%
