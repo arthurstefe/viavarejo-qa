@@ -25,6 +25,10 @@
 
   <style media="screen">
 
+    .main-menu {
+      z-index: 10 !important;
+    }
+
     .toast-top-right {
       top: auto !important;
       right: auto !important;
@@ -200,6 +204,158 @@
     .pagination{
       margin-top: 10px !important;
     }
+
+    /*Tabela*/
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+        border: none !important;
+        border-radius: 0;
+    }
+
+    tfoot tr {
+      border: none;
+    }
+
+    tfoot tr td {
+      display: block !important;
+    }
+
+    .table-icon {
+      float: right;
+      color: #808080;
+      margin: 0 5px;
+    }
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        position: relative;
+        margin: 5px 0;
+        border-radius: 2px;
+        background-color: #ffffff;
+        border: solid 1px #e0e0e0;
+    }
+
+    tr td:first-of-type {
+        display: block !important;
+        height: 50px;
+        padding-top: 14px !important;
+    }
+
+    tr td {
+        display: block;
+        height: 40px;
+        padding: 10px !important;
+    }
+
+    .table td {
+      border: none !important;
+    }
+
+    tr td:nth-child(even){
+      background-color: #f2f2f2;
+    }
+
+    span.label-viavarejo {
+        font-size: 14px !important;
+        font-weight: bold !important;
+        color: #017580 !important;
+        margin: 5px !important;
+    }
+
+    .tables-buttons {
+      display: none;
+    }
+
+    .desactive-row {
+      display: none;
+    }
+
+    .active-row {
+      display: block;
+    }
+
+    .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+      background-color: #fff !important;
+    }
+
+    @media (min-width: 992px){
+
+      .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+        background-color: #f2f2f2 !important;
+      }
+
+      .hide-lines {
+        display: block;
+      }
+
+      span.label-viavarejo {
+          display: none;
+      }
+
+      .tables-buttons {
+        display: table-cell;
+      }
+
+      .table-icon {
+        display: none !important;
+      }
+
+      thead {
+        display: table-header-group;
+      }
+
+      tbody {
+          border: solid 1px #e0e0e0 !important;
+          border-radius: 2px;
+      }
+
+      tfoot tr {
+        border: inherit;
+      }
+
+      tfoot tr td {
+        display: table-cell !important;
+      }
+
+      tr {
+          display: table-row;
+          height: 40px !important;
+          position: inherit;
+          margin: 1.5rem;
+          border-radius: 0;
+          background-color: #ffffff;
+          border: none;
+      }
+
+      tr td:first-of-type {
+        display: table-cell !important;
+        height: auto;
+        padding-top: auto !important;
+      }
+
+      .desactive-row {
+        display: table-cell !important;
+      }
+
+      tr td {
+          display: table-cell;
+          height: auto;
+          padding: 0;
+          border: none !important;
+      }
+
+      tr td:nth-child(even){
+        background-color: transparent;
+      }
+
+    }
+
   </style>
 
 </head>

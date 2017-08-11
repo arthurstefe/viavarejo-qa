@@ -2,7 +2,7 @@
     overflow: hidden;
     margin-bottom: 10px;
 .input-field
-    width: 300px;
+    width: calc(100% - 97px)
     height: 30px;
     border-radius: 2px;
     background-color: #fff;
@@ -26,7 +26,7 @@
         background-color: #00a532;
 
 .action-bar
-  flex-direction: row;
+  flex-direction: column-reverse
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -51,12 +51,12 @@
         background-color: #027d28;
 
 .lines-per-page
-  float: right;
   width: 156px;
   height: 22px;
   font-size: 11px;
   text-align: left;
   color: #171717;
+  margin: 12px auto
 
 
 
@@ -111,6 +111,10 @@ i
 .collapsed
   right: 0 !important
 
+.filter
+    display: flex
+    width: 100%;
+
 .filter-box
   transition: right .3s
   width: 223px
@@ -123,6 +127,8 @@ i
   display: flex
   flex-direction: column
   justify-content: space-between
+  z-index: 10
+
 
 
 .filter-title
@@ -144,7 +150,7 @@ i
   color: #a9a9a9
 
 .filter-footer
-  padding: 15px 
+  padding: 15px
 
 .button-save
   width: 192.5px
@@ -163,3 +169,19 @@ i
   background-color: #fff
   color: #808080
   cursor: pointer
+
+app-adicionar-novo
+    width: 100% !important
+
+@media (min-width: 992px)
+  app-adicionar-novo
+      width: 148px !important
+
+  .filter
+      width: 395px
+  .action-bar
+    flex-direction: row
+
+  .lines-per-page
+    margin: auto
+    float: right

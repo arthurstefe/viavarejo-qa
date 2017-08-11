@@ -141,13 +141,14 @@
   .actions
     display: flex
     flex-direction: column
-
+    button
+      width: 100%
+      margin: 5px 0
+  .actions
     .field-column
-      button
-        width: 100%
-        margin: 5px 0
+      width: 100% !important
 
-@media (max-width: 1024px)
+@media (max-width: 992px)
   .sm, .md, .lg, .e-sm, .e-lg
     width: 100%
 
@@ -159,4 +160,4 @@
 
   .actions
     .field-column
-      width: 100%
+      width: auto

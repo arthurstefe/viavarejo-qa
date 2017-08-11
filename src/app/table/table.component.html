@@ -41,17 +41,31 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of mf.data">
-        <td>{{item.name}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.cpf}}</td>
-        <td>{{item.empresa}}</td>
-        <td>{{item.filial}}</td>
-        <td>{{item.cargo}}</td>
-        <td>{{item.perfil}}</td>
-        <td>{{item.situacao}}</td>
-        <td><i [routerLink]="['/usuarios/editar']">Editar</i></td>
-        <td><i [routerLink]="['/usuarios/detalhes']">Detalhes</i></td>
+    <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i">
+        <td>
+          <span class="label-viavarejo">NOME: </span>
+          {{item.name}}
+          <span class="icon table-icon" (click)="openRow(i)">
+            <i class="fa fa-arrow-down"></i>
+          </span>
+          <span class="icon table-icon" [routerLink]="['/usuarios/detalhes']">
+            <i class="fa fa-file-o" aria-hidden="true"></i>
+          </span>
+          <span class="icon table-icon" [routerLink]="['/usuarios/editar']">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+        </td>
+        <!-- <div id="item_{{i}}"class="hide-lines"> -->
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">E-MAIL: </span>{{item.email}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">CPF: </span>{{item.cpf}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">EMPRESA: </span>{{item.empresa}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">FILIAL: </span>{{item.filial}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">CARGO: </span>{{item.cargo}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">PERFIL: </span>{{item.perfil}}</td>
+          <td class="item_{{i}} desactive-row"><span class="label-viavarejo">SITUAÇÃO: </span>{{item.situacao}}</td>
+          <td class="tables-buttons"><i [routerLink]="['/usuarios/editar']">Editar</i></td>
+          <td class="tables-buttons"><i [routerLink]="['/usuarios/detalhes']">Detalhes</i></td>
+        <!-- </div> -->
     </tr>
     </tbody>
     <tfoot>

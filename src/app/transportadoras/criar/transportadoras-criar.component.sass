@@ -103,7 +103,7 @@
   width: 80px
 
 .e-lg
-  width: 380px; 
+  width: 380px;
 
 .end-line
   background-color: #a9a9a9
@@ -140,7 +140,18 @@
   color: #808080
   cursor: pointer
 
-@media (max-width: 1024px)
+@media (max-width: 550px)
+  .actions
+    display: flex
+    flex-direction: column
+    button
+      width: 100%
+      margin: 5px 0
+  .actions
+    .field-column
+      width: 100% !important
+
+@media (max-width: 992px)
   .sm, .md, .lg, .e-sm, .e-lg
     width: 100%
 
@@ -149,3 +160,7 @@
 
   .field-column
     width: 100%
+
+  .actions
+    .field-column
+      width: auto
