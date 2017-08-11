@@ -36,6 +36,9 @@ import { UnidadesEditarComponent } from './unidades/editar/unidades-editar.compo
 import { UnidadesCriarComponent } from './unidades/criar/unidades-criar.component';
 import { UnidadesDetalhesComponent } from './unidades/detalhes/unidades-detalhes.component';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { CadastroParametrosComponent } from './cadastro-parametros/cadastro-parametros.component';
+import { CadastroParametrosModule } from './cadastro-parametros/cadastro-parametros.module';
+
 
 @NgModule({
   declarations: [
@@ -59,12 +62,14 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     UnidadesComponent,
     UnidadesEditarComponent,
     UnidadesCriarComponent,
-    UnidadesDetalhesComponent
+    UnidadesDetalhesComponent,
+    CadastroParametrosComponent
 
   ],
   imports: [
     LoginModule,
     GestaoAcessosModule,
+    CadastroParametrosModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,
