@@ -1,3 +1,12 @@
-<p>
-  bloqueio-entregador works!
-</p>
+<div class="bloqueios-container">
+  <div class="field-column">
+    <input
+    class="input"
+    type="text"
+    name="name"
+    placeholder="Pesquisar bloqueio..."
+    required
+    />
+  </div>
+  <app-bloqueios [lista]="listBloqueioEntregador" [config]="config"  (salvarItemService)="salvarItem($event)" (editarItemService)="editarItem($event)"></app-bloqueios>
+</div>

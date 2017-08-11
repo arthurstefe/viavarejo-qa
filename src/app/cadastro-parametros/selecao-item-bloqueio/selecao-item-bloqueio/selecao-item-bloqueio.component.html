@@ -1,0 +1,52 @@
+<div class="selecao-item">
+
+  <div class="columns is-mobile">
+    <div class="column">
+      <md-slide-toggle (change)="onChange($event)" [checked]="item.status == 1 ? true : false">
+        <span *ngIf="!item.editar">
+          <span *ngFor="let num of numero; let numI = index">{{num}}.</span>
+        {{item.nome}}</span>
+      </md-slide-toggle>
+      <input *ngIf="item.editar" type="text" required [(ngModel)]="novoNome" (keyup.enter)="saveItem()" />
+    </div>
+
+    <div class="column is-3 has-text-right">
+      <span class="actions">
+        <span *ngIf="!item.editar; else actionsSave">
+          <a (click)="addItemClick()" *ngIf="config.add === false ? false : true">
+            <span class="icon">
+              <i class="ico ico-plus-circle"></i>
+            </span>
+          </a>
+          <a (click)="editItem()" *ngIf="false">
+            <span class="icon">
+              <i class="fa fa-pencil"></i>
+            </span>
+          </a>
+        </span>
+        <ng-template #actionsSave>
+          <a (click)="saveItem()">
+            <span class="icon">
+              <i class="ico ico-checked"></i>
+            </span>
+          </a>
+          <a (click)="cancelItem()">
+            <span class="icon">
+              <i class="ico ico-trash"></i>
+            </span>
+          </a>
+        </ng-template>
+      </span>
+      <span *ngIf="subnivel > 0">
+       
+        <a class="is-small is-white" (click)="accordionClick()">
+          <span class="icon is-small">
+            <i class="ico " [ngClass]="accordionStatus ? 'ico-chevron-up' : 'ico-chevron-down' "></i>
+          </span>
+      </a>
+      </span>
+
+    </div>
+  </div>
+
+</div>
