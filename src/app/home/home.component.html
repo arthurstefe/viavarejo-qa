@@ -37,29 +37,54 @@
         </span>
         <i class="ico-chevron-left-circle" (click)="toggleMenu($event)"></i>
       </li>
-      <li class="nav-item" [routerLinkActive]="'active'" [routerLink]="['/gestaoacessos']">
-        <i class="ico-menu-lock-open ico-menu"></i>
-        <span class="nav-txt" >
-          Gestão&nbsp;de&nbsp;Acessos
-        </span>
+      <li class="nav-item nav-item-open" [routerLinkActive]="'active'">
+        <div class="nav-item-handler" [routerLink]="['/gestaoacessos']">
+          <i class="ico-menu-lock-open ico-menu"></i>
+          <span class="nav-txt" >
+            Gestão&nbsp;de&nbsp;Acessos
+          </span>
+        </div>
+        <ul class="sub-menu">
+          <li>
+            <span>Permissões de acesso</span>
+          </li>
+          <li>
+            <span>Perfis de acesso</span>
+          </li>
+          <li>
+            <span>Funcionalidades</span>
+          </li>
+          <li>
+            <span>Atributos das funcionalidades</span>
+          </li>
+          <li>
+            <span>Cadastro de parâmetros</span>
+          </li>
+        </ul>
       </li>
       <li class="nav-item"  [routerLinkActive]="'active'" [routerLink]="['/usuarios']">
-        <i class="ico-menu-users ico-menu"></i>
-        <span class="nav-txt">
-          Usuários
-        </span>
+        <div class="nav-item-handler">
+          <i class="ico-menu-users ico-menu"></i>
+          <span class="nav-txt">
+            Usuários
+          </span>
+        </div>
       </li>
       <li class="nav-item" [routerLinkActive]="'active'" [routerLink]="['/transportadoras']">
-        <i class="ico-menu-truck ico-menu"></i>
-        <span class="nav-txt">
-          Transportadoras
-        </span>
+        <div class="nav-item-handler">
+          <i class="ico-menu-truck ico-menu"></i>
+          <span class="nav-txt">
+            Transportadoras
+          </span>
+        </div>
       </li>
       <li class="nav-item" [routerLinkActive]="'active'" [routerLink]="['/unidades']">
-        <i class="ico-menu-building ico-menu"></i>
-        <span class="nav-txt">
-          Unidades
-        </span>
+        <div class="nav-item-handler">
+          <i class="ico-menu-building ico-menu"></i>
+          <span class="nav-txt">
+            Unidades
+          </span>
+        </div>
       </li>
     </ul>
   </nav>
