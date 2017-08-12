@@ -21,9 +21,38 @@
   <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
   <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="favicon.png">
   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" /> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style media="screen">
+
+  #toast-container>.toast-success {
+    background-size: 14px;
+  }
+
+  .content-application button {
+    font-family: Calibri !important
+  }
+
+  .content-application input {
+    font-family: Calibri !important
+  }
+
+  .table tr:hover {
+      background-color: transparent !important;
+  }
+
+  tfoot tr td:nth-child(even) {
+      background-color: #fff;
+  }
+
+  ul.pagination {
+      position: absolute;
+      width: 99.99999%;
+      bottom: 56px;
+  }
+
+
 
     .main-menu {
       z-index: 10 !important;
@@ -57,6 +86,7 @@
         background-color: #ffffff !important;
         box-shadow: 2.1px 2.1px 8px 0 rgba(0, 0, 0, 0.15) !important;
         font-size: 1.1em !important;
+        width: 511px !important;
     }
 
     .modal-card-head {
@@ -77,10 +107,25 @@
         border-bottom-right-radius: 0 !important;
         border-top: none !important;
         justify-content: center !important;
+        padding-bottom: 25px !important;
     }
 
     .delete {
       background-color: #fff !important;
+      height: 28px !important;
+      max-height: 28px !important;
+      max-width: 28px !important;
+      min-height: 28px !important;
+      min-width: 28px !important;
+      width: 28px !important;
+    }
+
+    .modal-card-head {
+        padding: 0 !important;
+    }
+
+    .modal-card-body {
+      padding: 10px !important;
     }
 
     .delete:before, .delete:after {
@@ -102,10 +147,18 @@
       cursor: pointer !important;
     }
 
+    .modal-btn-confirm:hover{
+      background-color: #007322 !important;
+    }
+
+    .modal-btn-cancel:hover{
+      background-color: #ececec !important;
+    }
+
     .modal-btn-cancel{
       width: 148px !important;
       height: 40px !important;
-      border-radius: 0 !important;
+      border-radius: 2px !important;
       border: none !important;
       background-color: #fff !important;
       color: #808080 !important;
@@ -140,12 +193,16 @@
     }
 
     a.page-link {
-        color: #808080;
         border: solid 1px #e0e0e0;
         border-left: none;
         border-right: none;
         background-color: #fff;
         padding: 9px;
+    }
+
+    li.page-item a{
+      color: #808080 !important;
+      font-size: 14px;
     }
 
     li.pagination-first.page-item a {
@@ -180,7 +237,7 @@
         color: #017580 !important;
     }
 
-    li.page-item.active {
+    li.page-item.active a {
         text-decoration: underline;
         color: #017580 !important;
     }
@@ -250,7 +307,7 @@
     tr td {
         display: block;
         height: 40px;
-        padding: 10px !important;
+        padding: 7px !important;
     }
 
     .table td {
@@ -284,7 +341,63 @@
       background-color: #fff !important;
     }
 
+    .elipses {
+      display: none;
+    }
+
     @media (min-width: 992px){
+
+      ul.pagination {
+        bottom: 27px;
+      }
+
+      .toolip-actions {
+        display: none;
+        position: absolute;
+        background-color: #1f2626;
+        left: 8px;
+        top: -33px;
+        padding: 0 9px;
+        font-size: 0.75em;
+        font-weight: bold;
+        border-radius: 3px;
+        margin: 0;
+        line-height: 2.5em;
+        color: #fff;
+      }
+
+      .toolip-actions::after{
+        content: "";
+        display: block;
+        background-color: #1f2626;
+        position: absolute;
+        left: 17px;
+        top: 18px;
+        width: 10px;
+        height: 10px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .tables-buttons div:hover>.toolip-actions {
+        display: block;
+      }
+
+      .toolip-container {
+        position: relative;
+      }
+
+      .elipses {
+        display: block;
+      }
+
+      thead tr {
+          height: 28px !important;
+      }
+
+      thead tr th {
+          padding: 2px 7px !important;
+      }
 
       .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
         background-color: #f2f2f2 !important;
@@ -300,6 +413,14 @@
 
       .tables-buttons {
         display: table-cell;
+      }
+
+      .tables-buttons i {
+        display: none;
+      }
+
+      tr:hover>.tables-buttons i{
+        display: block;
       }
 
       .table-icon {
@@ -336,7 +457,7 @@
       tr td:first-of-type {
         display: table-cell !important;
         height: auto;
-        padding-top: auto !important;
+        padding-top: 7px !important;
       }
 
       .desactive-row {

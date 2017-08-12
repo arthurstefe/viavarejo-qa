@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unidades-criar',
@@ -10,12 +10,17 @@ import { ViewContainerRef } from '@angular/core';
 })
 export class UnidadesCriarComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private router: Router) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   save(){
     this.showSuccess("Unidade atualizada com sucesso!");
+  }
+
+  redirectPage(){
+    this.redirectPage();
+    this.router.navigateByUrl('/unidades');
   }
 
   showSuccess(msg) {

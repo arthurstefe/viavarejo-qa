@@ -14,6 +14,14 @@ export class UsuariosComponent implements OnInit {
   ngOnInit() {
   }
 
+  // carregarLista() {
+  //   this.gestaoAcessosService.getPerfis().subscribe(
+  //     resp => {
+  //       this.listPerfilAcesso = resp;
+  //     }
+  //   );
+  // }
+
   public tableColumns: Array<any> = [
     {fieldName: 'name', label: 'NOME'},
     {fieldName: 'email', label: 'EMAIL'},
@@ -42,7 +50,7 @@ export class UsuariosComponent implements OnInit {
       filial: 'CD Jundiaí',
       cargo: 'Analista',
       perfil: 'Administrador TI',
-      situacao: 'Ativo'
+      situacao: 'Bloqueado'
     }, {
       name: 'Thiago',
       email: 'teste@teste.com',

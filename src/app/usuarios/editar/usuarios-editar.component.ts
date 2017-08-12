@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios-editar',
@@ -9,7 +10,7 @@ import { ViewContainerRef } from '@angular/core';
 })
 export class UsuariosEditarComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private router: Router) {
     this.toastr.setRootViewContainerRef(vcr);
 
   }
@@ -26,6 +27,11 @@ export class UsuariosEditarComponent implements OnInit {
 
   save(){
     this.showSuccess("Usuário atualizado com sucesso!");
+    this.redirectPage();
+  }
+
+  redirectPage(){
+    this.router.navigateByUrl('/usuarios');
   }
 
   delete(){
@@ -39,6 +45,14 @@ export class UsuariosEditarComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // editarItem(item: ItensGestaoAcessoModel) {
+  //   console.log(item);
+  //   this.gestaoAcessosService.atualizarPerfis(item).subscribe(
+  //     resp => {
+  //       this.carregarLista();
+  //     });
+  // }
 
 
   togglePass(input: any, element: any) {

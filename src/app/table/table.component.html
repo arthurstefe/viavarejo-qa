@@ -7,9 +7,28 @@
     <button class="delete" (click)="toggleFilter($event)"></button>
   </div>
   <div class="filter-body">
-    <label>PERFIL</label> <br>
-    <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1">Teste 1<br>
-    <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2">Teste 2
+    <div class="filter-body-item">
+      <label>PERFIL</label> <br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1"><span>Administrador TI</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Administrador GA</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Transportes</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>CRL Reversa</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>CRL Entregas</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Transportadoras</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Entregador</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Ressarcimento</span><br>
+    </div>
+    <div class="filter-body-item">
+      <label>SITUAÇÃO</label> <br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1"><span>Ativo</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Bloqueado</span><br>
+      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Inativo</span><br>
+    </div>
+    <div class="filter-body-item">
+      <md-slide-toggle>
+        <label class="toggle-viavarejo">USUÁRIO VIA VAREJO</label>
+      </md-slide-toggle>
+    </div>
   </div>
   <div class="filter-footer">
     <button type="button" name="button" class="button-save">Aplicar filtros</button>
@@ -20,6 +39,7 @@
 <div class="action-bar">
   <div class="filter">
     <input [(ngModel)]="filterQuery" placeholder="Pesquisar usuário, CPF, empresa, etc..." class="input-field"/>
+    <span class="lupa"></span>
     <button class="button-filter" (click)="toggleFilter($event)">
       <i class="ico-filter"></i>
       Filtrar
@@ -29,51 +49,69 @@
 </div>
 <table class="table is-striped is-narrow is-fullwidth" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
        [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-    <thead>
-      <tr>
-        <th *ngFor="let item of tableColumns">
-            <mfDefaultSorter by="{{item.fieldName}}">{{item.label}}</mfDefaultSorter>
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i">
-      <td *ngFor="let col of tableColumns; let j = index" [attr.data-index]="j" class="item_{{i}} desactive-row">
-        <span class="label-viavarejo">{{col.label}}: </span>
-          {{item[col.fieldName]}}
-        <span *ngIf="j == 0" class="icon table-icon" (click)="openRow(i)">
-          <i class="fa fa-arrow-down"></i>
-        </span>
-        <span *ngIf="j == 0" class="icon table-icon" [routerLink]="['linkDetalhes']">
-          <i class="fa fa-file-o" aria-hidden="true"></i>
-        </span>
-        <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkEditar]">
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </span>
-      </td>
-      <td class="tables-buttons"><i class="fa fa-pencil" aria-hidden="true" [routerLink]="[linkEditar]"></i></td>
-      <td class="tables-buttons"><i class="fa fa-file-o" aria-hidden="true" [routerLink]="[linkDetalhes]"></i></td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr>
-      <td colspan="7">
-          <mfBootstrapPaginator></mfBootstrapPaginator>
-      </td>
-      <td colspan="3">
-          <div class="lines-per-page">
-              <label class="label-control">Exibir linhas por página: </label>
-              <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
-                  <option [ngValue]="5">5</option>
-                  <option [ngValue]="10">10</option>
-                  <option [ngValue]="15">15</option>
-              </select>
-          </div>
-      </td>
-    </tr>
-    </tfoot>
+       <thead>
+         <tr>
+           <th *ngFor="let item of tableColumns; let i = index">
+               <mfDefaultSorter by="{{item.fieldName}}">
+                 {{item.label}}
+               </mfDefaultSorter>
+           </th>
+           <th>
+           </th>
+           <th>
+           </th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i">
+           <td *ngFor="let col of tableColumns; let j = index" [attr.data-index]="j" class="item_{{i}} desactive-row">
+             <span class="label-viavarejo">{{col.label}}: </span>
+             <div class="elipses" *ngIf="col.fieldName == 'situacao'">
+               <div *ngIf="item.situacao == 'Ativo'" class="elipse-active"></div>
+               <div *ngIf="item.situacao == 'Inativo'" class="elipse-inactive"></div>
+               <div *ngIf="item.situacao == 'Bloqueado'" class="elipse-block"></div>
+             </div>
+               {{item[col.fieldName]}}
+             <span *ngIf="j == 0" class="icon table-icon" (click)="openRow(i)">
+               <i class="fa fa-arrow-down"></i>
+             </span>
+             <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkDetalhes]">
+               <i class="fa fa-file-o" aria-hidden="true"></i>
+             </span>
+             <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkEditar]">
+               <i class="fa fa-pencil" aria-hidden="true"></i>
+             </span>
+           </td>
+           <td class="tables-buttons">
+             <div class="toolip-container">
+               <span class="toolip-actions">Editar</span>
+               <i class="fa fa-pencil" aria-hidden="true" [routerLink]="[linkEditar]"></i>
+             </div>
+           </td>
+           <td class="tables-buttons">
+             <div class="toolip-container">
+               <span class="toolip-actions">Detalhes</span>
+               <i class="fa fa-file-o" aria-hidden="true" [routerLink]="[linkDetalhes]"></i>
+             </div>
+           </td>
+         </tr>
+       </tbody>
+       <tfoot>
+         <tr>
+           <td colspan="7">
+               <mfBootstrapPaginator></mfBootstrapPaginator>
+           </td>
+           <td colspan="3">
+               <div class="lines-per-page">
+                   <label><b>{{results}} resultados</b></label> <br>
+                   <label class="label-control">Exibir linhas por página: </label>
+                   <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                       <option [ngValue]="5">5</option>
+                       <option [ngValue]="10">10</option>
+                       <option [ngValue]="15">15</option>
+                   </select>
+               </div>
+           </td>
+         </tr>
+       </tfoot>
 </table>

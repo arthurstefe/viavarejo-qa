@@ -112,8 +112,15 @@
   padding-bottom: 0
 
 .col-50
-  width: calc(50% - 20px)
-  margin-right: 20px
+    width: calc(50% - 10px)
+    margin-right: 20px
+    padding-bottom: 0
+
+.fields-box.col-50:last-of-type
+    margin-right: 0
+
+.last-inputs
+    padding-bottom: 15px !important
 
 .actions
   justify-content: space-between !important
@@ -139,6 +146,17 @@
   background-color: #fff
   color: #808080
   cursor: pointer
+  border-radius: 2px
+
+.button-outline:hover
+  background-color: #ececec
+
+.button-save:hover
+  background-color: #007322
+
+.button-cancel:hover
+  background-color: #808080
+  color: #171717
 
 @media (max-width: 550px)
   .actions

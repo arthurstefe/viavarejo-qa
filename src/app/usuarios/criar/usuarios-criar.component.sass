@@ -24,7 +24,7 @@
   flex-direction: row
   flex-wrap: wrap
   justify-content: flex-start
-  align-items: flex-end
+  align-items: flex-start
   align-content: center
   margin-bottom: 15px
 
@@ -44,7 +44,7 @@
       font-family: $font-family
 
       &:focus
-        border-top: solid 2px #02afbf
+        border-color: #02afbf
 
       &::placeholder
         color: $greyish
@@ -54,6 +54,9 @@
 
       &.sucesso
         border-top: 2px solid $kelly-green
+
+    .error-message
+      FONT-SIZE: 12px
 
     .select
       height: 36px
@@ -94,10 +97,10 @@
   width: 145px
 
 .md
-  width: 195px
+  width: 135px
 
 .lg
-  width: 285px
+  width: 262px
 
 .e-sm
   width: 80px
@@ -112,8 +115,15 @@
   padding-bottom: 0
 
 .col-50
-  width: calc(50% - 20px)
+  width: calc(50% - 10px)
   margin-right: 20px
+  padding-bottom: 0
+
+.last-inputs
+    padding-bottom: 15px !important
+
+.fields-box.col-50:last-of-type
+    margin-right: 0
 
 .actions
   justify-content: flex-end !important
@@ -131,11 +141,21 @@
 .button-cancel
   width: 148px;
   height: 40px;
-  border-radius: 0;
   border: none
   background-color: #fff;
   color: #808080
   cursor: pointer
+  border-radius: 2px
+
+.button-outline:hover
+  background-color: #ececec
+
+.button-save:hover
+  background-color: #007322
+
+.button-cancel:hover
+  background-color: #808080
+  color: #171717
 
 @media (max-width: 550px)
   .actions

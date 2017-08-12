@@ -1,3 +1,4 @@
+<form id="formLogin" (ngSubmit)="salvarUsuario(f, usuario)" #f="ngForm">
   <div class="fields-box">
     <h2>Novo usuário</h2>
     <br>
@@ -7,19 +8,28 @@
       <div class="field-column">
         <label class="label lg">NOME</label>
         <input
+        [(ngModel)]="usuario.nome"
         class="input"
         type="text"
         name="name"
         placeholder="Digite o nome"
         required
+        #nome="ngModel"
+        [ngClass]="{
+          'input-error': !nome.valid && nome.touched || formInvalid,
+          'sucesso': nome.valid && nome.touched
+        }"
         />
+        <div class="error-message" *ngIf="!nome.valid && nome.touched || formInvalid">
+          O campo <b>NOME</b> é obrigatório
+       </div>
       </div>
       <div class="field-column">
         <label class="label">PERFIL</label>
-        <select class="select md">
-          <option value="teste1">Teste 1</option>
-          <option value="teste2">Teste 2</option>
-          <option value="teste3">Teste 3</option>
+        <select class="select md" [(ngModel)]="usuario.idPerfil" name="idPerfil">
+          <option *ngFor="let perfil of perfis" value="perfil.id">
+            {{perfil.nome}}
+          </option>
         </select>
       </div>
       <div class="field-column">
@@ -29,7 +39,7 @@
         </md-slide-toggle>
       </div>
     </div>
-    <div class="fields-row">
+    <!-- <div class="fields-row">
       <div class="field-column">
         <div class="field relative">
           <label class="label">SENHA</label>
@@ -48,7 +58,7 @@
       <div class="field-column button-side">
         <button type="button" name="button" class="button-outline sm">Gerar nova senha</button>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="fields-box">
     <h3>Dados da empresa</h3>
@@ -56,53 +66,55 @@
     <div class="fields-row">
       <div class="field-column">
         <label class="label">EMPRESA</label>
-        <select class="select lg">
-          <option value="teste1">Teste 1</option>
-          <option value="teste2">Teste 2</option>
-          <option value="teste3">Teste 3</option>
+        <select class="select lg" [(ngModel)]="usuario.idEmpresa"  name="idEmpresa">
+          <option *ngFor="let empresa of empresas" value="empresa.id">
+            {{empresa.nome}}
+          </option>
         </select>
       </div>
       <div class="field-column">
         <label class="label">FILIAL</label>
-        <select class="select lg">
-          <option value="teste1">Teste 1</option>
-          <option value="teste2">Teste 2</option>
-          <option value="teste3">Teste 3</option>
+        <select class="select lg" [(ngModel)]="usuario.idFilial" name="idFilial">
+          <option *ngFor="let filial of filiais" value="filial.id">
+            {{empresa.nome}}
+          </option>
         </select>
       </div>
       <div class="field-column">
         <label class="label">CARGO</label>
-        <select class="select lg">
-          <option value="teste1">Teste 1</option>
-          <option value="teste2">Teste 2</option>
-          <option value="teste3">Teste 3</option>
+        <select class="select lg" [(ngModel)]="usuario.idCargo" name="idCargo">
+          <option *ngFor="let cargo of cargos" value="cargo.id">
+            {{cargo.descricao}}
+          </option>
         </select>
       </div>
     </div>
     <div class="fields-row">
       <div class="field-column">
-        <div class="field-column">
           <label class="label lg">CNPJ</label>
           <input
+          [(ngModel)]="empresaUsuario.cnpj"
           class="input"
           type="text"
-          name="name"
+          name="cnpj"
           placeholder="Digite o nome"
           required
           />
-        </div>
       </div>
       <div class="field-column">
-        <label class="label">GRUPO</label>
-        <select class="select lg">
-          <option value="teste1">Teste 1</option>
-          <option value="teste2">Teste 2</option>
-          <option value="teste3">Teste 3</option>
-        </select>
+        <label class="label lg">GRUPO</label>
+        <input
+        [(ngModel)]="usuario.grupo"
+        class="input"
+        type="text"
+        name="grupo"
+        placeholder="Digite o grupo"
+        required
+        />
       </div>
     </div>
   </div>
-  <div class="fields-row fields-box">
+  <div class="fields-row fields-box last-inputs">
     <div class="fields-box col-50">
       <h3>Documentos</h3>
       <hr>
@@ -110,19 +122,30 @@
         <div class="field-column">
           <label class="label sm">CPF</label>
           <input
+          [(ngModel)]="usuario.cpfCnjp"
+          [textMask]="{mask: cpfMask}"
           class="input sm"
           type="text"
-          name="name"
+          name="cpfCnjp"
           placeholder="Digite o cpf"
           required
+          #cpfCnjp="ngModel"
+          [ngClass]="{
+            'input-error': !cpfCnjp.valid && cpfCnjp.touched || formInvalid,
+            'sucesso': cpfCnjp.valid && cpfCnjp.touched
+          }"
           />
+          <div class="error-message" *ngIf="!cpfCnjp.valid && cpfCnjp.touched || formInvalid">
+            O campo <b>CPF</b> é obrigatório
+         </div>
         </div>
         <div class="field-column">
           <label class="label">DATA DE NASCIMENTO</label>
           <input
           class="input sm"
+          [textMask]="{mask: dataMask}"
           type="text"
-          name="name"
+          name="dataNascimento"
           placeholder="dd/mm/aaaa"
           required
           />
@@ -132,18 +155,20 @@
         <div class="field-column">
           <label class="label sm">RG</label>
           <input
+          [(ngModel)]="usuario.rg"
           class="input sm"
           type="text"
-          name="name"
+          name="rg"
           required
           />
         </div>
         <div class="field-column">
           <label class="label sm">ÓRGÃO EXPEDITOR</label>
           <input
+          [(ngModel)]="usuario.orgaoExpedidor"
           class="input e-sm"
           type="text"
-          name="name"
+          name="orgaoExpedidor"
           required
           />
         </div>
@@ -156,9 +181,11 @@
         <div class="field-column">
           <label class="label sm">E-MAIL</label>
           <input
-          class="input LG"
-          type="text"
-          name="name"
+          [(ngModel)]="usuario.email"
+          [textMask]="{mask: emailMask}"
+          class="input lg"
+          type="email"
+          name="email"
           placeholder=""
           required
           />
@@ -166,9 +193,11 @@
         <div class="field-column">
           <label class="label">CELULAR</label>
           <input
+          [(ngModel)]="telefones[0].telefone"
+          [textMask]="{mask: celMask}"
           class="input md"
           type="text"
-          name="name"
+          name="numero"
           placeholder=""
           required
           />
@@ -178,18 +207,22 @@
         <div class="field-column">
           <label class="label sm">TELEFONE FIXO</label>
           <input
+          [(ngModel)]="telefones[1].telefone"
+          [textMask]="{mask: fixoMask}"
           class="input md"
           type="text"
-          name="name"
+          name="numero"
           required
           />
         </div>
         <div class="field-column">
           <label class="label sm">RAMAL</label>
           <input
+          [(ngModel)]="telefones[1].ramal"
+          [textMask]="{mask: numberMask}"
           class="input e-sm"
           type="text"
-          name="name"
+          name="ramal"
           required
           />
         </div>
@@ -199,7 +232,8 @@
   <div class="fields-box end-line"></div>
   <div class="fields-box">
     <div class="fields-row actions">
-      <button type="button" name="button" class="button-cancel">Cancelar</button>
-      <button type="button" name="button" class="button-save" (click)='save()'>Cadastrar</button>
+      <button type="button" name="button" class="button-cancel" [routerLink]="['/usuarios']">Cancelar</button>
+      <button type="submit" name="button" class="button-save">Cadastrar</button>
     </div>
   </div>
+</form>

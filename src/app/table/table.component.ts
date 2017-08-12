@@ -14,7 +14,6 @@ export class TableComponent implements OnInit {
   @Input() link;
   @Input() className;
 
-
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "email";
@@ -24,12 +23,14 @@ export class TableComponent implements OnInit {
   menuCollapsed: boolean = false;
   public linkEditar: string = "";
   public linkDetalhes: string = "";
+  public results: number = 0;
 
   public constructor() {
   }
 
   public ngOnInit():void {
     this.data = this.tableData;
+    this.results = this.tableData.length;
     this.linkEditar = "/" + this.className + "/editar";
     this.linkDetalhes = "/" + this.className + "/detalhes";
   }

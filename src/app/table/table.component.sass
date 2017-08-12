@@ -1,3 +1,38 @@
+@import '../colors'
+
+.elipse-active
+  width: 10px
+  height: 10px
+  border-radius: 5px
+  background: #00a532
+  position: relative
+  float: left
+  margin-right: 5px
+  top: 5px
+
+.elipse-inactive
+  width: 10px
+  height: 10px
+  border-radius: 5px
+  background: #cf0000
+  position: relative
+  float: left
+  margin-right: 5px
+  top: 5px
+
+.elipse-block
+  width: 10px
+  height: 10px
+  border-radius: 5px
+  background: #faa91a
+  position: relative
+  float: left
+  margin-right: 5px
+  top: 5px
+
+.ico-filter
+      font-size: 13px;
+
 .filter-component
     overflow: hidden;
     margin-bottom: 10px;
@@ -14,12 +49,13 @@
     width: 87px;
     height: 30px;
     border-radius: 2px;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 -5px;
     background-color: #fff;
     border: solid 1px #00a532;
     font-size: 15px;
     color: #00a532;
     cursor: pointer;
+    padding: 7px;
 
     &:hover
         color: #fff;
@@ -51,12 +87,14 @@
         background-color: #027d28;
 
 .lines-per-page
-  width: 156px;
-  height: 22px;
-  font-size: 11px;
-  text-align: left;
-  color: #171717;
+  width: 156px
+  height: 22px
+  font-size: 11px
+  text-align: center
+  color: #171717
   margin: 12px auto
+  position: relative
+  top: -15px
 
 
 
@@ -120,6 +158,8 @@ i
   width: 223px
   position: fixed
   height: calc(100% - 127px)
+  min-height: 640px
+  overflow: hidden
   top: 70px
   right: -223px
   background-color: #ffffff
@@ -143,8 +183,35 @@ i
   padding-top: 15px
 
 .filter-body
-  padding: 15px
   flex-grow: 1
+  display: flex
+  flex-direction: column
+  label
+    font-size: 14px
+    font-weight: bold
+    color: #171717
+  span
+    font-family: Calibri
+    font-size: 14px
+    text-align: left
+    color: #171717
+    vertical-align: text-bottom
+    margin-left: 5px
+
+.filter-body-item
+  padding: 15px
+  border-bottom: solid 1px #e0e0e0
+
+.filter-body-item:last-of-type
+  flex-grow: 1
+
+.button-outline:hover
+  background-color: #ececec 
+
+.toggle-viavarejo
+  font-size: 14px !important
+  font-weight: bold !important
+  color: #00a532 !important
 
 .grey
   color: #a9a9a9
@@ -160,15 +227,44 @@ i
   color: #fff
   border: none
   cursor: pointer
+  margin-bottom: 10px
+
 
 .button-cancel
   width: 192.5px
   height: 40px
-  border-radius: 0
+  border-radius: 2px
   border: none
   background-color: #fff
   color: #808080
   cursor: pointer
+
+.button-save:hover
+  background-color: #007322
+
+.button-cancel:hover
+  background-color: #808080
+  color: #171717
+
+
+input
+  background-color: $white
+  border: solid 1px $white-two
+  border-radius: 2px
+  border-top: solid 2px $greyish
+  font-family: $font-family
+
+  &:focus
+    border-color: #02afbf
+
+  &::placeholder
+    color: $greyish
+
+  &.input-error
+    border-color: red
+
+  &.sucesso
+    border-top: 2px solid $kelly-green
 
 app-adicionar-novo
     width: 100% !important
@@ -185,3 +281,8 @@ app-adicionar-novo
   .lines-per-page
     margin: auto
     float: right
+    position: relative
+    right: -9px
+    text-align: left
+    color: #171717
+    top: 0

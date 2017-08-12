@@ -38,6 +38,8 @@ import { UnidadesDetalhesComponent } from './unidades/detalhes/unidades-detalhes
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { CadastroParametrosComponent } from './cadastro-parametros/cadastro-parametros.component';
 import { CadastroParametrosModule } from './cadastro-parametros/cadastro-parametros.module';
+import { UsuariosService } from './usuarios/usuarios.service';
+import { MaskedInputDirective } from 'angular2-text-mask'
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { CadastroParametrosModule } from './cadastro-parametros/cadastro-paramet
     UnidadesEditarComponent,
     UnidadesCriarComponent,
     UnidadesDetalhesComponent,
-    CadastroParametrosComponent
+    CadastroParametrosComponent,
+    MaskedInputDirective
 
   ],
   imports: [
@@ -87,6 +90,7 @@ import { CadastroParametrosModule } from './cadastro-parametros/cadastro-paramet
   providers: [
     appRoutingProviders,
     AuthGuard,
+    UsuariosService,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
   ],

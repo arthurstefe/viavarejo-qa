@@ -98,7 +98,6 @@
   </div>
   <div class="fields-row">
     <div class="field-column">
-      <div class="field-column">
         <label class="label lg">CNPJ</label>
         <input
         class="input"
@@ -107,7 +106,6 @@
         placeholder="Digite o nome"
         required
         />
-      </div>
     </div>
     <div class="field-column">
       <label class="label">GRUPO</label>
@@ -119,7 +117,7 @@
     </div>
   </div>
 </div>
-<div class="fields-row fields-box">
+<div class="fields-row fields-box last-inputs">
   <div class="fields-box col-50">
     <h3>Documentos</h3>
     <hr>
@@ -220,7 +218,7 @@
       <button type="button" name="button" class="button-outline" (click)="openModal()">Excluir usuário</button>
     </div>
     <div class="field-column">
-      <button type="button" name="button" class="button-cancel">Cancelar</button>
+      <button type="button" name="button" class="button-cancel" [routerLink]="['/usuarios']">Cancelar</button>
       <button type="button" name="button" class="button-save" (click)="save()">Salvar</button>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transportadoras-editar',
@@ -9,7 +10,7 @@ import { ViewContainerRef } from '@angular/core';
 })
 export class TransportadorasEditarComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private router: Router) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -24,7 +25,12 @@ export class TransportadorasEditarComponent implements OnInit {
   }
 
   save(){
+    this.redirectPage();
     this.showSuccess("Transportadora atualizada com sucesso!");
+  }
+
+  redirectPage(){
+    this.router.navigateByUrl('/unidades');
   }
 
   delete(){
