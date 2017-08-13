@@ -147,6 +147,9 @@ body
     background: url('assets/images/forma-1-copiar-4.svg') no-repeat center
 
 
+.container-tabs
+  margin: 0 0 100px !important
+
 //xlg
 //@media (min-width: 1800px) }
 
@@ -234,8 +237,8 @@ body
     margin-bottom: 60px!important
 
   .g-recaptcha div div
-    transform: scale(0.85)
-    -webkit-transform: scale(0.85)
+    transform: scale(0.88)
+    -webkit-transform: scale(0.88)
     transform-origin: 0 0
     -webkit-transform-origin: 0 0
     width: 0 !important
@@ -253,6 +256,51 @@ body
   .boas-vindas
     font-size: 20px
     line-height: 1.1
+
+  .container-tabs
+    width: 100% !important
+
+    .mat-tab-nav-bar
+      width: 100%
+      overflow-x: auto
+      white-space: nowrap
+      position: absolute
+      left: 0
+      top: 180px
+      border-bottom: 1px solid #e0e0e0 !important
+      padding: 0 15px
+
+      a
+        border: 0 !important
+        border-bottom: 2px solid transparent !important
+        border-radius: 0 !important
+        font-size: 14px !important
+        line-height: initial !important
+        height: auto !important
+        padding: 15px 10px !important
+        font-weight: bold !important
+        text-transform: uppercase !important
+        color: #808080 !important
+
+    .mat-tab-nav-bar[_ngcontent-c2] a[ng-reflect-active='true'][_ngcontent-c2]
+      background: transparent !important
+      border-color: #02afbf !important
+      color: #02afbf !important
+
+
+  .container-router
+    margin: 50px 0 !important
+    width: 100% !important
+
+  .columns.is-mobile > .column.is-3
+    width: 30% !important
+
+  footer
+    position: static !important
+
+    .text-footer
+      width: 100% !important
+      padding: 0 10px
 
 
 //mobile-small
