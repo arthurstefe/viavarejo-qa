@@ -26,6 +26,42 @@
 
   <style media="screen">
 
+  input.styled-checkbox{
+      -webkit-appearance: none !important;
+      width: 13px !important;
+      height: 13.1px !important;
+      border-radius: 2px !important;
+      background-color: #ffffff !important;
+      border: solid 1px #808080 !important;
+  }
+
+  input.styled-checkbox:active, input.styled-checkbox:checked:active {
+  	border: solid 1px #02afbf !important;
+  }
+
+  input.styled-checkbox:checked{
+  	border: solid 1px #02afbf !important;
+  }
+
+  input.styled-checkbox:checked::after{
+  	content: '\2714' !important;
+  	font-size: 14px !important;
+  	position: relative !important;
+  	color: #02afbf !important;
+    top: -2px !important;
+  }
+
+
+  span.glyphicon {
+    font-size: 8px;
+    float: right;
+    margin-top: 6px;
+  }
+
+  a.text-nowrap {
+    vertical-align: sub;
+  }
+
   #toast-container>.toast-success {
     background-size: 14px;
   }
@@ -330,11 +366,11 @@
     }
 
     .desactive-row {
-      display: none;
+      display: none !important;
     }
 
     .active-row {
-      display: block;
+      display: block !important;
     }
 
     .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
@@ -355,7 +391,7 @@
         display: none;
         position: absolute;
         background-color: #1f2626;
-        left: 8px;
+        left: -17px;
         top: -33px;
         padding: 0 9px;
         font-size: 0.75em;
@@ -384,6 +420,42 @@
       }
 
       .toolip-container {
+        position: relative;
+      }
+
+      .toolip-actions-dt {
+        display: none;
+        position: absolute;
+        background-color: #1f2626;
+        left: -22px;
+        top: -33px;
+        padding: 0 9px;
+        font-size: 0.75em;
+        font-weight: bold;
+        border-radius: 3px;
+        margin: 0;
+        line-height: 2.5em;
+        color: #fff;
+      }
+
+      .toolip-actions-dt::after{
+        content: "";
+        display: block;
+        background-color: #1f2626;
+        position: absolute;
+        left: 23px;
+        top: 18px;
+        width: 10px;
+        height: 10px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .tables-buttons div:hover>.toolip-actions-dt {
+        display: block;
+      }
+
+      .toolip-container-dt {
         position: relative;
       }
 

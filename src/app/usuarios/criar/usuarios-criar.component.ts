@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
@@ -7,6 +6,8 @@ import { UnidadeModel} from '../../../models/unidade.model';
 import { UsuariosService } from './../usuarios.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+
+var generator = require('random-password-generator');
 
 @Component({
   selector: 'app-usuarios-criar',
@@ -18,8 +19,8 @@ export class UsuariosCriarComponent implements OnInit {
   public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
   public celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
   public fixoMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
-  public emailMask = [];
   public numberMask = [/\d/,/\d/,/\d/,/\d/,/\d/];
+  public passwordGenerated: string = "";
 
   usuario: UsuarioModel = new UsuarioModel();
   formInvalid: boolean;
@@ -51,6 +52,11 @@ export class UsuariosCriarComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  generatePassword(){
+    this.passwordGenerated = generator.generate();
+    console.log(generator.generate());
   }
 
   getPerfis(){

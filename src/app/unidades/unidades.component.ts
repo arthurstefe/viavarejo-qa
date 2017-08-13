@@ -12,6 +12,18 @@ export class UnidadesComponent implements OnInit {
   ngOnInit() {
   }
 
+  public filterConfig: Array<any> = [
+    {
+      boxName: 'SITUAÇÃO',
+      className: 'Unidades',
+      boxFields: [
+        {name: 'Ativo'},
+        {name: 'Bloqueado'},
+        {name: 'Inativo'}
+      ]
+    }
+  ];
+
   public tableColumns: Array<any> = [
     {fieldName: 'name', label: 'NOME'},
     {fieldName: 'email', label: 'EMAIL'},

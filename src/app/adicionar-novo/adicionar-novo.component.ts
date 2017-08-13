@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AdicionarNovoComponent implements OnInit {
 
-  @Input() name: string;
-  printName: string = name;
+  @Input() name;
 
   constructor() { }
 

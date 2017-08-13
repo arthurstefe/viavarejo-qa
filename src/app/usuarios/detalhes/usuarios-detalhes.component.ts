@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { UsuarioModel} from '../../../models/usuario.model';
+import { UnidadeModel} from '../../../models/unidade.model';
+import { UsuariosService } from './../usuarios.service';
 
 @Component({
   selector: 'app-usuarios-detalhes',
@@ -9,11 +13,24 @@ import { ViewContainerRef } from '@angular/core';
 })
 export class UsuariosDetalhesComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  usuario: UsuarioModel = new UsuarioModel();
+  showModal: boolean = false;
+  public perfis: Array<any> = [];
+  public empresas: Array<any> = [];
+  public filiais: Array<any> = [];
+  public cargos: Array<any> = [];
+  public grupos: Array<any> = [];
+  public empresaUsuario: UnidadeModel = new UnidadeModel();
+
+  constructor(
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
+    private router: Router,
+    private route: ActivatedRoute,
+    private usuariosService: UsuariosService
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
-
-  showModal: boolean = false;
 
   openModal(){
     this.showModal = true;
@@ -33,6 +50,9 @@ export class UsuariosDetalhesComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.route.params
+    // .switchMap((params: Params) => this.usuariosService.getUsuario(+params['id']))
+    // .subscribe((usuario) => this.usuario = new UsuarioModel(usuario));
   }
 
   togglePass(input: any, element: any) {
@@ -46,5 +66,41 @@ export class UsuariosDetalhesComponent implements OnInit {
       input.setAttribute('type', 'password');
     }
   }
+
+  getPerfis(){
+    this.usuariosService.getPerfis().subscribe(
+      resp => {
+        this.perfis = resp;
+      });
+  }
+
+  getEmpresas(){
+    this.usuariosService.getEmpresas().subscribe(
+      resp => {
+        this.empresas = resp;
+      });
+  }
+
+  getFiliais(){
+    this.usuariosService.getFiliais().subscribe(
+      resp => {
+        this.filiais = resp;
+      });
+  }
+
+  getCargos(){
+    this.usuariosService.getCargos().subscribe(
+      resp => {
+        this.cargos = resp;
+      });
+  }
+
+  getGrupos(){
+    this.usuariosService.getGrupos().subscribe(
+      resp => {
+        this.grupos = resp;
+      });
+  }
+
 
 }

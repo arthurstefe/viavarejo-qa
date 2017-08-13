@@ -13,17 +13,19 @@ export class TableComponent implements OnInit {
   @Input() tableColumns;
   @Input() link;
   @Input() className;
+  @Input() nameButton;
+  @Input() filterConfig;
 
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "email";
   public sortOrder = "asc";
-  public nameButton = "Criar novo";
   private data:Array<any> = [];
   menuCollapsed: boolean = false;
   public linkEditar: string = "";
   public linkDetalhes: string = "";
   public results: number = 0;
+  public showActions: number;
 
   public constructor() {
   }
@@ -61,6 +63,7 @@ export class TableComponent implements OnInit {
         item.setAttribute("class", 'item_' + index + ' active-row');
       }
     }
+    this.showActions = index;
   }
 
   getField(item, field){

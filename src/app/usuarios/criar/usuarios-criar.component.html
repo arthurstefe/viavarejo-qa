@@ -1,4 +1,4 @@
-<form id="formLogin" (ngSubmit)="salvarUsuario(f, usuario)" #f="ngForm">
+<form id="formNew" (ngSubmit)="salvarUsuario(f, usuario)" #f="ngForm">
   <div class="fields-box">
     <h2>Novo usuário</h2>
     <br>
@@ -39,7 +39,7 @@
         </md-slide-toggle>
       </div>
     </div>
-    <!-- <div class="fields-row">
+    <div class="fields-row password">
       <div class="field-column">
         <div class="field relative">
           <label class="label">SENHA</label>
@@ -48,7 +48,8 @@
             class="input sm"
             type="password"
             name="senha"
-            placeholder="Nova a senha"
+            placeholder="Nova senha"
+            value="{{passwordGenerated}}"
             #_input
             />
           </div>
@@ -56,9 +57,9 @@
         </div>
       </div>
       <div class="field-column button-side">
-        <button type="button" name="button" class="button-outline sm">Gerar nova senha</button>
+        <button type="button" name="button" class="button-outline sm" (click)="generatePassword()">Gerar nova senha</button>
       </div>
-    </div> -->
+    </div>
   </div>
   <div class="fields-box">
     <h3>Dados da empresa</h3>
@@ -182,7 +183,6 @@
           <label class="label sm">E-MAIL</label>
           <input
           [(ngModel)]="usuario.email"
-          [textMask]="{mask: emailMask}"
           class="input lg"
           type="email"
           name="email"

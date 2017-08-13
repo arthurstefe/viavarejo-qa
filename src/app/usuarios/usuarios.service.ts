@@ -15,11 +15,17 @@ export class UsuariosService {
   getUsuarios() {
     return this.http.get<UsuarioModel[]>(globals.BASE_URL + 'usuarios');
   }
+
   incluirUsuario(usuario: UsuarioModel) {
     return this.http.post<UsuarioModel[]>(globals.BASE_URL + 'usuarios', JSON.stringify(usuario));
   }
+
   atualizarUsuario(usuario: UsuarioModel) {
     return this.http.patch<UsuarioModel[]>(globals.BASE_URL + 'usuarios/' + usuario.id, JSON.stringify(usuario));
+  }
+
+  getUsuario(usuario: number) {
+    return this.http.get<UsuarioModel[]>(globals.BASE_URL + 'usuarios/' + usuario, JSON.stringify(usuario));
   }
 
   getPerfis(){

@@ -1,30 +1,20 @@
+
 <div class="filter-box" [ngClass]="{'collapsed' : menuCollapsed}">
   <div class="filter-title">
     <div class="filter-text">
       <i class="ico-filter"></i>
-      Filtrar Usuários
+      Filtrar {{filterConfig[0].className}}
     </div>
     <button class="delete" (click)="toggleFilter($event)"></button>
   </div>
   <div class="filter-body">
-    <div class="filter-body-item">
-      <label>PERFIL</label> <br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1"><span>Administrador TI</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Administrador GA</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Transportes</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>CRL Reversa</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>CRL Entregas</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Transportadoras</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Entregador</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Ressarcimento</span><br>
+    <div class="filter-body-item" *ngFor="let filterItem of filterConfig">
+      <label>{{filterItem.boxName}}</label> <br>
+      <div *ngFor="let filterField of filterItem.boxFields">
+        <input  class="styled-checkbox" type="checkbox" name="name" value="{{filterField.name}}"><span>{{filterField.name}}</span><br>
+      </div>
     </div>
-    <div class="filter-body-item">
-      <label>SITUAÇÃO</label> <br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 1"><span>Ativo</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Bloqueado</span><br>
-      <input class="styled-checkbox" type="checkbox" name="name" value="Teste 2"><span>Inativo</span><br>
-    </div>
-    <div class="filter-body-item">
+    <div class="filter-body-item" *ngIf="filterConfig[0].className == 'Usuários'">
       <md-slide-toggle>
         <label class="toggle-viavarejo">USUÁRIO VIA VAREJO</label>
       </md-slide-toggle>
@@ -63,7 +53,7 @@
          </tr>
        </thead>
        <tbody>
-         <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i">
+         <tr *ngFor="let item of mf.data; let i = index" [attr.data-index]="i" id="box_{{i}}">
            <td *ngFor="let col of tableColumns; let j = index" [attr.data-index]="j" class="item_{{i}} desactive-row">
              <span class="label-viavarejo">{{col.label}}: </span>
              <div class="elipses" *ngIf="col.fieldName == 'situacao'">
@@ -75,23 +65,23 @@
              <span *ngIf="j == 0" class="icon table-icon" (click)="openRow(i)">
                <i class="fa fa-arrow-down"></i>
              </span>
-             <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkDetalhes]">
-               <i class="fa fa-file-o" aria-hidden="true"></i>
+             <span *ngIf="j == 0 && showActions == i" class="icon table-icon" [routerLink]="[linkDetalhes]">
+               <i class="details-icon" aria-hidden="true"></i>
              </span>
-             <span *ngIf="j == 0" class="icon table-icon" [routerLink]="[linkEditar]">
-               <i class="fa fa-pencil" aria-hidden="true"></i>
+             <span *ngIf="j == 0 && showActions == i" class="icon table-icon" [routerLink]="[linkEditar]">
+               <i class="edit-icon" aria-hidden="true"></i>
              </span>
            </td>
            <td class="tables-buttons">
              <div class="toolip-container">
                <span class="toolip-actions">Editar</span>
-               <i class="fa fa-pencil" aria-hidden="true" [routerLink]="[linkEditar]"></i>
+               <i class="edit-icon" aria-hidden="true" [routerLink]="[linkEditar]"></i>
              </div>
            </td>
            <td class="tables-buttons">
-             <div class="toolip-container">
-               <span class="toolip-actions">Detalhes</span>
-               <i class="fa fa-file-o" aria-hidden="true" [routerLink]="[linkDetalhes]"></i>
+             <div class="toolip-container-dt">
+               <span class="toolip-actions-dt">Detalhes</span>
+               <i class="details-icon" aria-hidden="true" [routerLink]="[linkDetalhes]"></i>
              </div>
            </td>
          </tr>

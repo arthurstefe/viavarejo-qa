@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
       this.pageName = this.activatedRoute.children[0].snapshot.data.pageName;
     }
 
-
     this.pageName = this.pageName || 'Olá, ' + this.usuario.nome + '!';
   }
 

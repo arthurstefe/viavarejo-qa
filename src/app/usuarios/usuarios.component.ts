@@ -22,6 +22,31 @@ export class UsuariosComponent implements OnInit {
   //   );
   // }
 
+  public filterConfig: Array<any> = [
+    {
+      boxName: 'PERFIL',
+      className: 'Usuários',
+      boxFields: [
+        {name: 'Administrador TI'},
+        {name: 'Administrador GA'},
+        {name: 'Transportes'},
+        {name: 'CRL Reversa'},
+        {name: 'CRL Entregas'},
+        {name: 'Transportadoras'},
+        {name: 'Entregador'},
+        {name: 'Ressarcimento'}
+      ]
+    },
+    {
+      boxName: 'SITUAÇÃO',
+      boxFields: [
+        {name: 'Ativo'},
+        {name: 'Bloqueado'},
+        {name: 'Inativo'}
+      ]
+    }
+  ];
+
   public tableColumns: Array<any> = [
     {fieldName: 'name', label: 'NOME'},
     {fieldName: 'email', label: 'EMAIL'},

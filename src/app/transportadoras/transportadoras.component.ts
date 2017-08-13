@@ -12,6 +12,25 @@ export class TransportadorasComponent implements OnInit {
   ngOnInit() {
   }
 
+  public filterConfig: Array<any> = [
+    {
+      boxName: 'STATUS PORTAL',
+      className: 'Transportadoras',
+      boxFields: [
+        {name: 'Habilitado'},
+        {name: 'Desabilitado'}
+      ]
+    },
+    {
+      boxName: 'SITUAÇÃO',
+      boxFields: [
+        {name: 'Ativo'},
+        {name: 'Bloqueado'},
+        {name: 'Inativo'}
+      ]
+    }
+  ];
+
   public tableColumns: Array<any> = [
     {fieldName: 'name', label: 'NOME'},
     {fieldName: 'email', label: 'EMAIL'},

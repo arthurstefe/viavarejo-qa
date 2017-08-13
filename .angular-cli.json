@@ -23,7 +23,8 @@
       "styles": [
         "styles.sass",
         "../node_modules/bulma/bulma.sass",
-        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
+        "../bower_components/glyphicons-only-bootstrap/css/bootstrap.css"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",
