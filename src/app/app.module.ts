@@ -39,6 +39,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { CadastroParametrosComponent } from './cadastro-parametros/cadastro-parametros.component';
 import { CadastroParametrosModule } from './cadastro-parametros/cadastro-parametros.module';
 import { UsuariosService } from './usuarios/usuarios.service';
+import { UnidadesService } from './unidades/unidades.service';
+import { TransportadorasService } from './transportadoras/transportadoras.service';
 import { MaskedInputDirective } from 'angular2-text-mask'
 
 
@@ -91,6 +93,8 @@ import { MaskedInputDirective } from 'angular2-text-mask'
     appRoutingProviders,
     AuthGuard,
     UsuariosService,
+    UnidadesService,
+    TransportadorasService,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
   ],

@@ -1,3 +1,5 @@
+import { EnderecoModel } from './endereco.model';
+
 export class UnidadeModel {
     id: number;
     idUnidade: number;
@@ -8,7 +10,7 @@ export class UnidadeModel {
     origem: string;
     dataInclusao: string;
     dataUltimaAlteracao: string;
-    endereco: string;
+    endereco: EnderecoModel;
     tipo: string;
     empresa: string;
     contato: string;
@@ -25,7 +27,7 @@ export class UnidadeModel {
       this.origem = params.origem || "";
       this.dataInclusao = params.dataInclusao || "";
       this.dataUltimaAlteracao = params.dataUltimaAlteracao || "";
-      this.endereco = params.endereco || "";
+      this.endereco = new EnderecoModel(params.endereco) || new EnderecoModel();
       this.tipo = params.tipo || "";
       this.empresa = params.empresa || null;
       this.origem = params.origem || "";

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UnidadesService } from './unidades.service';
+import { UnidadeModel } from '../../models/unidade.model';
 
 @Component({
   selector: 'app-unidades',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnidadesComponent implements OnInit {
 
-  constructor() { }
+  unidades: Array<UnidadeModel> = [];
+
+  constructor(private unidadesService: UnidadesService) { }
 
   ngOnInit() {
+    // this.getUnidades();
+  }
+
+  getUnidades() {
+    this.unidadesService.getUnidades().subscribe(
+      resp => {
+        this.unidades = resp;
+      }
+    );
   }
 
   public filterConfig: Array<any> = [

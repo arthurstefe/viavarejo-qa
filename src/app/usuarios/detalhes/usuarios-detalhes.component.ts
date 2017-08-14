@@ -4,6 +4,7 @@ import { ViewContainerRef } from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { UsuarioModel} from '../../../models/usuario.model';
 import { UnidadeModel} from '../../../models/unidade.model';
+import { PerfilModel } from '../../../models/perfil.model';
 import { UsuariosService } from './../usuarios.service';
 
 @Component({
@@ -21,6 +22,66 @@ export class UsuariosDetalhesComponent implements OnInit {
   public cargos: Array<any> = [];
   public grupos: Array<any> = [];
   public empresaUsuario: UnidadeModel = new UnidadeModel();
+
+  fakeUser: UsuarioModel = new UsuarioModel({
+    nome: 'José da Silva',
+    perfil: {
+      id: 1,
+      idPerfil: 1,
+      nome: 'Administrador TI',
+      nivel: 1,
+      descricao: 'Administrador TI',
+      status: 1,
+      funcionalidades: null
+    },
+    viaVarejo: 'Sim',
+    dataInclusao: '01/05/17',
+    dataUltimoAcesso: "13/08/17",
+    situacao: 'Inativo',
+    motivoBloqueio: 'Encerramento do contrato',
+    dataBloqueio: "11/08/17",
+    email: 'joao.silva@gmail.com',
+    cpfCnjp: '000.456.789-10',
+    rg: '11.111.111-1',
+    empresa: 'HBSIS',
+    filial: 'CD Jundiaí',
+    cargo: 'Analista',
+    dataNascimento: '01/08/17',
+    orgaoExpedidor: 'DETRAN',
+    telefones: [
+      {
+        tipo: 'Fixo',
+        telefone: '2999-8888',
+        ramal: '265'
+      },
+      {
+        tipo: 'Celular',
+        telefone: '98899-7878',
+        ramal: ''
+      }
+    ]
+  });
+
+  fakeEmpresa: UnidadeModel = new UnidadeModel({
+    id: 1,
+    idUnidade: 'Unidade 1',
+    nome: 'CD Nova',
+    descricao: 'Empresa teste',
+    cnpj: '01.001.456/0001-41',
+    status: 1,
+    origem: 'Não sei',
+    dataInclusao: '01/01/17',
+    dataNascimento: '01/01/17',
+    dataUltimaAlteracao: '01/01/87',
+    orgaoExpedidor: 'DETRAN',
+    rg: '20.911.805-8',
+    endereco: 'Rua 1, 10',
+    tipo: 'Não sei',
+    empresa: 'CD nova',
+    contato: 'João',
+    observacao: 'Nada',
+  });
+
 
   constructor(
     public toastr: ToastsManager,
@@ -40,9 +101,18 @@ export class UsuariosDetalhesComponent implements OnInit {
     this.showModal = false;
   }
 
-  delete(){
-    this.closeModal();
-    this.showSuccess("Usuário excluído com sucesso!");
+  redirectPage(){
+    this.router.navigateByUrl('/usuarios');
+  }
+
+  deletarUsuario() {
+    this.usuariosService.deletarUsuario(this.usuario).subscribe(
+      resp => {
+        this.showSuccess("Usuário excluído com sucesso!");
+        this.closeModal();
+        this.redirectPage();
+      }
+    );
   }
 
   showSuccess(msg) {
@@ -50,6 +120,8 @@ export class UsuariosDetalhesComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.fakeUser);
+    this.usuario = this.fakeUser;
     // this.route.params
     // .switchMap((params: Params) => this.usuariosService.getUsuario(+params['id']))
     // .subscribe((usuario) => this.usuario = new UsuarioModel(usuario));
@@ -65,13 +137,6 @@ export class UsuariosDetalhesComponent implements OnInit {
       element.classList.remove('show');
       input.setAttribute('type', 'password');
     }
-  }
-
-  getPerfis(){
-    this.usuariosService.getPerfis().subscribe(
-      resp => {
-        this.perfis = resp;
-      });
   }
 
   getEmpresas(){

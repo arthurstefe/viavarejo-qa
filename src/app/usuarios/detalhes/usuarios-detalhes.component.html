@@ -10,7 +10,7 @@
     </section>
     <footer class="modal-card-foot">
       <a class="button modal-btn-cancel" (click)="closeModal()">Cancelar</a>
-      <a class="button modal-btn-confirm" (click)="delete()">Excluir</a>
+      <a class="button modal-btn-confirm" (click)="deletarUsuario()">Excluir</a>
     </footer>
   </div>
 </div>
@@ -22,40 +22,40 @@
   <div class="fields-row">
     <div class="field-column">
       <label class="label lg">NOME</label>
-      <span>José da Silva</span>
+      <span>{{usuario.nome}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">PERFIL</label>
-      <span>Administrador TI</span>
+      <span>{{usuario.perfil.nome}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">USUÁRIO VIA VAREJO</label>
-      <span>Não</span>
+      <span>{{usuario.viaVarejo}}</span>
     </div>
   </div>
   <div class="fields-box end-line"></div>
   <div class="fields-row">
     <div class="field-column">
       <label class="label lg">DATA DO CADASTRO</label>
-      <span>01/05/17</span>
+      <span>{{usuario.dataInclusao}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">ÚLTIMO ACESSO</label>
-      <span>13/07/17</span>
+      <span>{{usuario.dataUltimoAcesso}}</span>
     </div>
   </div>
   <div class="fields-row">
     <div class="field-column">
       <label class="label lg">SITUAÇÃO</label>
-      <span>Bloqueado</span>
+      <span>{{usuario.situacao}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">MOTIVO DO BLOQUEIO</label>
-      <span>Encerramento do contrato</span>
+      <span>{{usuario.motivoBloqueio}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">DATA DO BLOQUEIO</label>
-      <span>13/07/17</span>
+      <span>{{usuario.dataBloqueio}}</span>
     </div>
   </div>
 </div>
@@ -65,11 +65,11 @@
   <div class="fields-row">
     <div class="field-column">
       <label class="label lg">EMPRESA</label>
-      <span>CNova</span>
+      <span>{{fakeEmpresa.nome}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">FILIAL</label>
-      <span>CD Jundiaí</span>
+      <span>{{fakeEmpresa.idUnidade}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">CARGO</label>
@@ -79,7 +79,7 @@
   <div class="fields-row">
     <div class="field-column">
       <label class="label lg">CNPJ</label>
-      <span>01.264.567/0007-12</span>
+      <span>{{fakeEmpresa.cnpj}}</span>
     </div>
     <div class="field-column">
       <label class="label lg">GRUPO</label>
@@ -94,21 +94,21 @@
     <div class="fields-row">
       <div class="field-column">
         <label class="label md">CPF</label>
-        <span>123.456.789-10</span>
+        <span>{{usuario.cpfCnjp}}</span>
       </div>
       <div class="field-column">
         <label class="label md">DATA DE NASCIMENTO</label>
-        <span>30/09/1999</span>
+        <span>{{usuario.dataNascimento}}</span>
       </div>
     </div>
     <div class="fields-row">
       <div class="field-column">
         <label class="label md">RG</label>
-        <span>12.654.123-12</span>
+        <span>{{usuario.rg}}</span>
       </div>
       <div class="field-column">
         <label class="label md">ÓRGÃO EXPEDITOR</label>
-        <span>SSP SC</span>
+        <span>{{usuario.orgaoExpedidor}}</span>
       </div>
     </div>
   </div>
@@ -118,21 +118,21 @@
     <div class="fields-row">
       <div class="field-column">
         <label class="label md">E-MAIL</label>
-        <span>jose.felipe@cnova.com</span>
+        <span>{{usuario.email}}</span>
       </div>
       <div class="field-column">
         <label class="label md">CELULAR</label>
-        <span>(47)99999-9999</span>
+        <span>{{usuario.telefones[1].telefone}}</span>
       </div>
     </div>
     <div class="fields-row">
       <div class="field-column">
         <label class="label md">TELEFONE FIXO</label>
-        <span>(47)1234-5678</span>
+        <span>{{usuario.telefones[0].telefone}}</span>
       </div>
       <div class="field-column">
         <label class="label md">RAMAL</label>
-        <span>2612</span>
+        <span>{{usuario.telefones[0].ramal}}</span>
       </div>
     </div>
   </div>

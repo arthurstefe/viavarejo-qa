@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { UnidadesService } from '../unidades.service';
+import { UnidadeModel } from '../../../models/unidade.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-unidades-criar',
@@ -10,12 +13,46 @@ import { Router } from '@angular/router';
 })
 export class UnidadesCriarComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private router: Router) {
+  unidade: UnidadeModel = new UnidadeModel();
+  public empresas: Array<any> = [];
+  public filiais: Array<any> = [];
+
+  formInvalid: boolean;
+  constructor(
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
+    private router: Router,
+    private unidadesService: UnidadesService
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
-  save(){
-    this.showSuccess("Unidade atualizada com sucesso!");
+  salvarUnidade(f, unidade) {
+    if (f.invalid) {
+      this.formInvalid = true;
+    } else {
+      this.formInvalid = false;
+      this.unidade = new UnidadeModel(unidade);
+      this.unidadesService.incluirUnidade(this.unidade).subscribe(
+        resp => {
+          this.redirectPage();
+          this.showSuccess("Unidade cadastrada com sucesso!");
+        });
+    }
+  }
+
+  getEmpresas(){
+    this.unidadesService.getEmpresas().subscribe(
+      resp => {
+        this.empresas = resp;
+      });
+  }
+
+  getFiliais(){
+    this.unidadesService.getFiliais().subscribe(
+      resp => {
+        this.filiais = resp;
+      });
   }
 
   redirectPage(){
@@ -28,6 +65,8 @@ export class UnidadesCriarComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.getEmpresas();
+    // this.getFiliais();
   }
 
 }

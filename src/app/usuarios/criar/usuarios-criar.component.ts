@@ -15,11 +15,11 @@ var generator = require('random-password-generator');
   styleUrls: ['./usuarios-criar.component.sass']
 })
 export class UsuariosCriarComponent implements OnInit {
-  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
-  public celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
-  public fixoMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
-  public numberMask = [/\d/,/\d/,/\d/,/\d/,/\d/];
+  // public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  // public cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  // public celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
+  // public fixoMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
+  // public numberMask = [/\d/,/\d/,/\d/,/\d/,/\d/];
   public passwordGenerated: string = "";
 
   usuario: UsuarioModel = new UsuarioModel();
@@ -52,6 +52,11 @@ export class UsuariosCriarComponent implements OnInit {
    }
 
   ngOnInit() {
+    // this.getPerfis();
+    // this.getCargos();
+    // this.getGrupos();
+    // this.getEmpresas();
+    // this.getFiliais();
   }
 
   generatePassword(){

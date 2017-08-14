@@ -50,6 +50,10 @@ export class UsuarioModel {
     idCargo: number;
     idPerfil: number;
     grupo: string;
+    viaVarejo: string;
+    situacao: string;
+    dataNascimento: string;
+    rg: string;
 
     constructor(public params?:any) {
       params = params || {};
@@ -84,6 +88,12 @@ export class UsuarioModel {
       this.dataBloqueio = params.dataBloqueio || null;
       this.dataInativacao = params.dataInativacao || null;
       this.dataLiberacao = params.dataLiberacao || null;
+      this.viaVarejo = params.viaVarejo || "";
+      this.perfil = params.perfil || null;
+      this.dataInclusao = params.dataInclusao || "";
+      this.situacao = params.situacao || "";
+      this.dataNascimento = params.dataNascimento || "";
+      this.rg = params.rg || "";
     }
 
 }

@@ -124,7 +124,6 @@
           <label class="label sm">CPF</label>
           <input
           [(ngModel)]="usuario.cpfCnjp"
-          [textMask]="{mask: cpfMask}"
           class="input sm"
           type="text"
           name="cpfCnjp"
@@ -144,7 +143,6 @@
           <label class="label">DATA DE NASCIMENTO</label>
           <input
           class="input sm"
-          [textMask]="{mask: dataMask}"
           type="text"
           name="dataNascimento"
           placeholder="dd/mm/aaaa"
@@ -194,7 +192,6 @@
           <label class="label">CELULAR</label>
           <input
           [(ngModel)]="telefones[0].telefone"
-          [textMask]="{mask: celMask}"
           class="input md"
           type="text"
           name="numero"
@@ -208,7 +205,6 @@
           <label class="label sm">TELEFONE FIXO</label>
           <input
           [(ngModel)]="telefones[1].telefone"
-          [textMask]="{mask: fixoMask}"
           class="input md"
           type="text"
           name="numero"
@@ -219,7 +215,6 @@
           <label class="label sm">RAMAL</label>
           <input
           [(ngModel)]="telefones[1].ramal"
-          [textMask]="{mask: numberMask}"
           class="input e-sm"
           type="text"
           name="ramal"

@@ -10,7 +10,7 @@
     </section>
     <footer class="modal-card-foot">
       <a class="button modal-btn-cancel" (click)="closeModal()">Cancelar</a>
-      <a class="button modal-btn-confirm" (click)="delete()">Excluir</a>
+      <a class="button modal-btn-confirm" (click)="deletarUsuario()">Excluir</a>
     </footer>
   </div>
 </div>
@@ -86,7 +86,7 @@
         <label class="label">EMPRESA</label>
         <select class="select lg" [(ngModel)]="usuario.idEmpresa"  name="idEmpresa">
           <option *ngFor="let empresa of empresas" value="empresa.id">
-            {{empresa.nome}}
+            {{fakeEmpresa.nome}}
           </option>
         </select>
       </div>
@@ -94,7 +94,7 @@
         <label class="label">FILIAL</label>
         <select class="select lg" [(ngModel)]="usuario.idFilial" name="idFilial">
           <option *ngFor="let filial of filiais" value="filial.id">
-            {{empresa.nome}}
+            {{fakeEmpresa.nome}}
           </option>
         </select>
       </div>
@@ -111,7 +111,7 @@
       <div class="field-column">
           <label class="label lg">CNPJ</label>
           <input
-          [(ngModel)]="empresaUsuario.cnpj"
+          [(ngModel)]="fakeEmpresa.cnpj"
           class="input"
           type="text"
           name="cnpj"
@@ -141,7 +141,6 @@
           <label class="label sm">CPF</label>
           <input
           [(ngModel)]="usuario.cpfCnjp"
-          [textMask]="{mask: cpfMask}"
           class="input sm"
           type="text"
           name="cpfCnjp"
@@ -160,8 +159,8 @@
         <div class="field-column">
           <label class="label">DATA DE NASCIMENTO</label>
           <input
+          [(ngModel)]="usuario.dataNascimento"
           class="input sm"
-          [textMask]="{mask: dataMask}"
           type="text"
           name="dataNascimento"
           placeholder="dd/mm/aaaa"
@@ -173,6 +172,7 @@
         <div class="field-column">
           <label class="label sm">RG</label>
           <input
+          [(ngModel)]="usuario.rg"
           [(ngModel)]="usuario.rg"
           class="input sm"
           type="text"
@@ -210,8 +210,7 @@
         <div class="field-column">
           <label class="label">CELULAR</label>
           <input
-          [(ngModel)]="telefones[0].telefone"
-          [textMask]="{mask: celMask}"
+          [(ngModel)]="usuario.telefones[0].telefone"
           class="input md"
           type="text"
           name="numero"
@@ -224,8 +223,7 @@
         <div class="field-column">
           <label class="label sm">TELEFONE FIXO</label>
           <input
-          [(ngModel)]="telefones[1].telefone"
-          [textMask]="{mask: fixoMask}"
+          [(ngModel)]="usuario.telefones[1].telefone"
           class="input md"
           type="text"
           name="numero"
@@ -235,8 +233,7 @@
         <div class="field-column">
           <label class="label sm">RAMAL</label>
           <input
-          [(ngModel)]="telefones[1].ramal"
-          [textMask]="{mask: numberMask}"
+          [(ngModel)]="usuario.telefones[1].ramal"
           class="input e-sm"
           type="text"
           name="ramal"

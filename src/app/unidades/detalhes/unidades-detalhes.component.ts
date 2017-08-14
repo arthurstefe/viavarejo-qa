@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { UnidadesService } from '../unidades.service';
+import { UnidadeModel } from '../../../models/unidade.model';
 
 @Component({
   selector: 'app-unidades-detalhes',
@@ -9,7 +12,17 @@ import { ViewContainerRef } from '@angular/core';
 })
 export class UnidadesDetalhesComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  unidade: UnidadeModel = new UnidadeModel();
+  public empresas: Array<any> = [];
+  public filiais: Array<any> = [];
+
+  constructor(
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
+    private router: Router,
+    private route: ActivatedRoute,
+    private unidadesService: UnidadesService
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -23,9 +36,17 @@ export class UnidadesDetalhesComponent implements OnInit {
     this.showModal = false;
   }
 
-  delete(){
-    this.closeModal();
-    this.showSuccess("Unidade excluída com sucesso!");
+  deletarUnidade() {
+    this.unidadesService.deletarUnidade(this.unidade).subscribe(
+      resp => {
+        this.showSuccess("Unidade excluída com sucesso!");
+        this.redirectPage();
+      }
+    );
+  }
+
+  redirectPage(){
+    this.router.navigateByUrl('/unidades');
   }
 
   showSuccess(msg) {
@@ -33,6 +54,9 @@ export class UnidadesDetalhesComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.route.params
+    // .switchMap((params: Params) => this.unidadesService.getUnidade(+params['id']))
+    // .subscribe((unidade) => this.unidade = new UnidadeModel(unidade));
   }
 
 }

@@ -24,6 +24,10 @@ export class UsuariosService {
     return this.http.patch<UsuarioModel[]>(globals.BASE_URL + 'usuarios/' + usuario.id, JSON.stringify(usuario));
   }
 
+  deletarUsuario(usuario: UsuarioModel) {
+    return this.http.delete<UsuarioModel[]>(globals.BASE_URL + 'usuarios/' + usuario.id, JSON.stringify(usuario));
+  }
+
   getUsuario(usuario: number) {
     return this.http.get<UsuarioModel[]>(globals.BASE_URL + 'usuarios/' + usuario, JSON.stringify(usuario));
   }

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ViewContainerRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { UnidadesService } from '../unidades.service';
+import { UnidadeModel } from '../../../models/unidade.model';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-unidades-editar',
@@ -10,7 +14,17 @@ import { Router } from '@angular/router';
 })
 export class UnidadesEditarComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private router: Router) {
+  unidade: UnidadeModel = new UnidadeModel();
+  public empresas: Array<any> = [];
+  public filiais: Array<any> = [];
+  formInvalid: boolean;
+
+  constructor(
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef,
+    private router: Router,
+    private route: ActivatedRoute,
+    private unidadesService: UnidadesService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -20,22 +34,50 @@ export class UnidadesEditarComponent implements OnInit {
     this.showModal = true;
   }
 
-  closeModal(){
-    this.showModal = false;
+  getEmpresas(){
+    this.unidadesService.getEmpresas().subscribe(
+      resp => {
+        this.empresas = resp;
+      });
   }
 
-  save(){
-    this.redirectPage();
-    this.showSuccess("Unidade atualizada com sucesso!");
+  getFiliais(){
+    this.unidadesService.getFiliais().subscribe(
+      resp => {
+        this.filiais = resp;
+      });
+  }
+
+  closeModal(){
+    this.showModal = false;
   }
 
   redirectPage(){
     this.router.navigateByUrl('/unidades');
   }
 
-  delete(){
-    this.closeModal();
-    this.showSuccess("Unidade excluída com sucesso!");
+  atualizarUnidade(f, unidade: UnidadeModel) {
+    if (f.invalid) {
+      this.formInvalid = true;
+    } else {
+      this.formInvalid = false;
+      this.unidade = new UnidadeModel(unidade);
+      this.unidadesService.atualizarUnidade(unidade).subscribe(
+        resp => {
+          this.showSuccess("Unidade atualizada com sucesso!");
+          this.redirectPage();
+        }
+      );
+    }
+  }
+
+  deletarUnidade() {
+    this.unidadesService.deletarUnidade(this.unidade).subscribe(
+      resp => {
+        this.showSuccess("Unidade excluída com sucesso!");
+        this.redirectPage();
+      }
+    );
   }
 
   showSuccess(msg) {
@@ -43,6 +85,9 @@ export class UnidadesEditarComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.route.params
+    // .switchMap((params: Params) => this.unidadesService.getUnidade(+params['id']))
+    // .subscribe((unidade) => this.unidade = new UnidadeModel(unidade));
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from './usuarios.service';
+import { UsuarioModel} from '../../models/usuario.model';
 
 @Component({
   selector: 'app-usuarios',
@@ -8,19 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class UsuariosComponent implements OnInit {
 
   nameButton: any = 'Add usuário';
+  usuarios: Array<UsuarioModel> = [];
 
-  constructor() { }
+  constructor(private usuariosService: UsuariosService) { }
 
   ngOnInit() {
+    // this.getUsuarios();
   }
 
-  // carregarLista() {
-  //   this.gestaoAcessosService.getPerfis().subscribe(
-  //     resp => {
-  //       this.listPerfilAcesso = resp;
-  //     }
-  //   );
-  // }
+  getUsuarios() {
+    this.usuariosService.getUsuarios().subscribe(
+      resp => {
+        this.usuarios = resp;
+      }
+    );
+  }
 
   public filterConfig: Array<any> = [
     {

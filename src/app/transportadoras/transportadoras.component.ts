@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransportadorasService } from './transportadoras.service';
+import { TransportadoraModel } from '../../models/transportadora.model';
 
 @Component({
   selector: 'app-transportadoras',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransportadorasComponent implements OnInit {
 
-  constructor() { }
+  transportadoras: Array<TransportadoraModel> = [];
+
+  constructor(private transportadorasService: TransportadorasService) { }
 
   ngOnInit() {
+    // this.getTransportadoras();
+  }
+
+  getTransportadoras() {
+    this.transportadorasService.getTransportadoras().subscribe(
+      resp => {
+        this.transportadoras = resp;
+      }
+    );
   }
 
   public filterConfig: Array<any> = [
