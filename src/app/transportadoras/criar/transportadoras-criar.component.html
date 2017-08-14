@@ -1,237 +1,259 @@
-<div class="fields-box">
-  <h2>Nova transportadora</h2>
-  <br>
-  <h3>Dados da transportadora</h3>
-  <hr>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">TIPO</label>
-      <select class="select e-sm">
-        <option value="teste1">Teste 1</option>
-        <option value="teste2">Teste 2</option>
-        <option value="teste3">Teste 3</option>
-      </select>
+<form id="formNew" (ngSubmit)="salvarTransportadora(f, transportadora)" #f="ngForm">
+  <div class="fields-box">
+    <h2>Nova transportadora</h2>
+    <br>
+    <h3>Dados da transportadora</h3>
+    <hr>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">TIPO</label>
+        <select class="select e-sm">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
+      <div class="field-column">
+        <label class="label">CNPJ</label>
+        <input
+        [(ngModel)]="transportadora.cnpj"
+        class="input sm"
+        type="text"
+        name="cnpj"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">NOME FANTASIA</label>
+        <input
+        [(ngModel)]="transportadora.nomeFantasia"
+        class="input lg"
+        type="text"
+        name="nomeFantasia"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">RAZÃO SOCIAL</label>
+        <input
+        [(ngModel)]="transportadora.razaoSocial"
+        class="input lg"
+        type="text"
+        name="razaoSocial"
+        required
+        />
+      </div>
     </div>
-    <div class="field-column">
-      <label class="label">CNPJ</label>
-      <input
-      class="input sm "
-      type="text"
-      name="name"
-      placeholder="Digite o nome"
-      required
-      />
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">GRUPO</label>
+        <input
+        [(ngModel)]="transportadora.grupo"
+        class="input lg"
+        type="text"
+        name="grupo"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">ÁREA RESPONSÁVEL</label>
+        <select class="select lg">
+          <option value="teste1">Teste 1</option>
+          <option value="teste2">Teste 2</option>
+          <option value="teste3">Teste 3</option>
+        </select>
+      </div>
     </div>
-    <div class="field-column">
-      <label class="label">NOME FANTASIA</label>
-      <input
-      class="input lg"
-      type="text"
-      name="name"
-      required
-      />
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">ENDEREÇO</label>
+        <input
+        [(ngModel)]="endereco.endereco"
+        class="input e-lg"
+        type="text"
+        name="endereco"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">NÚMERO</label>
+        <input
+        [(ngModel)]="endereco.numero"
+        class="input e-sm"
+        type="text"
+        name="numero"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">COMPLEMETO</label>
+        <input
+        [(ngModel)]="endereco.complemento"
+        class="input sm"
+        type="text"
+        name="complemento"
+        required
+        />
+      </div>
     </div>
-    <div class="field-column">
-      <label class="label">RAZÃO SOCIAL</label>
-      <input
-      class="input lg"
-      type="text"
-      name="name"
-      required
-      />
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">BAIRRO</label>
+        <input
+        [(ngModel)]="endereco.bairro"
+        class="input md"
+        type="text"
+        name="bairro"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">CIDADE</label>
+        <input
+        [(ngModel)]="endereco.municipio"
+        class="input md"
+        type="text"
+        name="municipio"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">UF</label>
+        <input
+        [(ngModel)]="endereco.uf"
+        class="input e-sm"
+        type="text"
+        name="uf"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">CEP</label>
+        <input
+        [(ngModel)]="endereco.cep"
+        class="input sm"
+        type="text"
+        name="cep"
+        required
+        />
+      </div>
     </div>
-  </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">GRUPO</label>
-      <select class="select lg">
-        <option value="teste1">Teste 1</option>
-        <option value="teste2">Teste 2</option>
-        <option value="teste3">Teste 3</option>
-      </select>
-    </div>
-    <div class="field-column">
-      <label class="label">ÁREA RESPONSÁVEL</label>
-      <select class="select lg">
-        <option value="teste1">Teste 1</option>
-        <option value="teste2">Teste 2</option>
-        <option value="teste3">Teste 3</option>
-      </select>
-    </div>
-  </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">ENDEREÇO</label>
-      <input
-      class="input e-lg"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">NÚMERO</label>
-      <input
-      class="input e-sm"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">COMPLEMETO</label>
-      <input
-      class="input sm"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-  </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">BAIRRO</label>
-      <input
-      class="input md"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">CIDADE</label>
-      <input
-      class="input md"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">UF</label>
-      <input
-      class="input e-sm"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">CEP</label>
-      <input
-      class="input sm"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-  </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">SITE</label>
-      <input
-      class="input lg"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-  </div>
-</div>
-<div class="fields-box">
-  <h3>Dados de contato</h3>
-  <hr>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">E-MAIL</label>
-      <input
-      class="input"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-  </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">CELULAR</label>
-      <input
-      class="input md"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">TELEFONE FIXO</label>
-      <input
-      class="input md"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">RAMAL</label>
-      <input
-      class="input e-sm"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-    <div class="field-column">
-      <label class="label">CONTATO</label>
-      <input
-      class="input sm"
-      type="text"
-      name="name"
-      required
-      />
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">SITE</label>
+        <input
+        [(ngModel)]="transportadora.homePage"
+        class="input lg"
+        type="text"
+        name="homePage"
+        required
+        />
+      </div>
     </div>
   </div>
-</div>
+  <div class="fields-box">
+    <h3>Dados de contato</h3>
+    <hr>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">E-MAIL</label>
+        <input
+        [(ngModel)]="email.email"
+        class="input"
+        type="text"
+        name="email"
+        required
+        />
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">CELULAR</label>
+        <input
+        [(ngModel)]="telefones[0].telefone"
+        class="input md"
+        type="text"
+        name="telefoneCelular"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">TELEFONE FIXO</label>
+        <input
+        [(ngModel)]="telefones[1].telefone"
+        class="input md"
+        type="text"
+        name="telefoneFixo"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">RAMAL</label>
+        <input
+        [(ngModel)]="telefones[1].ramal"
+        class="input e-sm"
+        type="text"
+        name="ramal"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">CONTATO</label>
+        <input
+        [(ngModel)]="transportadora.contato"
+        class="input sm"
+        type="text"
+        name="contato"
+        required
+        />
+      </div>
+    </div>
+  </div>
 
-<div class="fields-box">
-  <h3>Dados NOTFIS</h3>
-  <hr>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">DIRETÓRIO ENTREGA NOTFIS</label>
-      <input
-      class="input lg"
-      type="text"
-      name="name"
-      required
-      />
+  <div class="fields-box">
+    <h3>Dados NOTFIS</h3>
+    <hr>
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">DIRETÓRIO ENTREGA NOTFIS</label>
+        <input
+        [(ngModel)]="diretorio.diretorio"
+        class="input lg"
+        type="text"
+        name="diretorio"
+        required
+        />
+      </div>
+      <div class="field-column">
+        <label class="label">E-MAIL PARA ENVIO DA NOTFIS DE COLETA</label>
+        <input
+        [(ngModel)]="emailNotfis.email"
+        class="input lg"
+        type="text"
+        name="email"
+        required
+        />
+      </div>
     </div>
-    <div class="field-column">
-      <label class="label">E-MAIL PARA ENVIO DA NOTFIS DE COLETA</label>
-      <input
-      class="input lg"
-      type="text"
-      name="name"
-      required
-      />
+    <div class="fields-row">
+      <div class="field-column">
+        <label class="label">OBSERVAÇÃO</label>
+        <input
+        [(ngModel)]="transportadora.observacao"
+        class="input md"
+        type="text"
+        name="observacao"
+        required
+        />
+      </div>
     </div>
   </div>
-  <div class="fields-row">
-    <div class="field-column">
-      <label class="label">OBSERVAÇÃO</label>
-      <input
-      class="input md"
-      type="text"
-      name="name"
-      required
-      />
-    </div>
-  </div>
-</div>
 
-<div class="fields-box end-line"></div>
-<div class="fields-box">
-  <div class="fields-row actions">
-    <button type="button" name="button" class="button-cancel" [routerLink]="['/transportadoras']">Cancelar</button>
-    <button type="button" name="button" class="button-save" (click)="save()">Cadastrar</button>
+  <div class="fields-box end-line"></div>
+  <div class="fields-box">
+    <div class="fields-row actions">
+      <button type="button" name="button" class="button-cancel" [routerLink]="['/transportadoras']">Cancelar</button>
+      <button type="submit" name="button" class="button-save">Cadastrar</button>
+    </div>
   </div>
-</div>
+</form>

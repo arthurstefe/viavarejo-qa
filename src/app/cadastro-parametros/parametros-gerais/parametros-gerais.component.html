@@ -1,57 +1,63 @@
-<div class="inner-tabs">
-  <div class="fields-box">
-    <h3>Bloqueio / Inatividade do usuário</h3>
-    <hr>
-    <div class="fields-row">
-      <div class="field-column col-33">
-        <label class="label">PRAZO DE EXPIRAÇÃO DE SENHA</label>
-        <input
-        class="input e-sm"
-        type="text"
-        name="name"
-        required
-        />
-        <span>dias</span>
+<form id="formNew" (ngSubmit)="atualizarParametros(parametros)" #f="ngForm">
+  <div class="inner-tabs">
+    <div class="fields-box">
+      <h3>Bloqueio / Inatividade do usuário</h3>
+      <hr>
+      <div class="fields-row">
+        <div class="field-column col-33">
+          <label class="label">PRAZO DE EXPIRAÇÃO DE SENHA</label>
+          <input
+          [(ngModel)]="parametros.przExpSenha"
+          class="input e-sm"
+          type="text"
+          name="przExpSenha"
+          required
+          />
+          <span>dias</span>
+        </div>
+        <div class="field-column col-33">
+          <label class="label">INATIVAR USUÁRIO APÓS</label>
+          <input
+          [(ngModel)]="parametros.inativarUsuario"
+          class="input e-sm"
+          type="text"
+          name="inativarUsuario"
+          required
+          />
+          <span>dias</span>
+        </div>
       </div>
-      <div class="field-column col-33">
-        <label class="label">INATIVAR USUÁRIO APÓS</label>
-        <input
-        class="input e-sm"
-        type="text"
-        name="name"
-        required
-        />
-        <span>dias</span>
+      <div class="fields-row">
+        <div class="field-column col-33">
+          <label class="label">BLOQUEAR ACESSO DO USUÁRIO</label>
+          <input
+          [(ngModel)]="parametros.bloquearAcesso"
+          class="input e-sm"
+          type="text"
+          name="bloquearAcesso"
+          required
+          />
+          <span>tentativas</span>
+        </div>
+        <div class="field-column col-33">
+          <label class="label">INATIVIDADE DA SESSÃO APÓS</label>
+          <input
+          [(ngModel)]="parametros.inatividadeSessao"
+          class="input e-sm"
+          type="text"
+          name="inatividadeSessao"
+          required
+          />
+          <span>minutos</span>
+        </div>
       </div>
     </div>
-    <div class="fields-row">
-      <div class="field-column col-33">
-        <label class="label">BLOQUEAR ACESSO DO USUÁRIO</label>
-        <input
-        class="input e-sm"
-        type="text"
-        name="name"
-        required
-        />
-        <span>tentativas</span>
-      </div>
-      <div class="field-column col-33">
-        <label class="label">INATIVIDADE DA SESSÃO APÓS</label>
-        <input
-        class="input e-sm"
-        type="text"
-        name="name"
-        required
-        />
-        <span>minutos</span>
+    <div class="fields-box end-line"></div>
+    <div class="fields-box">
+      <div class="fields-row actions">
+        <button type="button" name="button" class="button-cancel" (click)='redirectPage()'>Cancelar</button>
+        <button type="submit" name="button" class="button-save">Salvar</button>
       </div>
     </div>
   </div>
-  <div class="fields-box end-line"></div>
-  <div class="fields-box">
-    <div class="fields-row actions">
-      <button type="button" name="button" class="button-cancel">Cancelar</button>
-      <button type="button" name="button" class="button-save" (click)='save()'>Salvar</button>
-    </div>
-  </div>
-</div>
+</form>
